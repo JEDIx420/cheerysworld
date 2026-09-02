@@ -1,44 +1,35 @@
 "use client";
 
-import React, { useRef, useId } from "react";
-import Image from "next/image";
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "@/lib/gsap";
 
 export function DrawnSelfPortrait({
-  className = "w-full max-w-[300px] h-auto text-stone-900",
+  className = "w-full max-w-[280px] sm:max-w-[320px] h-auto text-stone-900",
   triggerOnScroll = true,
 }: {
   className?: string;
   triggerOnScroll?: boolean;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const strokePath1 = useRef<SVGPathElement>(null);
-  const strokePath2 = useRef<SVGPathElement>(null);
-  const strokePath3 = useRef<SVGPathElement>(null);
-  const strokePath4 = useRef<SVGPathElement>(null);
-  const maskId = useId().replace(/:/g, "_");
+  const svgRef = useRef<SVGSVGElement>(null);
 
   useGSAP(
     () => {
-      if (!containerRef.current) return;
+      if (!svgRef.current) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         return;
       }
 
-      const paths = [
-        strokePath1.current,
-        strokePath2.current,
-        strokePath3.current,
-        strokePath4.current,
-      ].filter(Boolean);
+      const paths = svgRef.current.querySelectorAll("path");
 
+      // Set initial state for animated paths
       paths.forEach((p) => {
-        if (!p) return;
         const len = p.getTotalLength();
         gsap.set(p, {
           strokeDasharray: len,
           strokeDashoffset: len,
+          opacity: 1,
         });
       });
 
@@ -52,40 +43,50 @@ export function DrawnSelfPortrait({
           : undefined,
       });
 
-      // Sequential authentic pen-stroke reveal over Cheery's real signature:
-      // 1. "Cheery" letters (cursive flowing loop from left to right)
-      // 2. "'s" apostrophe and s mark (top right)
-      // 3. Diagonal underline baseline
-      // 4. Glasses, nose, eyes, smile, and beard zigzag
-      tl.to(strokePath1.current, {
+      // Sequential pen draw-in animation for Cheery's real signature
+      // 1. "Cheery" letters (cursive flowing sweep)
+      // 2. Baseline diagonal stroke
+      // 3. "'s" apostrophe
+      // 4. Face details: Glasses, eyes, smile, and beard
+      tl.to(".exact-sig-c", {
         strokeDashoffset: 0,
-        duration: 1.2,
+        duration: 0.8,
         ease: "power2.inOut",
       })
         .to(
-          strokePath2.current,
+          ".exact-sig-heery",
+          {
+            strokeDashoffset: 0,
+            duration: 1.2,
+            ease: "power2.inOut",
+          },
+          "-=0.2"
+        )
+        .to(
+          ".exact-sig-s",
           {
             strokeDashoffset: 0,
             duration: 0.5,
             ease: "power2.out",
           },
-          "-=0.2"
-        )
-        .to(
-          strokePath3.current,
-          {
-            strokeDashoffset: 0,
-            duration: 0.6,
-            ease: "power2.inOut",
-          },
           "-=0.3"
         )
         .to(
-          strokePath4.current,
+          ".exact-sig-eyes",
           {
             strokeDashoffset: 0,
-            duration: 0.9,
-            ease: "power1.out",
+            duration: 0.4,
+            stagger: 0.1,
+            ease: "power2.out",
+          },
+          "-=0.1"
+        )
+        .to(
+          ".exact-sig-face",
+          {
+            strokeDashoffset: 0,
+            duration: 0.8,
+            ease: "power2.out",
           },
           "-=0.1"
         );
@@ -94,90 +95,74 @@ export function DrawnSelfPortrait({
   );
 
   return (
-    <div ref={containerRef} className={`relative aspect-[3/4] flex items-center justify-center ${className}`}>
-      {/* SVG Mask with accurate hand-drawn pen trajectories corresponding to Cheery's strokes */}
-      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-        <defs>
-          <mask id={`exact-sig-mask-${maskId}`} maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
-            <rect width="100%" height="100%" fill="black" />
-
-            {/* Stroke 1: "Cheery" cursive word path (Top-Left to Center-Right) */}
-            <path
-              ref={strokePath1}
-              d="M 60 480 
-                 C 20 400, 30 280, 80 260 
-                 C 120 240, 140 380, 80 440 
-                 C 100 380, 140 320, 170 300 
-                 C 180 340, 190 400, 220 380 
-                 C 230 350, 250 280, 290 280 
-                 C 320 280, 300 380, 340 360 
-                 C 360 340, 370 280, 420 250 
-                 C 440 300, 430 380, 450 340 
-                 C 470 280, 490 240, 520 220 
-                 C 500 320, 470 420, 440 450"
-              stroke="white"
-              strokeWidth="48"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-
-            {/* Stroke 2: "'s" apostrophe and flourish (Top Right) */}
-            <path
-              ref={strokePath2}
-              d="M 500 230 C 510 180, 530 190, 560 210 M 520 250 C 560 230, 580 250, 560 280 C 540 300, 580 320, 590 300"
-              stroke="white"
-              strokeWidth="48"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-
-            {/* Stroke 3: Diagonal Underline Baseline cutting under "Cheery's" */}
-            <path
-              ref={strokePath3}
-              d="M 180 420 L 620 250"
-              stroke="white"
-              strokeWidth="52"
-              strokeLinecap="round"
-              fill="none"
-            />
-
-            {/* Stroke 4: Glasses, Nose, Smile, Beard Face Doodle */}
-            <path
-              ref={strokePath4}
-              d="M 330 380 C 300 370, 340 450, 380 440 C 410 430, 380 370, 340 380
-                 M 380 380 C 370 370, 430 360, 450 410 C 470 450, 410 460, 380 410
-                 M 395 380 L 380 440
-                 M 350 460 C 370 480, 410 480, 430 450
-                 M 340 490 L 350 530 L 365 490 L 380 530 L 395 490 L 410 530 L 420 490"
-              stroke="white"
-              strokeWidth="56"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </mask>
-        </defs>
-      </svg>
-
-      {/* Cheery's Exact 100% Original Vector Signature and Self-Portrait */}
-      <div
-        className="w-full h-full relative flex items-center justify-center"
-        style={{
-          maskImage: `url(#exact-sig-mask-${maskId})`,
-          WebkitMaskImage: `url(#exact-sig-mask-${maskId})`,
-        }}
+    <div
+      ref={containerRef}
+      className={`relative flex items-center justify-center p-2 ${className}`}
+    >
+      <svg
+        ref={svgRef}
+        version="1.0"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 724 1024"
+        preserveAspectRatio="xMidYMid meet"
+        className="w-full h-auto overflow-visible"
+        aria-label="Cheery authentic original signature and self-portrait"
       >
-        <Image
-          src="/brand/cheery-signature-clean.jpg"
-          alt="Cheery authentic original signature and self-portrait"
-          fill
-          priority
-          sizes="(max-width: 768px) 100vw, 300px"
-          className="object-contain p-2"
-        />
-      </div>
+        <g
+          transform="translate(0.000000,1024.000000) scale(0.100000,-0.100000)"
+          fill="#141414"
+          stroke="#141414"
+          strokeWidth="6"
+        >
+          {/* 1. Capital 'C' Loop */}
+          <path
+            className="exact-sig-c"
+            d="M1418 5561 c-42 -9 -69 -25 -118 -72 -148 -143 -232 -486 -233 -959 -1 -197 2 -239 22 -338 37 -181 87 -285 174 -356 77 -63 186 -72 267 -21 38 24 140 119 140 130 0 3 -25 -15 -55 -40 -108 -88 -266 -110 -342 -49 -114 93 -174 355 -167 734 4 212 17 338 50 486 48 216 127 362 227 421 102 60 175 46 197 -39 14 -50 35 -38 25 15 -15 78 -80 108 -187 88z"
+          />
+
+          {/* 2. Cursive 'heery' and baseline underline */}
+          <path
+            className="exact-sig-heery"
+            d="M4766 6567 c-47 -97 -76 -170 -131 -327 -18 -52 -47 -125 -65 -162 -50 -105 -130 -164 -168 -126 -19 19 -14 113 12 196 13 42 34 113 46 157 12 44 29 101 37 127 15 49 12 68 -12 68 -27 0 -64 -90 -145 -350 -18 -58 -48 -135 -67 -172 -33 -64 -135 -188 -154 -188 -12 0 -12 73 0 136 5 27 12 93 16 147 l7 97 -34 0 c-18 0 -46 -9 -63 -21 -16 -11 -42 -27 -57 -35 -27 -14 -28 -14 -18 11 15 40 12 91 -7 114 -10 11 -39 26 -65 33 -91 23 -134 -15 -146 -130 -11 -94 2 -127 55 -141 21 -6 50 -11 65 -11 l27 0 -26 -77 c-40 -122 -76 -215 -97 -253 -52 -93 -158 -191 -270 -250 -110 -59 -109 -59 -65 29 55 112 87 212 99 305 20 164 8 250 -41 276 -35 19 -125 8 -153 -19 -38 -36 -63 -107 -76 -216 -9 -76 -9 -113 0 -160 15 -76 49 -234 56 -258 7 -21 -37 -64 -141 -141 -117 -85 -150 -100 -231 -100 -40 -1 -75 2 -79 5 -3 4 12 42 34 85 53 106 61 141 61 261 0 99 -1 103 -25 119 -32 21 -94 13 -136 -18 -70 -52 -129 -198 -129 -318 0 -58 4 -72 30 -108 16 -23 39 -46 50 -52 28 -15 26 -24 -21 -68 -67 -65 -126 -92 -218 -99 l-81 -6 -20 44 c-11 24 -20 53 -20 65 0 33 -50 123 -71 129 -42 14 -104 -53 -144 -156 -20 -51 -64 -210 -88 -324 -11 -51 -5 341 7 505 14 173 20 272 46 725 11 176 8 256 -10 285 -27 44 -53 -66 -95 -405 -9 -66 -20 -257 -25 -425 -11 -336 -20 -460 -44 -595 -8 -49 -18 -109 -21 -132 -14 -118 -94 -373 -154 -493 -22 -44 -39 -80 -37 -80 9 0 71 99 111 175 76 148 131 298 151 410 l11 70 2 -58 c0 -32 8 -72 17 -89 16 -32 17 -32 33 -12 20 25 57 123 101 264 32 103 81 211 120 260 l20 25 1 -55 c3 -99 5 -109 24 -130 34 -37 71 -50 143 -50 59 0 80 5 138 35 38 19 99 61 136 94 56 49 76 61 115 66 68 10 190 44 243 68 175 79 258 125 402 225 200 139 261 214 326 402 57 166 79 207 145 272 91 89 90 91 81 -133 l-7 -192 43 24 c64 36 122 96 169 177 40 69 61 83 61 43 0 -11 8 -29 19 -42 24 -30 82 -30 122 0 15 12 30 21 32 21 6 0 -18 -85 -53 -185 -17 -49 -39 -115 -50 -145 -10 -30 -33 -93 -52 -139 l-33 -84 -145 -74 c-80 -41 -453 -230 -830 -420 -1190 -600 -1260 -638 -1260 -682 0 -16 5 -18 34 -11 19 4 50 17 68 28 34 20 133 73 268 145 41 21 98 51 125 67 28 15 124 66 215 113 91 46 233 120 315 162 83 43 220 114 305 158 85 44 227 117 315 162 453 233 558 286 561 283 3 -4 -60 -171 -102 -269 -13 -31 -24 -61 -24 -66 0 -6 -10 -32 -21 -59 l-22 -48 -21 45 c-34 69 -65 105 -107 124 -33 16 -42 16 -71 4 -72 -30 -147 -121 -209 -252 l-31 -68 -54 31 c-71 40 -196 82 -231 78 -21 -2 -34 -14 -53 -48 -23 -42 -25 -54 -25 -180 1 -139 18 -244 39 -237 13 4 13 3 2 130 -10 111 2 189 34 242 l20 32 88 -43 c48 -23 100 -46 115 -49 15 -4 30 -11 32 -16 3 -4 -6 -36 -20 -70 -78 -184 -42 -289 99 -289 48 0 66 6 109 33 50 33 123 104 159 157 l18 25 -11 -30 c-12 -33 -49 -201 -49 -221 0 -25 29 -2 55 42 15 25 32 66 40 92 12 44 36 111 43 121 1 3 10 -6 19 -18 29 -42 88 -61 194 -61 82 0 102 3 147 26 118 59 217 229 257 441 14 72 14 87 1 117 -23 55 -57 71 -151 71 -101 -1 -175 -24 -243 -76 -61 -45 -61 -45 -16 69 41 107 71 185 89 234 16 45 22 51 115 103 54 30 100 55 102 55 3 0 45 22 94 48 49 27 134 73 189 102 200 106 253 135 430 233 99 55 191 108 205 117 27 19 117 67 335 180 244 126 310 169 285 185 -14 9 -38 0 -180 -67 -200 -94 -349 -173 -417 -219 -24 -16 -62 -42 -85 -58 -52 -34 -531 -301 -713 -396 -71 -37 -164 -87 -205 -110 -98 -55 -115 -61 -105 -38 4 10 18 45 30 78 57 156 98 265 120 320 13 33 45 116 70 185 26 69 57 152 70 185 53 136 74 193 95 250 12 33 28 75 36 93 20 45 19 47 -26 65 l-39 15 -45 -91z m-11 -174 c-21 -61 -77 -184 -82 -179 -4 4 35 110 69 188 27 61 35 55 13 -9z m-829 -208 c10 -16 10 -27 -1 -58 -18 -52 -43 -77 -76 -77 -52 0 -59 8 -59 65 0 45 5 58 29 84 28 30 31 31 62 18 18 -7 38 -21 45 -32z m-440 -226 c39 -43 15 -269 -43 -409 -35 -83 -81 -158 -87 -139 -26 83 -46 198 -46 265 0 91 32 234 62 277 25 35 85 38 114 6z m-1405 -609 c-7 -86 -8 -75 -10 115 0 116 2 242 7 280 5 56 8 32 10 -115 1 -102 -2 -228 -7 -280z m833 120 c4 -44 4 -90 1 -102 -10 -34 -76 -180 -93 -205 l-14 -23 -39 31 c-25 20 -40 41 -44 62 -16 82 43 264 97 301 12 9 37 16 54 16 l31 0 7 -80z m1759 -437 c11 -11 17 -31 17 -58 0 -56 -37 -199 -67 -259 -32 -62 -106 -142 -158 -168 -127 -65 -294 -62 -311 6 -10 41 1 116 30 196 23 63 37 84 90 135 68 65 101 86 256 159 41 19 115 13 143 -11z m-633 -85 c0 -5 -29 -8 -65 -8 -36 0 -65 3 -65 8 0 4 14 19 32 33 l32 27 33 -27 c18 -14 33 -29 33 -33z m0 -54 c0 -13 3 -14 14 -4 12 9 19 3 39 -36 l24 -47 -25 -76 c-57 -174 -232 -349 -367 -368 -40 -5 -50 -3 -61 12 -18 24 -17 94 1 175 8 36 17 75 20 88 3 14 13 22 26 22 24 0 36 25 20 44 -12 15 27 81 77 129 61 59 232 103 232 61z"
+          />
+
+          {/* 3. Apostrophe mark */}
+          <path
+            className="exact-sig-s"
+            d="M5213 6938 c-17 -18 -70 -91 -118 -163 -48 -71 -94 -137 -101 -146 -24 -27 -15 -30 28 -8 50 25 138 114 182 184 29 44 66 133 66 157 0 18 -28 6 -57 -24z"
+          />
+
+          {/* 4. Letter 's' */}
+          <path
+            className="exact-sig-s"
+            d="M5531 6791 c-58 -21 -156 -112 -181 -167 -23 -49 -27 -169 -7 -195 28 -36 51 -40 132 -18 89 23 168 22 173 -1 1 -9 -22 -40 -51 -70 -54 -56 -125 -107 -339 -247 -65 -43 -118 -81 -118 -85 0 -11 58 1 128 29 147 56 338 189 393 273 67 101 53 119 -132 166 -73 19 -138 39 -145 45 -31 26 40 153 118 209 33 24 51 30 95 30 40 0 53 -4 53 -15 0 -8 5 -15 10 -15 17 0 23 30 12 56 -10 20 -18 24 -54 23 -24 -1 -63 -9 -87 -18z"
+          />
+
+          {/* 5. Left Eye Dot */}
+          <path
+            className="exact-sig-eyes"
+            d="M4352 4796 c-30 -35 -49 -87 -37 -106 11 -17 54 -11 76 11 16 16 19 30 17 71 -2 28 -8 53 -14 55 -6 2 -25 -12 -42 -31z"
+          />
+
+          {/* 6. Right Eye Dot */}
+          <path
+            className="exact-sig-eyes"
+            d="M3886 4695 c-26 -30 -45 -59 -41 -65 10 -17 71 -11 88 8 17 18 47 84 47 102 0 5 -11 10 -24 10 -16 0 -38 -17 -70 -55z"
+          />
+
+          {/* 7. Right Ear & Contour */}
+          <path
+            className="exact-sig-face"
+            d="M4915 5001 c-127 -83 -182 -132 -170 -151 12 -19 47 0 124 67 84 74 155 113 172 96 34 -34 38 -185 7 -280 -20 -62 -31 -77 -126 -172 l-105 -104 63 34 c83 44 165 120 196 181 19 37 26 73 33 155 8 102 2 218 -13 242 -17 27 -65 8 -181 -68z"
+          />
+
+          {/* 8. Glasses Frame, Nose, Smile and Beard Zigzag */}
+          <path
+            className="exact-sig-face"
+            d="M4242 4173 c-27 -27 -70 -76 -95 -109 -99 -131 -183 -171 -343 -165 -32 1 -51 52 -63 164 -10 100 -16 121 -31 112 -17 -11 -22 -96 -10 -161 21 -112 85 -164 203 -164 53 0 76 6 131 33 l66 33 -5 -105 c-10 -193 -14 -235 -37 -309 -26 -89 -33 -81 -47 54 -10 96 -44 214 -62 214 -27 0 -62 -102 -78 -226 -8 -64 -9 -60 -10 69 -1 128 -2 137 -20 137 -16 0 -22 -13 -35 -67 -17 -73 -62 -199 -89 -248 -16 -29 -16 -27 -17 81 0 179 -20 224 -51 122 l-17 -53 -1 63 c-1 47 -5 62 -15 62 -8 0 -17 -8 -20 -17 -12 -42 -26 -101 -31 -133 -3 -19 -12 -57 -20 -85 -8 -27 -20 -81 -28 -120 -31 -149 21 -100 125 115 l16 35 1 -76 c1 -86 13 -101 56 -73 27 18 71 100 81 152 12 58 19 42 16 -33 -3 -65 -1 -75 22 -101 22 -26 26 -27 39 -14 23 23 44 96 59 205 13 102 24 100 27 -4 2 -99 63 -218 96 -191 28 24 67 119 72 179 3 34 10 61 14 61 5 0 9 -8 9 -17 0 -33 35 -203 42 -203 4 0 13 18 19 40 10 32 9 66 -5 177 -16 130 -45 271 -65 319 -8 18 -4 27 20 50 43 42 159 215 159 239 0 18 -36 -2 -78 -42z"
+          />
+        </g>
+      </svg>
     </div>
   );
 }
