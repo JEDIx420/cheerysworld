@@ -1,17 +1,51 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import gsap from "@/lib/gsap";
 import { FOUNDATION_LEVELS, ADVANCED_MODULES } from "@/data/animDaddyModules";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
+import { ScrawlRevealImage } from "@/components/doodles/ScrawlRevealImage";
 import { BookOpen, GraduationCap, Video, Users, CheckCircle2, Sparkles } from "lucide-react";
 
 export default function AnimDaddyPage() {
   const [selectedLevel, setSelectedLevel] = useState(FOUNDATION_LEVELS[0]);
   const [enquirySuccess, setEnquirySuccess] = useState(false);
+  const containerRef = useRef<HTMLElement>(null);
+  const motionCurveRef = useRef<SVGPathElement>(null);
+
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      // Draw bouncing ball curve timeline
+      if (motionCurveRef.current) {
+        const len = motionCurveRef.current.getTotalLength();
+        gsap.set(motionCurveRef.current, {
+          strokeDasharray: len,
+          strokeDashoffset: len,
+        });
+
+        gsap.to(motionCurveRef.current, {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#curriculum",
+            start: "top 70%",
+            end: "bottom 80%",
+            scrub: 1.2,
+          },
+        });
+      }
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <main className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
+    <main ref={containerRef} className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
       
       {/* Hero Section */}
       <section className="py-16 md:py-24 border-b border-stone-200/80 relative overflow-hidden bg-radial from-blue-900/10 to-transparent">
@@ -44,17 +78,17 @@ export default function AnimDaddyPage() {
 
               {/* Mentoring mode pillars */}
               <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono">
+                <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono shadow-xs">
                   <Video className="w-4 h-4 text-blue-600 mb-1" />
                   <strong className="block text-stone-900">Online Mentoring</strong>
                   <span className="text-stone-500 text-[11px]">Flexible feedback from home</span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono">
+                <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono shadow-xs">
                   <Users className="w-4 h-4 text-blue-600 mb-1" />
                   <strong className="block text-stone-900">Offline Mentoring</strong>
                   <span className="text-stone-500 text-[11px]">Workshops for schools & homes</span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono col-span-2 sm:col-span-1">
+                <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono col-span-2 sm:col-span-1 shadow-xs">
                   <GraduationCap className="w-4 h-4 text-blue-600 mb-1" />
                   <strong className="block text-stone-900">Old-School Craft</strong>
                   <span className="text-stone-500 text-[11px]">20+ yrs industry faculty</span>
@@ -83,14 +117,12 @@ export default function AnimDaddyPage() {
             {/* Right Hero Booklet Cover */}
             <div className="lg:col-span-5">
               <div className="relative bg-stone-900 text-white rounded-3xl p-5 border-2 border-stone-800 shadow-2xl">
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-950 p-2 border border-stone-800">
-                  <Image
+                <div className="relative rounded-2xl overflow-hidden bg-stone-950 p-2 border border-stone-800">
+                  <ScrawlRevealImage
                     src="/anim-daddy/page-01.png"
                     alt="AnimDaddy Student Booklet Cover"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-contain"
+                    aspectRatio="aspect-[3/4]"
+                    className="w-full h-auto"
                   />
                 </div>
                 <div className="mt-3 text-center">
@@ -121,9 +153,23 @@ export default function AnimDaddyPage() {
         </div>
       </section>
 
-      {/* Foundation Levels (Interactive Sketchbook Timeline) */}
-      <section id="curriculum" className="py-20 md:py-28 bg-[#faf8f5] border-b border-stone-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Foundation Levels (Interactive Sketchbook Timeline with Motion Arcs) */}
+      <section id="curriculum" className="py-20 md:py-28 bg-[#faf8f5] border-b border-stone-200/80 relative overflow-hidden">
+        
+        {/* Animated Bouncing Ball Motion Arc in Background */}
+        <div className="absolute inset-0 pointer-events-none z-0 hidden md:block">
+          <svg viewBox="0 0 1000 800" fill="none" className="w-full h-full text-blue-400/40">
+            <path
+              ref={motionCurveRef}
+              d="M 50 150 Q 250 20 450 180 Q 650 40 850 220 Q 950 80 980 260"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeDasharray="6 4"
+            />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-mono uppercase tracking-widest text-blue-700 font-bold">
@@ -181,13 +227,12 @@ export default function AnimDaddyPage() {
 
             <div className="lg:col-span-5">
               {selectedLevel.imageSrc && (
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-900 p-2 border border-stone-300 shadow-md">
-                  <Image
+                <div className="relative rounded-2xl overflow-hidden bg-stone-900 p-2 border border-stone-300 shadow-md">
+                  <ScrawlRevealImage
                     src={selectedLevel.imageSrc}
                     alt={selectedLevel.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    className="object-contain"
+                    aspectRatio="aspect-[3/4]"
+                    className="w-full h-auto"
                   />
                 </div>
               )}
@@ -290,7 +335,7 @@ export default function AnimDaddyPage() {
                 </p>
                 <button
                   onClick={() => setEnquirySuccess(false)}
-                  className="px-6 py-2 rounded-full bg-stone-900 text-white text-xs font-mono font-bold"
+                  className="px-6 py-2 rounded-full bg-stone-900 text-white text-xs font-mono font-bold cursor-pointer"
                 >
                   Submit Another Enquiry
                 </button>

@@ -3,6 +3,8 @@ import { Plus_Jakarta_Sans, Playfair_Display, JetBrains_Mono } from "next/font/g
 import "./globals.css";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SketchAtmosphere } from "@/components/doodles/SketchAtmosphere";
+import { GraphiteCursorTrail } from "@/components/doodles/GraphiteCursorTrail";
 
 const sansFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -65,9 +67,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${sansFont.variable} ${serifFont.variable} ${monoFont.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col font-sans bg-[#faf8f5] text-stone-900 antialiased selection:bg-amber-300 selection:text-stone-950">
+      <body className="min-h-screen flex flex-col font-sans bg-[#faf8f5] text-stone-900 antialiased selection:bg-amber-300 selection:text-stone-950 relative">
+        <SketchAtmosphere />
+        <GraphiteCursorTrail />
         <Navbar />
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 relative z-10">{children}</div>
         <Footer />
       </body>
     </html>

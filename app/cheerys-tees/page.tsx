@@ -1,14 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import gsap from "@/lib/gsap";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
+import { ScrawlRevealImage } from "@/components/doodles/ScrawlRevealImage";
 import { ProductPreviewModal, ProductItem } from "./ProductPreviewModal";
-import { ShoppingBag, Shirt, ArrowRight } from "lucide-react";
+import { ShoppingBag, Shirt, ArrowRight, Sparkles, Printer } from "lucide-react";
 
 export default function CheerysTeesPage() {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const tShirtOutlineRef = useRef<SVGPathElement>(null);
+
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      // Draw T-Shirt silhouette path on scroll
+      if (tShirtOutlineRef.current) {
+        const len = tShirtOutlineRef.current.getTotalLength();
+        gsap.set(tShirtOutlineRef.current, {
+          strokeDasharray: len,
+          strokeDashoffset: len,
+        });
+
+        gsap.to(tShirtOutlineRef.current, {
+          strokeDashoffset: 0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#print-process",
+            start: "top 75%",
+            end: "bottom 85%",
+            scrub: 1.5,
+          },
+        });
+      }
+    },
+    { scope: containerRef }
+  );
 
   const products: ProductItem[] = [
     {
@@ -86,7 +120,7 @@ export default function CheerysTeesPage() {
   ];
 
   return (
-    <main className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
+    <main ref={containerRef} className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
       
       {/* Hero Section */}
       <section className="py-16 md:py-24 border-b border-stone-200/80 relative overflow-hidden">
@@ -146,17 +180,15 @@ export default function CheerysTeesPage() {
               </div>
             </div>
 
-            {/* Right Hero Preview */}
+            {/* Right Hero Preview with Scrawl Reveal */}
             <div className="lg:col-span-5">
               <div className="relative bg-white rounded-3xl p-5 border-2 border-stone-900 shadow-2xl rotate-1">
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-100 p-2">
-                  <Image
+                <div className="relative rounded-2xl overflow-hidden bg-stone-100 p-2 border border-stone-200">
+                  <ScrawlRevealImage
                     src="/cheerys-tees/page-08.png"
                     alt="Cheerys Tees Living Water Apparel Preview"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-contain"
+                    aspectRatio="aspect-[3/4]"
+                    className="w-full h-auto"
                   />
                 </div>
                 <div className="mt-3 text-center">
@@ -172,15 +204,79 @@ export default function CheerysTeesPage() {
         </div>
       </section>
 
-      {/* Philosophy Statement */}
-      <section className="py-16 bg-white border-b border-stone-200/80">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <span className="text-xs font-mono uppercase tracking-widest text-orange-700 font-bold block mb-2">
-            The Cheerys Tees Promise
-          </span>
-          <p className="text-2xl sm:text-3xl font-serif italic text-stone-900 leading-snug">
-            &ldquo;Every piece should feel like it belongs to the person wearing it. The design is not just decoration—it is part of the story.&rdquo;
-          </p>
+      {/* Signature Feature: The Garment Screen-Print Drawing Simulation */}
+      <section id="print-process" className="py-20 md:py-28 bg-white border-b border-stone-200/80 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-orange-700 font-bold">
+              Craft & Production
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black font-serif text-stone-900 mt-2">
+              From Artist Sketch to Garment Print
+            </h2>
+            <p className="mt-3 text-stone-600 text-sm sm:text-base">
+              The hand-drawn line forms the shirt silhouette while textured pigments reveal Cheery&apos;s custom artwork.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-8 sm:p-12 shadow-2xl relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              
+              {/* Drawn T-Shirt Vector SVG */}
+              <div className="flex flex-col items-center justify-center p-4">
+                <svg viewBox="0 0 300 320" fill="none" className="w-64 h-auto text-stone-900 overflow-visible">
+                  <path
+                    ref={tShirtOutlineRef}
+                    d="M 100 30 
+                       C 120 45, 180 45, 200 30 
+                       L 280 80 
+                       L 240 140 
+                       L 210 120 
+                       L 210 290 
+                       L 90 290 
+                       L 90 120 
+                       L 60 140 
+                       L 20 80 Z"
+                    stroke="currentColor"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  {/* Collar curve */}
+                  <path
+                    d="M 100 30 C 120 60, 180 60, 200 30"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <span className="text-xs font-mono text-stone-500 mt-3 font-semibold">
+                  Hand-Drawn Apparel Silhouette
+                </span>
+              </div>
+
+              {/* Garment Details Narrative */}
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-950 text-xs font-mono font-bold mb-3">
+                  <Printer className="w-3.5 h-3.5 text-orange-700" />
+                  Premium Screen & Digital Print
+                </div>
+                <h3 className="font-serif font-bold text-2xl text-stone-900">
+                  Wearable Narrative
+                </h3>
+                <p className="text-stone-600 text-sm mt-3 leading-relaxed">
+                  We treat every T-shirt as a bespoke canvas. Hand-painted textures, Greek and Hebrew scriptural typography, and vibrant caricature expressions are fused into rich cotton fibers designed for longevity.
+                </p>
+                <div className="mt-6 pt-4 border-t border-stone-200 flex items-center gap-2 text-xs font-mono text-stone-700">
+                  <Sparkles className="w-4 h-4 text-orange-700" />
+                  Customized batch runs for teams, fellowships & events.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 

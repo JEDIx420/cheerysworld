@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
+import { DrawnCaricatureCouple } from "@/components/doodles/DrawnCaricatureCouple";
+import { ScrawlRevealImage } from "@/components/doodles/ScrawlRevealImage";
 import { SelectedWorkGallery } from "@/components/gallery/SelectedWorkGallery";
 import { CommissionModal } from "./CommissionModal";
 import { Sparkles, Camera, Brush, Check } from "lucide-react";
@@ -87,30 +89,28 @@ export default function CheeryFicPage() {
                 </button>
 
                 <a
-                  href="#photo-comparison"
+                  href="#live-draw-demo"
                   className="inline-flex items-center gap-1.5 px-6 py-4 rounded-full bg-white border border-stone-300 text-stone-800 font-mono text-xs font-semibold hover:bg-stone-50"
                 >
-                  See Photo → Caricature
+                  Watch Drawing in Motion ↓
                 </a>
               </div>
             </div>
 
-            {/* Right Hero Artwork */}
+            {/* Right Hero Artwork with Scrawl Reveal */}
             <div className="lg:col-span-5">
               <div className="relative bg-white rounded-3xl p-5 border-2 border-stone-800 shadow-xl rotate-1">
-                <div className="relative aspect-[4/5] rounded-2xl bg-amber-50/50 p-3 overflow-hidden">
-                  <Image
+                <div className="relative rounded-2xl bg-amber-50/50 p-3 overflow-hidden border border-stone-200">
+                  <ScrawlRevealImage
                     src="/cheery-fic/page-1.png"
                     alt="Cheery caricature artwork"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-contain"
+                    aspectRatio="aspect-[4/5]"
+                    className="w-full h-auto"
                   />
                 </div>
                 <div className="mt-3 text-center">
                   <span className="text-xs font-mono font-bold text-stone-900">
-                    Hand-drawn Caricature by Cheery
+                    Scribble-Revealed Caricature by Cheery
                   </span>
                 </div>
               </div>
@@ -121,8 +121,37 @@ export default function CheeryFicPage() {
         </div>
       </section>
 
+      {/* Signature Feature: Self-Drawing Caricature Demonstration (Irene & Philip) */}
+      <section id="live-draw-demo" className="py-20 md:py-32 bg-white border-b border-stone-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-700">
+              Signature Motion Experience
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black font-serif text-stone-900 mt-2">
+              The Line Art Draws Itself
+            </h2>
+            <p className="mt-3 text-stone-600 text-sm sm:text-base">
+              Watch Cheery&apos;s authentic couple line art and scripture calligraphy form stroke-by-stroke as you scroll into view.
+            </p>
+          </div>
+
+          <div className="max-w-xl mx-auto bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-8 sm:p-12 shadow-2xl flex flex-col items-center">
+            <DrawnCaricatureCouple className="w-full max-w-md h-auto text-stone-900" />
+            
+            <div className="mt-8 pt-4 border-t border-stone-200 text-center w-full">
+              <span className="text-xs font-mono font-bold text-amber-900 bg-amber-100 px-3 py-1 rounded-full">
+                Vectorized Original Line Art by Cheery (1 Corinthians 13 Love)
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* Photo to Caricature Demonstration Section */}
-      <section id="photo-comparison" className="py-20 md:py-28 bg-white border-b border-stone-200/80">
+      <section id="photo-comparison" className="py-20 md:py-28 bg-[#faf8f5] border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -137,7 +166,7 @@ export default function CheeryFicPage() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto bg-[#faf8f5] rounded-3xl border-2 border-stone-800 p-6 sm:p-10 shadow-lg">
+          <div className="max-w-4xl mx-auto bg-white rounded-3xl border-2 border-stone-800 p-6 sm:p-10 shadow-lg">
             <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-300">
               <Image
                 src="/cheery-fic/page-7.png"
@@ -158,7 +187,7 @@ export default function CheeryFicPage() {
       </section>
 
       {/* The 3-Step Commission Process */}
-      <section className="py-20 md:py-28 bg-[#faf8f5] border-b border-stone-200/80">
+      <section className="py-20 md:py-28 bg-white border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -176,9 +205,9 @@ export default function CheeryFicPage() {
               return (
                 <div
                   key={step.step}
-                  className="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between"
+                  className="bg-[#faf8f5] rounded-2xl p-8 border border-stone-200 shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between"
                 >
-                  <span className="text-4xl font-black font-serif text-amber-200 select-none">
+                  <span className="text-4xl font-black font-serif text-amber-300 select-none">
                     {step.step}
                   </span>
 
@@ -194,7 +223,7 @@ export default function CheeryFicPage() {
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-stone-100 flex items-center gap-1.5 text-xs font-mono text-stone-400">
+                  <div className="pt-4 border-t border-stone-200/60 flex items-center gap-1.5 text-xs font-mono text-stone-400">
                     <Check className="w-3.5 h-3.5 text-amber-600" />
                     Personalized attention
                   </div>

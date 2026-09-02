@@ -1,12 +1,45 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "@/lib/gsap";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
-import { Utensils, CheckCircle2, Sparkles } from "lucide-react";
+import { Utensils, CheckCircle2, Sparkles, Wheat } from "lucide-react";
 
 export default function CheerysBakesPage() {
   const [orderSent, setOrderSent] = useState(false);
   const [dietaryPrefs, setDietaryPrefs] = useState<string[]>(["Gluten-Free"]);
+  const containerRef = useRef<HTMLElement>(null);
+  const wheatStemRef = useRef<SVGPathElement>(null);
+
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      // Draw wheat stem path on scroll
+      if (wheatStemRef.current) {
+        const len = wheatStemRef.current.getTotalLength();
+        gsap.set(wheatStemRef.current, {
+          strokeDasharray: len,
+          strokeDashoffset: len,
+        });
+
+        gsap.to(wheatStemRef.current, {
+          strokeDashoffset: 0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#craft-philosophy",
+            start: "top 75%",
+            end: "bottom 85%",
+            scrub: 1.5,
+          },
+        });
+      }
+    },
+    { scope: containerRef }
+  );
 
   const menuItems = [
     {
@@ -44,7 +77,7 @@ export default function CheerysBakesPage() {
   };
 
   return (
-    <main className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
+    <main ref={containerRef} className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
       
       {/* Hero Section */}
       <section className="py-16 md:py-24 border-b border-stone-200/80 relative overflow-hidden bg-radial from-emerald-900/10 to-transparent">
@@ -146,15 +179,58 @@ export default function CheerysBakesPage() {
         </div>
       </section>
 
-      {/* Promise Statement */}
-      <section className="py-16 bg-white border-b border-stone-200/80">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-800 font-bold block mb-2">
-            The Cheerys Bakes Promise
-          </span>
-          <p className="text-2xl sm:text-3xl font-serif italic text-stone-900 leading-snug">
-            &ldquo;cheerys_bakes is about proving that thoughtful food does not have to feel like a compromise. Better ingredients, personalised choices and careful baking can make every bite count.&rdquo;
-          </p>
+      {/* Signature Craft & Wheat Drawing Section */}
+      <section id="craft-philosophy" className="py-20 md:py-28 bg-white border-b border-stone-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="max-w-4xl mx-auto bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-8 sm:p-14 shadow-2xl relative overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+              
+              {/* Hand-drawn Wheat Stem Vector */}
+              <div className="md:col-span-5 flex flex-col items-center justify-center">
+                <svg viewBox="0 0 200 300" fill="none" className="w-48 h-auto text-emerald-800 overflow-visible">
+                  <path
+                    ref={wheatStemRef}
+                    d="M 100 280 
+                       L 100 80 
+                       M 100 80 C 80 60, 60 70, 75 90 C 90 100, 100 85, 100 80
+                       M 100 80 C 120 60, 140 70, 125 90 C 110 100, 100 85, 100 80
+                       M 100 120 C 75 100, 55 110, 70 130 C 85 140, 100 125, 100 120
+                       M 100 120 C 125 100, 145 110, 130 130 C 115 140, 100 125, 100 120
+                       M 100 160 C 75 140, 55 150, 70 170 C 85 180, 100 165, 100 160
+                       M 100 160 C 125 140, 145 150, 130 170 C 115 180, 100 165, 100 160
+                       M 100 50 L 100 20"
+                    stroke="currentColor"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="text-xs font-mono text-emerald-900 font-bold mt-2">
+                  Hand-Drawn Wheat & Grain
+                </span>
+              </div>
+
+              <div className="md:col-span-7">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 text-xs font-mono font-bold mb-3">
+                  <Wheat className="w-3.5 h-3.5 text-emerald-700" />
+                  Nourishing Craft
+                </div>
+                <h3 className="font-serif font-bold text-3xl text-stone-900">
+                  Mindful Table & Clean Nutrition
+                </h3>
+                <p className="text-stone-700 text-sm sm:text-base mt-3 leading-relaxed">
+                  We believe that eating with dietary requirements should always feel celebratory, never restrictive. Using small-batch methods, wholesome grains, and custom sweetness profiles, our kitchen creates breads, bagels, and treats shaped around your family&apos;s lifestyle.
+                </p>
+                <div className="mt-6 pt-4 border-t border-stone-200 flex items-center gap-2 text-xs font-mono text-stone-600">
+                  <Sparkles className="w-4 h-4 text-emerald-700" />
+                  Organic & farmer-sourced ingredients wherever practical.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -242,7 +318,7 @@ export default function CheerysBakesPage() {
                 </p>
                 <button
                   onClick={() => setOrderSent(false)}
-                  className="px-6 py-2 rounded-full bg-stone-900 text-white text-xs font-mono font-bold"
+                  className="px-6 py-2 rounded-full bg-stone-900 text-white text-xs font-mono font-bold cursor-pointer"
                 >
                   Create Another Request
                 </button>

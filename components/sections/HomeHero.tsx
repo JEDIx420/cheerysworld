@@ -1,22 +1,120 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import React, { useRef } from "react";
 import Link from "next/link";
-import { ScribbleUnderline, SparkleDoodle, SketchArrow, CheerySmileDoodle } from "../doodles/DoodleIcons";
+import { useGSAP } from "@gsap/react";
+import gsap from "@/lib/gsap";
+import { SparkleDoodle, SketchArrow, CheerySmileDoodle } from "../doodles/DoodleIcons";
+import { DrawnSelfPortrait } from "../doodles/DrawnSelfPortrait";
 import { ArrowRight, Sparkles, Compass } from "lucide-react";
 
 export function HomeHero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const underlineRef = useRef<SVGSVGElement>(null);
+
   const pillars = [
-    { word: "CREATE.", desc: "cheery_fic", color: "text-amber-800 bg-amber-50 border-amber-300" },
-    { word: "TEACH.", desc: "anim_daddy", color: "text-blue-800 bg-blue-50 border-blue-300" },
-    { word: "PERSONALISE.", desc: "cheerys_tees", color: "text-orange-800 bg-orange-50 border-orange-300" },
-    { word: "NOURISH.", desc: "cheerys_bakes", color: "text-emerald-800 bg-emerald-50 border-emerald-300" },
+    { word: "CREATE.", desc: "cheery_fic", color: "text-amber-900 bg-amber-50/80 border-amber-200" },
+    { word: "TEACH.", desc: "anim_daddy", color: "text-blue-900 bg-blue-50/80 border-blue-200" },
+    { word: "PERSONALISE.", desc: "cheerys_tees", color: "text-orange-950 bg-orange-50/80 border-orange-200" },
+    { word: "NOURISH.", desc: "cheerys_bakes", color: "text-emerald-950 bg-emerald-50/80 border-emerald-200" },
   ];
 
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      // Draw scribble underline path
+      const underlinePath = underlineRef.current?.querySelector("path");
+      if (underlinePath) {
+        const len = underlinePath.getTotalLength();
+        gsap.set(underlinePath, {
+          strokeDasharray: len,
+          strokeDashoffset: len,
+        });
+      }
+
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.from(".hero-badge", {
+        y: -15,
+        opacity: 0,
+        duration: 0.6,
+      })
+        .from(
+          ".hero-title-char",
+          {
+            y: 40,
+            opacity: 0,
+            stagger: 0.04,
+            duration: 0.7,
+            ease: "back.out(1.4)",
+          },
+          "-=0.3"
+        );
+
+      if (underlinePath) {
+        tl.to(
+          underlinePath,
+          {
+            strokeDashoffset: 0,
+            duration: 0.8,
+            ease: "power2.inOut",
+          },
+          "-=0.4"
+        );
+      }
+
+      tl.from(
+        ".hero-tagline",
+        {
+          y: 20,
+          opacity: 0,
+          duration: 0.6,
+        },
+        "-=0.4"
+      )
+        .from(
+          ".hero-subcopy",
+          {
+            y: 15,
+            opacity: 0,
+            duration: 0.5,
+          },
+          "-=0.3"
+        )
+        .from(
+          ".hero-pillar",
+          {
+            y: 20,
+            opacity: 0,
+            stagger: 0.08,
+            duration: 0.5,
+            ease: "back.out(1.2)",
+          },
+          "-=0.3"
+        )
+        .from(
+          ".hero-cta",
+          {
+            scale: 0.95,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 0.5,
+          },
+          "-=0.2"
+        );
+    },
+    { scope: heroRef }
+  );
+
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden border-b border-stone-200/80 paper-texture">
-      {/* Background ambient sketch shapes */}
+    <section
+      ref={heroRef}
+      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden border-b border-stone-200/80 paper-texture"
+    >
+      {/* Background ambient lighting */}
       <div className="absolute -top-12 -right-12 w-96 h-96 rounded-full bg-amber-100/40 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full bg-blue-100/40 blur-3xl pointer-events-none" />
 
@@ -27,36 +125,55 @@ export function HomeHero() {
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
             
             {/* Top Eyebrow Tag */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-900 text-stone-100 text-xs font-mono tracking-wider uppercase mb-6 w-fit shadow-xs">
+            <div className="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-900 text-stone-100 text-xs font-mono tracking-wider uppercase mb-6 w-fit shadow-xs">
               <SparkleDoodle size={14} className="text-amber-400" />
               The Creative Umbrella of Cheery
             </div>
 
-            {/* Giant Typographic Title */}
+            {/* Giant Typographic Title with animated letters */}
             <div className="relative">
-              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black font-serif tracking-tighter text-stone-950 leading-[0.9]">
-                CHEERYS
+              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black font-serif tracking-tighter text-stone-950 leading-[0.9] flex flex-wrap">
+                {"CHEERYS".split("").map((char, index) => (
+                  <span key={index} className="hero-title-char inline-block">
+                    {char}
+                  </span>
+                ))}
               </h1>
               <div className="mt-1">
-                <ScribbleUnderline className="text-amber-500 w-48 sm:w-72 md:w-96" />
+                <svg
+                  ref={underlineRef}
+                  width="320"
+                  height="16"
+                  viewBox="0 0 200 18"
+                  fill="none"
+                  className="text-amber-500 w-48 sm:w-72 md:w-96 overflow-visible"
+                >
+                  <path
+                    d="M3 14C35 5 80 16 115 7C145 -1 180 15 197 9"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </div>
             </div>
 
             {/* Supporting Core Positioning Message */}
-            <p className="mt-8 text-xl sm:text-2xl md:text-3xl font-serif italic text-stone-800 leading-snug">
+            <p className="hero-tagline mt-8 text-xl sm:text-2xl md:text-3xl font-serif italic text-stone-800 leading-snug">
               &ldquo;One name. Four expressions. One creative culture.&rdquo;
             </p>
 
-            <p className="mt-4 text-stone-600 text-base sm:text-lg max-w-xl leading-relaxed">
+            <p className="hero-subcopy mt-4 text-stone-600 text-base sm:text-lg max-w-xl leading-relaxed">
               Cheerys brings together four distinct creative ventures—each with its own personality, purpose and craft, yet connected by one vision: to create, teach, personalise and nourish with heart.
             </p>
 
-            {/* Four Action Pillars / Words */}
+            {/* Four Action Pillars */}
             <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-2xl">
               {pillars.map((pillar) => (
                 <div
                   key={pillar.word}
-                  className={`p-3 rounded-xl border text-center transition-transform hover:-translate-y-0.5 ${pillar.color}`}
+                  className={`hero-pillar p-3 rounded-xl border text-center transition-transform hover:-translate-y-1 shadow-xs ${pillar.color}`}
                 >
                   <span className="block text-xs font-black font-mono tracking-wider">
                     {pillar.word}
@@ -72,44 +189,39 @@ export function HomeHero() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="#four-worlds"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-stone-950 text-white font-mono text-sm font-semibold hover:bg-amber-600 transition-colors shadow-md group"
+                className="hero-cta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-stone-950 text-white font-mono text-sm font-semibold hover:bg-amber-600 transition-colors shadow-md group"
               >
                 <Compass className="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform" />
                 Explore The Four Worlds
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border-2 border-stone-800 text-stone-900 font-mono text-sm font-semibold hover:bg-stone-50 transition-colors shadow-xs"
+                className="hero-cta inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border-2 border-stone-800 text-stone-900 font-mono text-sm font-semibold hover:bg-stone-50 transition-colors shadow-xs"
               >
                 Meet Cheery
               </Link>
             </div>
           </div>
 
-          {/* Right Hero Artwork Composition */}
+          {/* Right Hero Artwork with Draw-In and Interactive Frame */}
           <div className="lg:col-span-5 relative flex justify-center">
             <div className="relative w-full max-w-md">
               
-              {/* Hand-drawn frame effect */}
-              <div className="relative bg-white rounded-3xl p-4 sm:p-6 border-2 border-stone-900 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
+              <div className="relative bg-white rounded-3xl p-6 sm:p-8 border-2 border-stone-900 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
                 
                 {/* Cheery Signature Badge on top */}
-                <div className="absolute -top-6 -right-4 sm:-right-6 bg-amber-400 text-stone-950 px-4 py-2 rounded-2xl border-2 border-stone-900 shadow-md font-mono text-xs font-bold rotate-6 flex items-center gap-1.5 z-20">
+                <div className="absolute -top-5 -right-4 sm:-right-6 bg-amber-400 text-stone-950 px-4 py-1.5 rounded-2xl border-2 border-stone-900 shadow-md font-mono text-xs font-bold rotate-6 flex items-center gap-1.5 z-20">
                   <Sparkles className="w-3.5 h-3.5" />
-                  Original Studio Art
+                  Self-Drawing Studio Art
                 </div>
 
-                {/* Hero Artwork Image */}
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-100 border border-stone-200">
-                  <Image
-                    src="/cheery-fic/page-4.png"
-                    alt="Original portrait by Cheery"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-contain p-3"
+                {/* Animated Draw-In Self-Portrait by Cheery */}
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-50 border border-stone-200 flex flex-col items-center justify-center p-4">
+                  <DrawnSelfPortrait
+                    className="w-full max-w-[280px] h-auto text-stone-900"
+                    triggerOnScroll={false}
                   />
                 </div>
 
@@ -129,22 +241,17 @@ export function HomeHero() {
                     </div>
                   </div>
 
-                  <div className="w-20 h-10 relative">
-                    <Image
-                      src="/brand/cheery-signature-clean.jpg"
-                      alt="Cheery signature"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
+                  <span className="text-[11px] font-mono font-bold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full">
+                    Live Drawn
+                  </span>
                 </div>
               </div>
 
               {/* Doodle floating arrow pointing into story */}
-              <div className="hidden sm:block absolute -bottom-10 -left-12 text-stone-800 rotate-12">
+              <div className="hidden sm:block absolute -bottom-8 -left-10 text-stone-800 rotate-12">
                 <SketchArrow direction="curved-down" />
                 <span className="block font-mono text-[11px] text-stone-500 -mt-2 ml-4">
-                  Hand-crafted craft
+                  Scroll for continuous journey
                 </span>
               </div>
             </div>

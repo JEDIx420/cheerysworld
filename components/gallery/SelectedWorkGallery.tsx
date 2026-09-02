@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import gsap from "@/lib/gsap";
 import { GALLERY_ITEMS } from "@/data/gallery";
 import { ArtworkLightbox } from "./ArtworkLightbox";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
@@ -19,6 +21,7 @@ export function SelectedWorkGallery({
 }) {
   const [filter, setFilter] = useState<string>(defaultFilter);
   const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
+  const galleryRef = useRef<HTMLElement>(null);
 
   const filterOptions = [
     { id: "all", label: "All Works" },
@@ -34,11 +37,35 @@ export function SelectedWorkGallery({
 
   const displayItems = limit ? filteredItems.slice(0, limit) : filteredItems;
 
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      // Parallax and tilt entrance for gallery cards
+      const cards = gsap.utils.toArray<HTMLElement>(".gallery-card");
+      gsap.from(cards, {
+        y: 40,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: galleryRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      });
+    },
+    { scope: galleryRef, dependencies: [filter] }
+  );
+
   return (
-    <section className="py-20 md:py-28 bg-[#fdfbf7] relative border-b border-stone-200/80">
+    <section ref={galleryRef} className="py-20 md:py-32 bg-[#fdfbf7] relative border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {showHeading && (
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs font-mono tracking-widest text-stone-500 uppercase">
@@ -74,13 +101,13 @@ export function SelectedWorkGallery({
           </div>
         )}
 
-        {/* Gallery Masonry / Asymmetric Grid */}
+        {/* Gallery Grid with Asymmetric Accents */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {displayItems.map((item, idx) => (
             <div
               key={item.id}
               onClick={() => setActiveItemIndex(idx)}
-              className="group relative bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-stone-900 transition-all duration-300 flex flex-col cursor-pointer"
+              className="gallery-card group relative bg-white rounded-3xl overflow-hidden border-2 border-stone-800 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col cursor-pointer"
             >
               {/* Image Frame */}
               <div className="relative aspect-[4/5] bg-stone-100/70 p-4 flex items-center justify-center overflow-hidden">
@@ -94,14 +121,14 @@ export function SelectedWorkGallery({
                 
                 {/* Overlay hover cue */}
                 <div className="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-stone-900/90 text-stone-100 text-xs font-mono font-medium shadow-lg backdrop-blur-xs">
-                    <Eye className="w-3.5 h-3.5" /> View Artwork
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-stone-900/95 text-stone-100 text-xs font-mono font-medium shadow-lg backdrop-blur-xs">
+                    <Eye className="w-3.5 h-3.5 text-amber-400" /> View Original Piece
                   </span>
                 </div>
 
                 {/* Top category badge */}
                 <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider rounded-md bg-white/90 text-stone-900 shadow-xs border border-stone-200 backdrop-blur-xs">
+                  <span className="px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider rounded-md bg-white/95 text-stone-900 shadow-xs border border-stone-200 backdrop-blur-xs font-bold">
                     {item.categoryLabel}
                   </span>
                 </div>
@@ -133,7 +160,7 @@ export function SelectedWorkGallery({
 
         {/* Bottom CTA for full collection */}
         {limit && (
-          <div className="mt-14 text-center">
+          <div className="mt-16 text-center">
             <Link
               href="/cheery-fic"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-stone-900 text-stone-100 font-mono text-sm hover:bg-amber-600 transition-colors shadow-md"
