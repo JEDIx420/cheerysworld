@@ -1,48 +1,14 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useGSAP } from "@gsap/react";
-import gsap from "@/lib/gsap";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
-import { ScrawlRevealImage } from "@/components/doodles/ScrawlRevealImage";
 import { ProductPreviewModal, ProductItem } from "./ProductPreviewModal";
 import { ShoppingBag, Shirt, ArrowRight, Sparkles, Printer } from "lucide-react";
 
 export default function CheerysTeesPage() {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
-  const containerRef = useRef<HTMLElement>(null);
-  const tShirtOutlineRef = useRef<SVGPathElement>(null);
-
-  useGSAP(
-    () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        return;
-      }
-
-      // Draw T-Shirt silhouette path on scroll
-      if (tShirtOutlineRef.current) {
-        const len = tShirtOutlineRef.current.getTotalLength();
-        gsap.set(tShirtOutlineRef.current, {
-          strokeDasharray: len,
-          strokeDashoffset: len,
-        });
-
-        gsap.to(tShirtOutlineRef.current, {
-          strokeDashoffset: 0,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: "#print-process",
-            start: "top 75%",
-            end: "bottom 85%",
-            scrub: 1.5,
-          },
-        });
-      }
-    },
-    { scope: containerRef }
-  );
 
   const products: ProductItem[] = [
     {
@@ -120,7 +86,7 @@ export default function CheerysTeesPage() {
   ];
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
+    <main className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
       
       {/* Hero Section */}
       <section className="py-16 md:py-24 border-b border-stone-200/80 relative overflow-hidden">
@@ -180,15 +146,17 @@ export default function CheerysTeesPage() {
               </div>
             </div>
 
-            {/* Right Hero Preview with Scrawl Reveal */}
+            {/* Right Hero Preview */}
             <div className="lg:col-span-5">
               <div className="relative bg-white rounded-3xl p-5 border-2 border-stone-900 shadow-2xl rotate-1">
-                <div className="relative rounded-2xl overflow-hidden bg-stone-100 p-2 border border-stone-200">
-                  <ScrawlRevealImage
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-100 p-2 border border-stone-200">
+                  <Image
                     src="/cheerys-tees/page-08.png"
                     alt="Cheerys Tees Living Water Apparel Preview"
-                    aspectRatio="aspect-[3/4]"
-                    className="w-full h-auto"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-contain p-2"
                   />
                 </div>
                 <div className="mt-3 text-center">
@@ -204,7 +172,7 @@ export default function CheerysTeesPage() {
         </div>
       </section>
 
-      {/* Signature Feature: The Garment Screen-Print Drawing Simulation */}
+      {/* Signature Feature: The Garment Screen-Print Craft */}
       <section id="print-process" className="py-20 md:py-28 bg-white border-b border-stone-200/80 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -227,7 +195,6 @@ export default function CheerysTeesPage() {
               <div className="flex flex-col items-center justify-center p-4">
                 <svg viewBox="0 0 300 320" fill="none" className="w-64 h-auto text-stone-900 overflow-visible">
                   <path
-                    ref={tShirtOutlineRef}
                     d="M 100 30 
                        C 120 45, 180 45, 200 30 
                        L 280 80 
@@ -313,7 +280,7 @@ export default function CheerysTeesPage() {
                       className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 text-[11px] font-mono rounded-md bg-white/95 text-stone-900 border border-stone-200 shadow-xs">
+                      <span className="px-2.5 py-1 text-[11px] font-mono rounded-md bg-white/95 text-stone-900 border border-stone-200 shadow-xs font-bold">
                         {p.category}
                       </span>
                     </div>

@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import gsap from "@/lib/gsap";
 import { GALLERY_ITEMS } from "@/data/gallery";
 import { ArtworkLightbox } from "./ArtworkLightbox";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
@@ -21,7 +19,6 @@ export function SelectedWorkGallery({
 }) {
   const [filter, setFilter] = useState<string>(defaultFilter);
   const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
-  const galleryRef = useRef<HTMLElement>(null);
 
   const filterOptions = [
     { id: "all", label: "All Works" },
@@ -37,32 +34,8 @@ export function SelectedWorkGallery({
 
   const displayItems = limit ? filteredItems.slice(0, limit) : filteredItems;
 
-  useGSAP(
-    () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        return;
-      }
-
-      // Parallax and tilt entrance for gallery cards
-      const cards = gsap.utils.toArray<HTMLElement>(".gallery-card");
-      gsap.from(cards, {
-        y: 40,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: galleryRef.current,
-          start: "top 75%",
-          once: true,
-        },
-      });
-    },
-    { scope: galleryRef, dependencies: [filter] }
-  );
-
   return (
-    <section ref={galleryRef} className="py-20 md:py-32 bg-[#fdfbf7] relative border-b border-stone-200/80">
+    <section className="py-20 md:py-32 bg-[#fdfbf7] relative border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {showHeading && (
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">

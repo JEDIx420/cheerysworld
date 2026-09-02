@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { DrawnCaricatureCouple } from "@/components/doodles/DrawnCaricatureCouple";
-import { ScrawlRevealImage } from "@/components/doodles/ScrawlRevealImage";
 import { SelectedWorkGallery } from "@/components/gallery/SelectedWorkGallery";
 import { CommissionModal } from "./CommissionModal";
 import { Sparkles, Camera, Brush, Check } from "lucide-react";
@@ -97,20 +96,22 @@ export default function CheeryFicPage() {
               </div>
             </div>
 
-            {/* Right Hero Artwork with Scrawl Reveal */}
+            {/* Right Hero Artwork */}
             <div className="lg:col-span-5">
               <div className="relative bg-white rounded-3xl p-5 border-2 border-stone-800 shadow-xl rotate-1">
-                <div className="relative rounded-2xl bg-amber-50/50 p-3 overflow-hidden border border-stone-200">
-                  <ScrawlRevealImage
+                <div className="relative aspect-[4/5] rounded-2xl bg-amber-50/50 p-3 overflow-hidden border border-stone-200">
+                  <Image
                     src="/cheery-fic/page-1.png"
                     alt="Cheery caricature artwork"
-                    aspectRatio="aspect-[4/5]"
-                    className="w-full h-auto"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-contain p-2"
                   />
                 </div>
                 <div className="mt-3 text-center">
                   <span className="text-xs font-mono font-bold text-stone-900">
-                    Scribble-Revealed Caricature by Cheery
+                    Handcrafted Caricature by Cheery
                   </span>
                 </div>
               </div>
