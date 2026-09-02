@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  --background: #faf8f5;
+  --foreground: #141414;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--background);
+    color: var(--foreground);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #fde047;
+    color: #121212;
+  }
+}
+
+/* Custom hand-drawn & sketch utilities */
+.sketch-border {
+  border: 1.5px solid currentColor;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.sketch-card {
+  border: 1.5px solid rgba(18, 18, 18, 0.14);
+  border-radius: 255px 18px 225px 18px/18px 225px 18px 255px;
+  background-color: #ffffff;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sketch-card:hover {
+  border-color: rgba(18, 18, 18, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 4px 6px 0px 0px rgba(18, 18, 18, 0.08);
+}
+
+/* Subtle paper texture */
+.paper-texture {
+  background-color: #faf8f5;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
