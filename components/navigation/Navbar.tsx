@@ -21,6 +21,7 @@ export function Navbar() {
 
   const navLinks = [
     { name: "cheery_fic", href: "/cheery-fic", label: "Caricatures", accent: "hover:text-amber-700" },
+    { name: "cheerys_art", href: "/cheerys-art", label: "Paintings", accent: "hover:text-purple-700" },
     { name: "anim_daddy", href: "/anim-daddy", label: "Mentoring", accent: "hover:text-blue-700" },
     { name: "cheerys_tees", href: "/cheerys-tees", label: "Apparel", accent: "hover:text-orange-700" },
     { name: "cheerys_bakes", href: "/cheerys-bakes", label: "Baking", accent: "hover:text-emerald-700" },
@@ -58,14 +59,14 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1.5 bg-stone-900/5 backdrop-blur-xs p-1.5 rounded-full border border-stone-200/80">
+          <nav className="hidden lg:flex items-center gap-1 bg-stone-900/5 backdrop-blur-xs p-1.5 rounded-full border border-stone-200/80">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 rounded-full text-xs font-mono font-medium transition-all ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all ${
                     isActive
                       ? "bg-stone-900 text-stone-50 shadow-xs"
                       : `text-stone-700 hover:bg-white/80 ${link.accent}`
@@ -125,7 +126,7 @@ export function Navbar() {
         <div className="lg:hidden fixed inset-x-0 top-[65px] bg-[#faf8f5] border-b border-stone-300 p-6 shadow-2xl transition-all animate-in slide-in-from-top-4">
           <div className="flex flex-col gap-3">
             <span className="text-[10px] font-mono tracking-widest text-stone-400 uppercase">
-              The Four Expressions
+              The Creative Expressions
             </span>
             {navLinks.map((link) => (
               <Link

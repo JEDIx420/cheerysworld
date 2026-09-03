@@ -14,6 +14,7 @@ export function HomeHero() {
 
   const pillars = [
     { word: "CREATE.", desc: "cheery_fic", color: "text-amber-900 bg-amber-50/80 border-amber-200" },
+    { word: "PAINT.", desc: "cheerys_art", color: "text-purple-900 bg-purple-50/80 border-purple-200" },
     { word: "TEACH.", desc: "anim_daddy", color: "text-blue-900 bg-blue-50/80 border-blue-200" },
     { word: "PERSONALISE.", desc: "cheerys_tees", color: "text-orange-950 bg-orange-50/80 border-orange-200" },
     { word: "NOURISH.", desc: "cheerys_bakes", color: "text-emerald-950 bg-emerald-50/80 border-emerald-200" },
@@ -89,7 +90,7 @@ export function HomeHero() {
           {
             y: 20,
             opacity: 0,
-            stagger: 0.08,
+            stagger: 0.06,
             duration: 0.5,
             ease: "back.out(1.2)",
           },
@@ -161,24 +162,24 @@ export function HomeHero() {
 
             {/* Supporting Core Positioning Message */}
             <p className="hero-tagline mt-8 text-xl sm:text-2xl md:text-3xl font-serif italic text-stone-800 leading-snug">
-              &ldquo;One name. Four expressions. One creative culture.&rdquo;
+              &ldquo;One name. Five expressions. One creative culture.&rdquo;
             </p>
 
             <p className="hero-subcopy mt-4 text-stone-600 text-base sm:text-lg max-w-xl leading-relaxed">
-              Cheerys brings together four distinct creative ventures—each with its own personality, purpose and craft, yet connected by one vision: to create, teach, personalise and nourish with heart.
+              Cheerys brings together five distinct creative ventures—caricatures, fine canvas & resin art, animation mentoring, custom apparel, and mindful baking—connected by one vision: to create, paint, teach, personalise and nourish with heart.
             </p>
 
-            {/* Four Action Pillars */}
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-2xl">
+            {/* Five Action Pillars */}
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-5 gap-2 max-w-3xl">
               {pillars.map((pillar) => (
                 <div
                   key={pillar.word}
-                  className={`hero-pillar p-3 rounded-xl border text-center transition-transform hover:-translate-y-1 shadow-xs ${pillar.color}`}
+                  className={`hero-pillar p-2.5 rounded-xl border text-center transition-transform hover:-translate-y-1 shadow-xs ${pillar.color}`}
                 >
-                  <span className="block text-xs font-black font-mono tracking-wider">
+                  <span className="block text-[11px] font-black font-mono tracking-wider">
                     {pillar.word}
                   </span>
-                  <span className="block text-[11px] text-stone-600 font-sans mt-0.5">
+                  <span className="block text-[10px] text-stone-600 font-sans mt-0.5">
                     {pillar.desc}
                   </span>
                 </div>
@@ -192,7 +193,7 @@ export function HomeHero() {
                 className="hero-cta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-stone-950 text-white font-mono text-sm font-semibold hover:bg-amber-600 transition-colors shadow-md group"
               >
                 <Compass className="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform" />
-                Explore The Four Worlds
+                Explore The Creative Worlds
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 

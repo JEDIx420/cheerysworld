@@ -23,6 +23,7 @@ export function SelectedWorkGallery({
   const filterOptions = [
     { id: "all", label: "All Works" },
     { id: "cheery-fic", label: "cheery_fic (Caricatures)" },
+    { id: "cheerys-art", label: "cheerys_art (Paintings)" },
     { id: "cheerys-tees", label: "cheerys_tees (Apparel)" },
     { id: "anim-daddy", label: "anim_daddy (Mentoring)" },
   ];
@@ -51,7 +52,7 @@ export function SelectedWorkGallery({
               </h2>
               <ScribbleUnderline className="text-amber-500 mt-2" width={180} />
               <p className="mt-4 text-stone-600 max-w-xl text-base md:text-lg">
-                An editorial showcase across caricatures, illustrated apparel, concept art, and animation studies.
+                An editorial showcase across caricatures, canvas & resin paintings, illustrated apparel, concept art, and animation studies.
               </p>
             </div>
 

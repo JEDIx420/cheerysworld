@@ -60,8 +60,50 @@ export const VENTURES: Venture[] = [
     imageAlt: "Cheery-fic Caricature of a smiling boy by Cheery",
   },
   {
-    id: "anim-daddy",
+    id: "cheerys-art",
     number: "02",
+    name: "cheerys_art",
+    slug: "/cheerys-art",
+    tagline: "Art that adds life to your space • canvas, resin & clocks",
+    accentColor: "text-purple-800",
+    accentBg: "bg-purple-500/10",
+    badgeBorder: "border-purple-600/30",
+    pillColor: "bg-purple-100 text-purple-900 border-purple-300",
+    description:
+      "Where creativity meets craftsmanship. Unique, handcrafted artworks designed to bring colour, beauty, and personality into your home, office, and special spaces.",
+    bulletPill: "FINE ART + PAINTING WORK",
+    actionText: "EXPLORE CHEERYS_ART",
+    actionHref: "/cheerys-art",
+    offerings: [
+      {
+        title: "Canvas Painting",
+        description:
+          "Transform your walls with beautiful and expressive textured canvas paintings, from decorative abstracts to personalized creations.",
+      },
+      {
+        title: "Resin Painting",
+        description:
+          "Vibrant colours, glossy finishes, and organic fluid artistic patterns handcrafted to make every piece one of a kind.",
+      },
+      {
+        title: "Clock Dial Painting",
+        description:
+          "Hand-painted clock dials combining functional timepieces with expressive statement art for any modern interior.",
+      },
+      {
+        title: "Custom Space Décor",
+        description:
+          "Customized paintings tailored to your room aesthetics, color palettes, and emotional tone.",
+      },
+    ],
+    promise:
+      "We believe art is more than decoration—it is a way to express emotions, memories, and individuality. We put creativity and care into every piece.",
+    previewImage: "/cheerys-art/sample-01.png",
+    imageAlt: "Cheerys Art & Painting Work abstract canvas",
+  },
+  {
+    id: "anim-daddy",
+    number: "03",
     name: "anim_daddy",
     slug: "/anim-daddy",
     tagline: "Animation & art modules • online + offline mentoring",
@@ -103,7 +145,7 @@ export const VENTURES: Venture[] = [
   },
   {
     id: "cheerys-tees",
-    number: "03",
+    number: "04",
     name: "cheerys_tees",
     slug: "/cheerys-tees",
     tagline: "Personalised apparel & merchandise with a creative face-lift",
@@ -145,7 +187,7 @@ export const VENTURES: Venture[] = [
   },
   {
     id: "cheerys-bakes",
-    number: "04",
+    number: "05",
     name: "cheerys_bakes",
     slug: "/cheerys-bakes",
     tagline: "Nutritious • gluten-free • sugar-free • made to order",

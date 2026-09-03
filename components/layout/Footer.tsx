@@ -7,6 +7,7 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 export function Footer() {
   const divisions = [
     { name: "cheery_fic", href: "/cheery-fic", desc: "Caricatures, characters & creative products" },
+    { name: "cheerys_art", href: "/cheerys-art", desc: "Canvas, resin & clock dial painting work" },
     { name: "anim_daddy", href: "/anim-daddy", desc: "Animation & art mentoring" },
     { name: "cheerys_tees", href: "/cheerys-tees", desc: "Personalised apparel & merchandise" },
     { name: "cheerys_bakes", href: "/cheerys-bakes", desc: "Nutritious • gluten-free • sugar-free" },
@@ -35,8 +36,8 @@ export function Footer() {
               </div>
 
               <p className="text-stone-400 text-sm leading-relaxed max-w-sm">
-                One name. Four expressions. One creative culture.
-                Bringing together imagination, mentorship, personal style, and mindful nourishment under one creative spirit.
+                One name. Five creative expressions. One unified culture.
+                Bringing together imagination, fine art, mentorship, personal style, and mindful nourishment under one creative spirit.
               </p>
 
               <div className="mt-6 flex items-center gap-3">
@@ -57,7 +58,7 @@ export function Footer() {
             </div>
 
             <div className="mt-8 text-xs font-mono text-stone-500">
-              CREATE • TEACH • PERSONALISE • NOURISH
+              CREATE • PAINT • TEACH • PERSONALISE • NOURISH
             </div>
           </div>
 
@@ -65,9 +66,9 @@ export function Footer() {
           <div className="md:col-span-4">
             <h4 className="text-xs font-mono uppercase tracking-widest text-amber-500 mb-6 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
-              The Four Divisions
+              The Creative Divisions
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3.5">
               {divisions.map((div) => (
                 <li key={div.name}>
                   <Link
@@ -98,6 +99,11 @@ export function Footer() {
               <li>
                 <Link href="/about" className="text-stone-300 hover:text-white transition-colors">
                   Meet Cheery
+                </Link>
+              </li>
+              <li>
+                <Link href="/cheerys-art" className="text-stone-300 hover:text-white transition-colors">
+                  Art & Painting Gallery
                 </Link>
               </li>
               <li>

@@ -1,7 +1,7 @@
 export interface GalleryItem {
   id: string;
   title: string;
-  category: "cheery-fic" | "anim-daddy" | "cheerys-tees" | "cheerys-bakes";
+  category: "cheery-fic" | "cheerys-art" | "anim-daddy" | "cheerys-tees" | "cheerys-bakes";
   categoryLabel: string;
   imageSrc: string;
   aspectRatio: "portrait" | "square" | "landscape";
@@ -10,6 +10,7 @@ export interface GalleryItem {
 }
 
 export const GALLERY_ITEMS: GalleryItem[] = [
+  // cheery_fic items
   {
     id: "fic-1",
     title: "SRK Rockstar Caricature",
@@ -80,6 +81,80 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: "Side-by-side demonstration showing the real reference photo alongside the custom caricature.",
     tags: ["Photo to Art", "Process", "Side-by-Side"],
   },
+
+  // cheerys_art items
+  {
+    id: "art-1",
+    title: "Radiant Golden Star Burst",
+    category: "cheerys-art",
+    categoryLabel: "cheerys_art",
+    imageSrc: "/cheerys-art/sample-01.png",
+    aspectRatio: "portrait",
+    caption: "Textured acrylic canvas bursting with blue celestial rays and an organic earth-toned center.",
+    tags: ["Canvas Painting", "Abstract", "Textured Acrylic"],
+  },
+  {
+    id: "art-2",
+    title: "Celestial Night & Floating Blossoms",
+    category: "cheerys-art",
+    categoryLabel: "cheerys_art",
+    imageSrc: "/cheerys-art/sample-02.png",
+    aspectRatio: "portrait",
+    caption: "Deep emerald northern aurora band suspended above floating blue origami petals in starry space.",
+    tags: ["Resin Painting", "Cosmic", "Fluid Art"],
+  },
+  {
+    id: "art-3",
+    title: "Veins of Gold & Crimson Flow",
+    category: "cheerys-art",
+    categoryLabel: "cheerys_art",
+    imageSrc: "/cheerys-art/sample-03.png",
+    aspectRatio: "portrait",
+    caption: "Heavy impasto gold leaf fissure cutting dynamically between vivid crimson and emerald textures.",
+    tags: ["Textured Canvas", "Gold Leaf", "Statement Art"],
+  },
+  {
+    id: "art-4",
+    title: "Living Water Canvas Expression",
+    category: "cheerys-art",
+    categoryLabel: "cheerys_art",
+    imageSrc: "/cheerys-art/sample-10.png",
+    aspectRatio: "portrait",
+    caption: "Fine art tote bag canvas featuring John 10:38: 'Rivers of living water will flow from within them'.",
+    tags: ["Faith & Scripture", "Mixed Media", "Art Merchandise"],
+  },
+  {
+    id: "art-5",
+    title: "Dawn Worship in the Field",
+    category: "cheerys-art",
+    categoryLabel: "cheerys_art",
+    imageSrc: "/cheerys-art/sample-06.png",
+    aspectRatio: "landscape",
+    caption: "Textured tactile impasto portraying worshippers standing before radiant golden dawn trees.",
+    tags: ["Impasto Canvas", "Original Signature", "Worship"],
+  },
+  {
+    id: "art-6",
+    title: "The Golden Cross at Sunrise",
+    category: "cheerys-art",
+    categoryLabel: "cheerys_art",
+    imageSrc: "/cheerys-art/sample-08.png",
+    aspectRatio: "square",
+    caption: "Expressive spiritual painting capturing the rugged cross enveloped in warm dawn rays.",
+    tags: ["Canvas Painting", "Faith", "Devotional Art"],
+  },
+  {
+    id: "art-7",
+    title: "Only Jesus Can Fill The Hole In Your Soul",
+    category: "cheerys-art",
+    categoryLabel: "cheerys_art",
+    imageSrc: "/cheerys-art/sample-07.png",
+    aspectRatio: "portrait",
+    caption: "Dramatic black-and-white stone well and torn veil illustration rendered as bespoke canvas art.",
+    tags: ["Fine Art Illustration", "Soul Testimony", "Tote Bag"],
+  },
+
+  // cheerys_tees items
   {
     id: "tees-1",
     title: "Rivers of Living Water (Black Edition)",
@@ -130,6 +205,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: "Clean contemporary streetwear typographic front & back print from Romans 8:37.",
     tags: ["Minimal", "Streetwear", "Romans 8:37"],
   },
+
+  // anim_daddy items
   {
     id: "anim-1",
     title: "Founding Steps (Aladdin Inanimate Carpet Study)",

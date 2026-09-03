@@ -5,10 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { VENTURES } from "@/data/ventures";
 import { SparkleDoodle, ScribbleUnderline, CheerySmileDoodle } from "../doodles/DoodleIcons";
-import { ArrowRight, CheckCircle2, ArrowUpRight, Film, Shirt, Utensils, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, ArrowUpRight, Film, Shirt, Utensils, Sparkles, Palette } from "lucide-react";
 
 export function FourWorldsSection() {
-  const worldIcons = [Sparkles, Film, Shirt, Utensils];
+  const worldIcons = [Sparkles, Palette, Film, Shirt, Utensils];
 
   return (
     <section
@@ -21,11 +21,11 @@ export function FourWorldsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-900 text-stone-100 text-xs font-mono tracking-widest uppercase mb-4 shadow-xs">
             <SparkleDoodle size={14} className="text-amber-400" />
-            Section 03 • Four Expressions
+            Section 03 • The Creative Expressions
           </div>
 
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black font-serif tracking-tight text-stone-950">
-            The Four Worlds of Cheerys
+            The Creative Worlds of Cheerys
           </h2>
 
           <div className="flex justify-center mt-3">
@@ -43,7 +43,7 @@ export function FourWorldsSection() {
             const isEven = index % 2 === 1;
             const Icon = worldIcons[index % worldIcons.length];
             // Progressive top offset for stacking on desktop/tablet/mobile
-            const topOffset = 90 + index * 24;
+            const topOffset = 85 + index * 20;
 
             return (
               <div
@@ -161,7 +161,7 @@ export function FourWorldsSection() {
             <CheerySmileDoodle size={36} className="text-amber-400" />
           </div>
           <span className="font-serif font-bold text-xl text-stone-900">
-            Four ventures. One creative culture.
+            Five ventures. One creative culture.
           </span>
           <span className="font-mono text-xs text-stone-500 mt-1">
             Handcrafted by Cheery
