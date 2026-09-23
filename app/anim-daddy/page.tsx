@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { FOUNDATION_LEVELS, ADVANCED_MODULES } from "@/data/animDaddyModules";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
-import { BookOpen, GraduationCap, Video, Users, CheckCircle2, Sparkles } from "lucide-react";
+import { AnimationLab } from "@/components/anim-daddy/AnimationLab";
+import { AnimatedPrincipleCard } from "@/components/anim-daddy/AnimatedPrincipleCard";
+import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
+import { BookOpen, GraduationCap, Video, Users } from "lucide-react";
 
 export default function AnimDaddyPage() {
   const [selectedLevel, setSelectedLevel] = useState(FOUNDATION_LEVELS[0]);
-  const [enquirySuccess, setEnquirySuccess] = useState(false);
 
   return (
     <main className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
@@ -20,10 +21,10 @@ export default function AnimDaddyPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Hero */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-900 text-xs font-mono font-bold uppercase tracking-wider mb-6">
                 <SparkleDoodle size={14} className="text-blue-600" />
-                Venture 02 • Animation & Art Mentoring
+                Venture 03 • Animation & Art Mentoring
               </div>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black font-serif tracking-tight text-stone-950">
@@ -75,30 +76,14 @@ export default function AnimDaddyPage() {
                   href="#enquiry"
                   className="inline-flex items-center gap-2 px-6 py-4 rounded-full bg-white border border-stone-300 text-stone-800 font-mono text-xs font-semibold hover:bg-stone-50"
                 >
-                  Mentoring Enquiry
+                  Admissions Inquiry ↓
                 </a>
               </div>
             </div>
 
-            {/* Right Hero Booklet Cover */}
-            <div className="lg:col-span-5">
-              <div className="relative bg-stone-900 text-white rounded-3xl p-5 border-2 border-stone-800 shadow-2xl">
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-950 p-2 border border-stone-800">
-                  <Image
-                    src="/anim-daddy/page-01.png"
-                    alt="AnimDaddy Student Booklet Cover"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-contain"
-                  />
-                </div>
-                <div className="mt-3 text-center">
-                  <span className="text-xs font-mono text-stone-300">
-                    AnimDaddy Student Curriculum & Handbook
-                  </span>
-                </div>
-              </div>
+            {/* Right Hero: Replaced dark booklet with Handcrafted Interactive Animation Lab */}
+            <div className="lg:col-span-6">
+              <AnimationLab />
             </div>
 
           </div>
@@ -175,22 +160,16 @@ export default function AnimDaddyPage() {
               </p>
 
               <div className="mt-8 p-4 rounded-2xl bg-stone-50 border border-stone-200 text-xs font-mono text-stone-600">
-                <span>Fee structure (from booklet): <strong>Rs. 5,000/- per student</strong> (Online or Offline)</span>
+                <span>Fee structure (from curriculum): <strong>₹5,000/- per student</strong> (Online or Offline options)</span>
               </div>
             </div>
 
+            {/* Handcrafted animated principle illustration instead of dark booklet screenshot */}
             <div className="lg:col-span-5">
-              {selectedLevel.imageSrc && (
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-900 p-2 border border-stone-300 shadow-md">
-                  <Image
-                    src={selectedLevel.imageSrc}
-                    alt={selectedLevel.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    className="object-contain"
-                  />
-                </div>
-              )}
+              <AnimatedPrincipleCard
+                type={selectedLevel.principleType}
+                className="shadow-md"
+              />
             </div>
           </div>
 
@@ -238,144 +217,25 @@ export default function AnimDaddyPage() {
                   </p>
                 </div>
 
-                {mod.imageSrc && (
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-900 mt-2 border border-stone-300">
-                    <Image
-                      src={mod.imageSrc}
-                      alt={mod.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 300px"
-                      className="object-contain"
-                    />
-                  </div>
-                )}
+                {/* Handcrafted animated card diagram */}
+                <div className="mt-2">
+                  <AnimatedPrincipleCard type={mod.principleType} />
+                </div>
               </div>
             ))}
           </div>
 
           <div className="mt-12 p-6 rounded-2xl bg-stone-100 border border-stone-300 text-xs font-mono text-stone-700 text-center max-w-2xl mx-auto">
-            Advanced modules range from <strong>Rs. 20,000/- to Rs. 40,000/-</strong> (Online & Offline options available).
+            Advanced modules range from <strong>₹20,000/- to ₹40,000/-</strong> (Online & Offline options available).
           </div>
 
         </div>
       </section>
 
-      {/* Mentoring Enquiry Form (Frontend UX Preview) */}
+      {/* Structured Mentoring Admissions Intake Form */}
       <section id="enquiry" className="py-20 md:py-28 bg-[#faf8f5]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          
-          <div className="bg-white rounded-3xl border-2 border-stone-900 p-8 sm:p-12 shadow-2xl">
-            <div className="text-center mb-8">
-              <span className="text-xs font-mono uppercase tracking-widest text-blue-700 font-bold">
-                Student & School Admissions
-              </span>
-              <h2 className="text-3xl font-black font-serif text-stone-900 mt-1">
-                Start Your Animation Journey
-              </h2>
-              <p className="text-xs sm:text-sm text-stone-600 mt-2">
-                Let us know your learning goals, current level, or school workshop requirements.
-              </p>
-            </div>
-
-            {enquirySuccess ? (
-              <div className="text-center py-8 space-y-4">
-                <div className="w-14 h-14 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center mx-auto border-2 border-blue-600">
-                  <CheckCircle2 className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-bold font-serif text-stone-900">
-                  Admissions Enquiry Previewed!
-                </h3>
-                <p className="text-stone-600 text-xs max-w-md mx-auto">
-                  This form is currently a <strong>frontend client prototype</strong>. In production, this will route directly to the AnimDaddy mentoring coordination desk.
-                </p>
-                <button
-                  onClick={() => setEnquirySuccess(false)}
-                  className="px-6 py-2 rounded-full bg-stone-900 text-white text-xs font-mono font-bold cursor-pointer"
-                >
-                  Submit Another Enquiry
-                </button>
-              </div>
-            ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setEnquirySuccess(true);
-                }}
-                className="space-y-4"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Student / Parent Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Maya Sharma"
-                      className="w-full p-2.5 rounded-xl border border-stone-300 text-xs font-mono focus:border-stone-900 focus:outline-hidden"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="maya@example.com"
-                      className="w-full p-2.5 rounded-xl border border-stone-300 text-xs font-mono focus:border-stone-900 focus:outline-hidden"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Interested Track
-                    </label>
-                    <select className="w-full p-2.5 rounded-xl border border-stone-300 text-xs font-mono focus:border-stone-900 focus:outline-hidden">
-                      <option>Foundations (Levels A - D)</option>
-                      <option>Advanced Character Animation & Acting</option>
-                      <option>Storyboarding & Pre-Production</option>
-                      <option>School / Home Workshop (Group)</option>
-                      <option>The Art of Caricature Masterclass</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Mentoring Mode
-                    </label>
-                    <select className="w-full p-2.5 rounded-xl border border-stone-300 text-xs font-mono focus:border-stone-900 focus:outline-hidden">
-                      <option>Online Guided Mentoring</option>
-                      <option>Offline In-Person Workshop</option>
-                      <option>School Institutional Program</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                    Learning Goals & Background
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Tell us about your drawing experience, favorite cartoons, or animation goals..."
-                    className="w-full p-2.5 rounded-xl border border-stone-300 text-xs font-sans focus:border-stone-900 focus:outline-hidden"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-2xl bg-blue-600 text-white font-mono text-sm font-bold hover:bg-blue-700 transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  Request Mentoring Information (Demo)
-                </button>
-              </form>
-            )}
-
-          </div>
-
+          <VentureInquiryForm formType="anim-daddy" />
         </div>
       </section>
 

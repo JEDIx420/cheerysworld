@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { ProductPreviewModal, ProductItem } from "./ProductPreviewModal";
-import { ShoppingBag, Shirt, ArrowRight, Sparkles, Printer } from "lucide-react";
+import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
+import { Shirt, ArrowRight, Sparkles, Printer } from "lucide-react";
 
 export default function CheerysTeesPage() {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
@@ -97,7 +97,7 @@ export default function CheerysTeesPage() {
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-950 text-xs font-mono font-bold uppercase tracking-wider mb-6">
                 <SparkleDoodle size={14} className="text-orange-700" />
-                Venture 03 • Apparel & Merchandise
+                Venture 04 • Apparel & Merchandise
               </div>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black font-serif tracking-tight text-stone-950">
@@ -136,13 +136,12 @@ export default function CheerysTeesPage() {
                   Explore Lookbook & Designs
                 </a>
 
-                <Link
-                  href="/cart"
+                <a
+                  href="#custom-apparel"
                   className="inline-flex items-center gap-2 px-6 py-4 rounded-full bg-white border border-stone-300 text-stone-800 font-mono text-xs font-semibold hover:bg-stone-50"
                 >
-                  <ShoppingBag className="w-4 h-4" />
-                  Cart (Preview Mode)
-                </Link>
+                  Batch Order Inquiry ↓
+                </a>
               </div>
             </div>
 
@@ -259,7 +258,7 @@ export default function CheerysTeesPage() {
               Curated Apparel Lookbook
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base">
-              Click any piece to test the client-side color, size, and detail preview modal.
+              Click any piece to test color and size options, or submit a custom batch order below.
             </p>
           </div>
 
@@ -301,7 +300,7 @@ export default function CheerysTeesPage() {
                     Price on Request
                   </span>
                   <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-orange-800 group-hover:translate-x-0.5 transition-transform">
-                    Preview Piece <ArrowRight className="w-3.5 h-3.5" />
+                    View Details <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </div>
@@ -311,24 +310,10 @@ export default function CheerysTeesPage() {
         </div>
       </section>
 
-      {/* Custom Run / Bulk Order Callout */}
-      <section className="py-20 bg-stone-900 text-stone-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <span className="text-xs font-mono tracking-widest uppercase text-orange-400 block mb-3">
-            Customised Batches & Events
-          </span>
-          <h3 className="text-3xl sm:text-4xl font-black font-serif text-white mb-4">
-            Custom Prints for Your Team or Celebration
-          </h3>
-          <p className="text-stone-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
-            From church fellowships and sports teams to milestone family reunions, we design tailored artwork printed on top-tier apparel.
-          </p>
-          <button
-            onClick={() => setSelectedProduct(products[0])}
-            className="px-8 py-4 rounded-full bg-orange-700 text-white font-mono font-bold text-sm hover:bg-orange-600 transition-colors shadow-lg cursor-pointer"
-          >
-            Custom Order Preview
-          </button>
+      {/* Real Structured Custom Apparel Inquiry Form */}
+      <section id="custom-apparel" className="py-20 md:py-28 bg-white border-b border-stone-200/80">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <VentureInquiryForm formType="cheerys-tees" />
         </div>
       </section>
 

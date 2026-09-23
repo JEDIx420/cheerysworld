@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
-import { Palette, Film, Shirt, Utensils, ArrowRight } from "lucide-react";
+import { Palette, Sparkles, Film, Shirt, Utensils, ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: "About Cheery • CHEERYS Creative Culture",
   description:
-    "Founder • Artist • Animator • Designer • Storyteller • Mentor. The human and artistic vision behind cheery_fic, anim_daddy, cheerys_tees, and cheerys_bakes.",
+    "Founder • Artist • Animator • Designer • Storyteller • Mentor. The human and artistic vision behind cheery_fic, cheerys_art, anim_daddy, cheerys_tees, and cheerys_bakes.",
 };
 
 export default function AboutPage() {
@@ -23,6 +23,15 @@ export default function AboutPage() {
     },
     {
       num: "02",
+      name: "cheerys_art",
+      label: "Canvas, Resin & Clock Dial Painting Work",
+      desc: "Art that adds life to your space. Handcrafted textured canvas paintings, fluid cosmic resin art, and statement clocks.",
+      icon: Sparkles,
+      href: "/cheerys-art",
+      accent: "text-purple-700 bg-purple-50 border-purple-200",
+    },
+    {
+      num: "03",
       name: "anim_daddy",
       label: "Animation & Art Mentoring",
       desc: "Learning the craft behind animation, movement, and visual storytelling with old-school principles and heart.",
@@ -31,7 +40,7 @@ export default function AboutPage() {
       accent: "text-blue-700 bg-blue-50 border-blue-200",
     },
     {
-      num: "03",
+      num: "04",
       name: "cheerys_tees",
       label: "Custom Apparel & Merchandise",
       desc: "Everyday apparel as a canvas for personality, faith, identity, celebration and self-expression.",
@@ -40,7 +49,7 @@ export default function AboutPage() {
       accent: "text-orange-700 bg-orange-50 border-orange-200",
     },
     {
-      num: "04",
+      num: "05",
       name: "cheerys_bakes",
       label: "Healthy, Custom Baking",
       desc: "Nutritious, gluten-free, sugar-free made-to-order baking crafted with care around real dietary needs.",
@@ -85,7 +94,7 @@ export default function AboutPage() {
               </div>
 
               <p className="mt-8 text-xl sm:text-2xl font-serif italic text-stone-800 leading-snug">
-                &ldquo;One name. Four expressions. One creative culture.&rdquo;
+                &ldquo;One name. Five expressions. One creative culture.&rdquo;
               </p>
 
               <div className="mt-6 space-y-4 text-stone-600 text-base sm:text-lg leading-relaxed">
@@ -93,7 +102,7 @@ export default function AboutPage() {
                   Cheerys is the creative home of Cheery—an artist, animator, and storyteller whose passion is to give ideas, faces, memories, and nourishment an unmistakable personality.
                 </p>
                 <p>
-                  Rather than viewing art, teaching, merchandise, and baking as disconnected activities, Cheerys unites them into a cohesive creative ecosystem rooted in hand-made authenticity, genuine human warmth, and purpose.
+                  Rather than viewing art, fine painting, teaching, merchandise, and baking as disconnected activities, Cheerys unites them into a cohesive creative ecosystem rooted in hand-made authenticity, genuine human warmth, and purpose.
                 </p>
               </div>
             </div>
@@ -134,28 +143,28 @@ export default function AboutPage() {
             Creative Spirit
           </span>
           <h2 className="text-3xl sm:text-4xl font-black font-serif text-stone-900 mb-6">
-            CREATE • TEACH • PERSONALISE • NOURISH
+            CREATE • PAINT • TEACH • PERSONALISE • NOURISH
           </h2>
           <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
-            Every piece created under CHEERYS begins with the human touch. From the pencil strokes of a live caricature to the timing curves of character animation, the customized fabric of everyday apparel, and the mindful preparation of home-baked loaves, our work puts personal connection and craftsmanship first.
+            Every piece created under CHEERYS begins with the human touch. From the pencil strokes of a live caricature to the vivid acrylic layers of a fine art canvas, the timing curves of character animation, the customized fabric of everyday apparel, and the mindful preparation of home-baked loaves, our work puts personal connection and craftsmanship first.
           </p>
         </div>
       </section>
 
-      {/* The Four Expressions Cards */}
+      {/* The Five Expressions Cards */}
       <section className="py-20 md:py-28 bg-[#faf8f5] border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-black font-serif text-stone-900">
-              The Four Divisions Under Cheerys
+              The Five Expressions Under Cheerys
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base">
               Explore how Cheery&apos;s artistic voice takes shape across each discipline.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {ventures.map((v) => {
               const Icon = v.icon;
               return (
@@ -166,7 +175,7 @@ export default function AboutPage() {
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-stone-900 text-white">
-                        {v.num}
+                        Venture {v.num}
                       </span>
                       <div className={`p-2.5 rounded-xl border ${v.accent}`}>
                         <Icon className="w-5 h-5" />

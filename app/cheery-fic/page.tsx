@@ -6,6 +6,7 @@ import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIco
 import { DrawnCaricatureCouple } from "@/components/doodles/DrawnCaricatureCouple";
 import { SelectedWorkGallery } from "@/components/gallery/SelectedWorkGallery";
 import { CommissionModal } from "./CommissionModal";
+import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
 import { Sparkles, Camera, Brush, Check } from "lucide-react";
 
 export default function CheeryFicPage() {
@@ -78,14 +79,13 @@ export default function CheeryFicPage() {
 
               {/* Commission Action CTA */}
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <button
-                  id="commission"
-                  onClick={() => setIsModalOpen(true)}
+                <a
+                  href="#commission"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-stone-900 text-white font-mono text-sm font-bold hover:bg-amber-600 transition-colors shadow-lg cursor-pointer group"
                 >
                   <Sparkles className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
-                  Commission a Caricature (UI Preview)
-                </button>
+                  Commission a Caricature ↓
+                </a>
 
                 <a
                   href="#live-draw-demo"
@@ -242,6 +242,13 @@ export default function CheeryFicPage() {
         showHeading={true}
       />
 
+      {/* Real Structured Caricature Commission Form */}
+      <section id="commission" className="py-20 md:py-28 bg-[#faf8f5] border-t border-stone-200/80">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <VentureInquiryForm formType="cheery-fic" />
+        </div>
+      </section>
+
       {/* Cheerys Promise Banner */}
       <section className="py-20 bg-amber-950 text-amber-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -253,17 +260,17 @@ export default function CheeryFicPage() {
           </blockquote>
 
           <div className="mt-8 flex justify-center">
-            <button
-              onClick={() => setIsModalOpen(true)}
+            <a
+              href="#commission"
               className="px-8 py-4 rounded-full bg-amber-500 text-stone-950 font-mono font-bold text-sm hover:bg-amber-400 transition-colors shadow-lg cursor-pointer"
             >
               Start Your Custom Caricature
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Commission Enquiry Modal */}
+      {/* Modal fallback */}
       <CommissionModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

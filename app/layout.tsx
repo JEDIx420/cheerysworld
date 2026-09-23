@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SketchAtmosphere } from "@/components/doodles/SketchAtmosphere";
 import { GraphiteCursorTrail } from "@/components/doodles/GraphiteCursorTrail";
+import { WhatsAppButton } from "@/components/contact/WhatsAppButton";
 
 const sansFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -26,17 +27,20 @@ const monoFont = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cheerysworld.netlify.app"),
-  title: "CHEERYS • One Name. Four Expressions. One Creative Culture.",
+  title: "CHEERYS • One Name. Five Expressions. One Creative Culture.",
   description:
-    "Cheerys brings together four distinct creative ventures by Cheery: cheery_fic (caricatures), anim_daddy (animation mentoring), cheerys_tees (apparel), and cheerys_bakes (healthy custom baking).",
+    "Cheerys brings together five distinct creative ventures by Cheery: cheery_fic (caricatures), cheerys_art (canvas & resin paintings), anim_daddy (animation mentoring), cheerys_tees (apparel), and cheerys_bakes (healthy custom baking).",
   keywords: [
     "Cheerys",
     "Cheery",
     "cheery_fic",
+    "cheerys_art",
     "anim_daddy",
     "cheerys_tees",
     "cheerys_bakes",
     "caricatures",
+    "resin art",
+    "canvas painting",
     "animation mentoring",
     "custom apparel",
     "healthy baking",
@@ -44,7 +48,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Cheery" }],
   openGraph: {
     title: "CHEERYS • Creative Culture by Cheery",
-    description: "One name. Four expressions. One creative culture.",
+    description: "One name. Five expressions. One creative culture.",
     url: "https://cheerysworld.netlify.app",
     siteName: "CHEERYS",
     images: [
@@ -73,6 +77,7 @@ export default function RootLayout({
         <Navbar />
         <div className="flex-1 relative z-10">{children}</div>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

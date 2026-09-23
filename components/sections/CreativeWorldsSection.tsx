@@ -7,13 +7,13 @@ import { VENTURES } from "@/data/ventures";
 import { SparkleDoodle, ScribbleUnderline, CheerySmileDoodle } from "../doodles/DoodleIcons";
 import { ArrowRight, CheckCircle2, ArrowUpRight, Film, Shirt, Utensils, Sparkles, Palette } from "lucide-react";
 
-export function FourWorldsSection() {
+export function CreativeWorldsSection() {
   const worldIcons = [Sparkles, Palette, Film, Shirt, Utensils];
 
   return (
     <section
-      id="four-worlds"
-      className="py-20 md:py-32 bg-[#faf8f5] relative border-b border-stone-200/80"
+      id="creative-worlds"
+      className="py-20 md:py-32 bg-[#faf8f5] relative border-b border-stone-200/80 scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -21,7 +21,7 @@ export function FourWorldsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-900 text-stone-100 text-xs font-mono tracking-widest uppercase mb-4 shadow-xs">
             <SparkleDoodle size={14} className="text-amber-400" />
-            Section 03 • The Creative Expressions
+            Section 03 • The Five Expressions
           </div>
 
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black font-serif tracking-tight text-stone-950">

@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { SelectedWorkGallery } from "@/components/gallery/SelectedWorkGallery";
+import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
+import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { Palette, Sparkles, Clock, CheckCircle2, ArrowRight, Paintbrush } from "lucide-react";
 
 export default function CheerysArtPage() {
-  const [inquirySent, setInquirySent] = useState(false);
-
   const artMediums = [
     {
       title: "Canvas Painting",
@@ -101,7 +100,7 @@ export default function CheerysArtPage() {
                   href="#custom-inquiry"
                   className="inline-flex items-center gap-1.5 px-6 py-4 rounded-full bg-white border border-stone-300 text-stone-800 font-mono text-xs font-semibold hover:bg-stone-50"
                 >
-                  Request Commissioned Painting
+                  Commission a Painting ↓
                 </a>
               </div>
             </div>
@@ -256,122 +255,10 @@ export default function CheerysArtPage() {
         showHeading={true}
       />
 
-      {/* Custom Painting Inquiry Form */}
-      <section id="custom-inquiry" className="py-20 md:py-28 bg-white">
+      {/* Real Structured Custom Painting Inquiry Form */}
+      <section id="custom-inquiry" className="py-20 md:py-28 bg-white border-t border-stone-200/80">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          
-          <div className="bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-8 sm:p-12 shadow-2xl">
-            <div className="text-center mb-8">
-              <span className="text-xs font-mono uppercase tracking-widest text-purple-700 font-bold">
-                Custom Painting Inquiry (Prototype)
-              </span>
-              <h2 className="text-3xl font-black font-serif text-stone-900 mt-1">
-                Commission an Art Piece for Your Space
-              </h2>
-              <p className="text-xs sm:text-sm text-stone-600 mt-2">
-                Share your desired dimensions, preferred medium, color scheme, or wall space photos.
-              </p>
-            </div>
-
-            {inquirySent ? (
-              <div className="text-center py-8 space-y-4">
-                <div className="w-14 h-14 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center mx-auto border-2 border-purple-600">
-                  <CheckCircle2 className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-bold font-serif text-stone-900">
-                  Art Inquiry Received!
-                </h3>
-                <p className="text-stone-600 text-xs max-w-md mx-auto">
-                  This form is currently a <strong>frontend client prototype</strong>. In production, this will route directly into Cheery&apos;s custom art commissions queue.
-                </p>
-                <button
-                  onClick={() => setInquirySent(false)}
-                  className="px-6 py-2 rounded-full bg-stone-900 text-white text-xs font-mono font-bold cursor-pointer"
-                >
-                  Send Another Inquiry
-                </button>
-              </div>
-            ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setInquirySent(true);
-                }}
-                className="space-y-4"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Art Medium
-                    </label>
-                    <select className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-mono focus:border-stone-900 focus:outline-hidden">
-                      <option>Canvas Painting (Abstract / Textured)</option>
-                      <option>Resin Art (Fluid / Celestial)</option>
-                      <option>Clock Dial Statement Painting</option>
-                      <option>Faith & Scripture Fine Art</option>
-                      <option>Custom Wall Sizing & Multi-Panel</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Approximate Dimensions
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. 24x36 inches or Wall Size"
-                      className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-mono focus:border-stone-900 focus:outline-hidden"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Rachel Mathew"
-                      className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-mono focus:border-stone-900 focus:outline-hidden"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="rachel@example.com"
-                      className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-mono focus:border-stone-900 focus:outline-hidden"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                    Space Details & Color Preferences
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Tell us about the space (living room, office lobby, bedroom), preferred color themes, mood, or custom memories..."
-                    className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-sans focus:border-stone-900 focus:outline-hidden"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-2xl bg-purple-800 text-white font-mono text-sm font-bold hover:bg-purple-900 transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  Submit Painting Inquiry (Visual Demo)
-                </button>
-              </form>
-            )}
-
-          </div>
-
+          <VentureInquiryForm formType="cheerys-art" />
         </div>
       </section>
 

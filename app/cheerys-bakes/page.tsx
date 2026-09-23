@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "@/lib/gsap";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
-import { Utensils, CheckCircle2, Sparkles, Wheat } from "lucide-react";
+import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
+import { Utensils, Sparkles, Wheat } from "lucide-react";
 
 export default function CheerysBakesPage() {
-  const [orderSent, setOrderSent] = useState(false);
-  const [dietaryPrefs, setDietaryPrefs] = useState<string[]>(["Gluten-Free"]);
   const containerRef = useRef<HTMLElement>(null);
   const wheatStemRef = useRef<SVGPathElement>(null);
 
@@ -68,14 +67,6 @@ export default function CheerysBakesPage() {
     },
   ];
 
-  const toggleDiet = (tag: string) => {
-    if (dietaryPrefs.includes(tag)) {
-      setDietaryPrefs(dietaryPrefs.filter((t) => t !== tag));
-    } else {
-      setDietaryPrefs([...dietaryPrefs, tag]);
-    }
-  };
-
   return (
     <main ref={containerRef} className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
       
@@ -88,7 +79,7 @@ export default function CheerysBakesPage() {
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-950 text-xs font-mono font-bold uppercase tracking-wider mb-6">
                 <SparkleDoodle size={14} className="text-emerald-700" />
-                Venture 04 • Healthy, Custom Baking
+                Venture 05 • Healthy, Custom Baking
               </div>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black font-serif tracking-tight text-stone-950">
@@ -121,7 +112,7 @@ export default function CheerysBakesPage() {
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-stone-900 text-white font-mono text-sm font-bold hover:bg-emerald-700 transition-colors shadow-lg"
                 >
                   <Utensils className="w-4 h-4 text-emerald-400" />
-                  Request Custom Baking Order
+                  Request Custom Baking Order ↓
                 </a>
 
                 <a
@@ -288,144 +279,10 @@ export default function CheerysBakesPage() {
         </div>
       </section>
 
-      {/* Custom Order Flow (Frontend UX Preview) */}
+      {/* Real Structured Custom Baking Intake Form */}
       <section id="custom-order" className="py-20 md:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          
-          <div className="bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-8 sm:p-12 shadow-2xl">
-            <div className="text-center mb-8">
-              <span className="text-xs font-mono uppercase tracking-widest text-emerald-800 font-bold">
-                Baking Request (Prototype)
-              </span>
-              <h2 className="text-3xl font-black font-serif text-stone-900 mt-1">
-                Request a Custom Bake Order
-              </h2>
-              <p className="text-xs sm:text-sm text-stone-600 mt-2">
-                Specify your dietary requirements, preferred date, and menu preferences.
-              </p>
-            </div>
-
-            {orderSent ? (
-              <div className="text-center py-8 space-y-4">
-                <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto border-2 border-emerald-600">
-                  <CheckCircle2 className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-bold font-serif text-stone-900">
-                  Baking Inquiry Previewed!
-                </h3>
-                <p className="text-stone-600 text-xs max-w-md mx-auto">
-                  This form is currently a <strong>frontend client prototype</strong>. In production, this will route into the cheerys_bakes order calendar.
-                </p>
-                <button
-                  onClick={() => setOrderSent(false)}
-                  className="px-6 py-2 rounded-full bg-stone-900 text-white text-xs font-mono font-bold cursor-pointer"
-                >
-                  Create Another Request
-                </button>
-              </div>
-            ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setOrderSent(true);
-                }}
-                className="space-y-4"
-              >
-                {/* Dietary requirements tags */}
-                <div>
-                  <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-2">
-                    Dietary Requirements & Preferences
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {["Gluten-Free", "Sugar-Free", "Nut-Free Preference", "Dairy-Free", "Low Carb", "Traditional Artisan"].map((pref) => (
-                      <button
-                        type="button"
-                        key={pref}
-                        onClick={() => toggleDiet(pref)}
-                        className={`px-3 py-1.5 rounded-xl border text-xs font-mono transition-all cursor-pointer ${
-                          dietaryPrefs.includes(pref)
-                            ? "bg-emerald-800 text-white border-emerald-800 font-bold shadow-xs"
-                            : "bg-white text-stone-700 border-stone-300 hover:border-stone-500"
-                        }`}
-                      >
-                        {dietaryPrefs.includes(pref) ? "✓ " : ""}{pref}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Menu Item
-                    </label>
-                    <select className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-mono focus:border-stone-900 focus:outline-hidden">
-                      <option>Sourdough & Specialty Loaves</option>
-                      <option>Artisan Buns & Bagels</option>
-                      <option>Herb & Olive Focaccia</option>
-                      <option>Pretzels & Churros</option>
-                      <option>Custom Celebration Assortment</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Quantity / Batch Size
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. 2 Loaves + 6 Bagels"
-                      className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-mono focus:border-stone-900 focus:outline-hidden"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Sarah Jenkins"
-                      className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-mono focus:border-stone-900 focus:outline-hidden"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                      Preferred Date / Event Time
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Next Saturday Morning"
-                      className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-mono focus:border-stone-900 focus:outline-hidden"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono font-bold uppercase text-stone-700 mb-1">
-                    Special Notes & Allergy Details
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Tell us about specific allergy concerns, flavor preferences, or custom dietary parameters..."
-                    className="w-full p-2.5 rounded-xl border border-stone-300 bg-white text-xs font-sans focus:border-stone-900 focus:outline-hidden"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-2xl bg-emerald-800 text-white font-mono text-sm font-bold hover:bg-emerald-900 transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  Submit Bake Inquiry (Visual Demo)
-                </button>
-              </form>
-            )}
-
-          </div>
-
+          <VentureInquiryForm formType="cheerys-bakes" />
         </div>
       </section>
 

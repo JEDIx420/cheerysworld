@@ -20,7 +20,7 @@ This document records the references, engineering patterns, libraries, and exter
 | Source | Concept Investigated | How Adapted for Cheerys World |
 | :--- | :--- | :--- |
 | **React Bits** (`reactbits.dev`) | *Threads / Canvas Trails / Magnet Lines* | Adapted into custom `<GraphiteCursorTrail />` using native HTML5 Canvas quadratic Bézier curves with graphite opacity for fine pointer devices. |
-| **Aceternity UI** | *Tracing Beam / Layout Grid* | Adapted into the custom SVG S-Curve scroll path (`<FourWorldsSection />`) and scribble mask image reveals (`<ScrawlRevealImage />`). |
+| **Aceternity UI** | *Tracing Beam / Layout Grid* | Adapted into the custom SVG S-Curve scroll path (`<CreativeWorldsSection />`) and scribble mask image reveals (`<ScrawlRevealImage />`). |
 | **Codrops** | *GSAP Scroll Scrubbing / SVG DrawIn* | Adapted for Cheery's authentic vector line art (`<DrawnSelfPortrait />` and `<DrawnCaricatureCouple />`). |
 
 ---

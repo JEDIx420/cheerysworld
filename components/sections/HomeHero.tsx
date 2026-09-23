@@ -4,9 +4,9 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "@/lib/gsap";
-import { SparkleDoodle, SketchArrow, CheerySmileDoodle } from "../doodles/DoodleIcons";
-import { DrawnSelfPortrait } from "../doodles/DrawnSelfPortrait";
-import { ArrowRight, Sparkles, Compass } from "lucide-react";
+import { SparkleDoodle, SketchArrow } from "../doodles/DoodleIcons";
+import { CheeryFlipbook } from "../hero/CheeryFlipbook";
+import { ArrowRight, Compass } from "lucide-react";
 
 export function HomeHero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -189,7 +189,7 @@ export function HomeHero() {
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href="#four-worlds"
+                href="#creative-worlds"
                 className="hero-cta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-stone-950 text-white font-mono text-sm font-semibold hover:bg-amber-600 transition-colors shadow-md group"
               >
                 <Compass className="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform" />
@@ -206,55 +206,16 @@ export function HomeHero() {
             </div>
           </div>
 
-          {/* Right Hero Artwork with Draw-In and Interactive Frame */}
-          <div className="lg:col-span-5 relative flex justify-center">
-            <div className="relative w-full max-w-md">
-              
-              <div className="relative bg-white rounded-3xl p-6 sm:p-8 border-2 border-stone-900 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
-                
-                {/* Cheery Signature Badge on top */}
-                <div className="absolute -top-5 -right-4 sm:-right-6 bg-amber-400 text-stone-950 px-4 py-1.5 rounded-2xl border-2 border-stone-900 shadow-md font-mono text-xs font-bold rotate-6 flex items-center gap-1.5 z-20">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Self-Drawing Studio Art
-                </div>
+          {/* Right Hero Artwork — Primary Stop-Motion Cheery Flipbook */}
+          <div className="lg:col-span-5 relative flex flex-col justify-center items-center">
+            <CheeryFlipbook />
 
-                {/* Animated Draw-In Self-Portrait by Cheery */}
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-50 border border-stone-200 flex flex-col items-center justify-center p-4">
-                  <DrawnSelfPortrait
-                    className="w-full max-w-[280px] h-auto text-stone-900"
-                    triggerOnScroll={false}
-                  />
-                </div>
-
-                {/* Sketch notes beneath hero piece */}
-                <div className="mt-4 pt-3 border-t border-stone-200 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-white">
-                      <CheerySmileDoodle size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <span className="block text-xs font-bold font-serif text-stone-900">
-                        Cheery Signature Work
-                      </span>
-                      <span className="block text-[11px] font-mono text-stone-500">
-                        Artist • Animator • Mentor
-                      </span>
-                    </div>
-                  </div>
-
-                  <span className="text-[11px] font-mono font-bold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full">
-                    Live Drawn
-                  </span>
-                </div>
-              </div>
-
-              {/* Doodle floating arrow pointing into story */}
-              <div className="hidden sm:block absolute -bottom-8 -left-10 text-stone-800 rotate-12">
-                <SketchArrow direction="curved-down" />
-                <span className="block font-mono text-[11px] text-stone-500 -mt-2 ml-4">
-                  Scroll for continuous journey
-                </span>
-              </div>
+            {/* Doodle floating arrow pointing down into story */}
+            <div className="hidden sm:block absolute -bottom-10 -left-8 text-stone-800 rotate-12 pointer-events-none">
+              <SketchArrow direction="curved-down" />
+              <span className="block font-mono text-[11px] text-stone-500 -mt-2 ml-4">
+                Scroll for the five expressions
+              </span>
             </div>
           </div>
 
