@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <linearGradient id="badge-rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+  </defs>
+  <!-- Background Badge Roundel -->
+  <circle cx="32" cy="32" r="30" fill="#1c1917" stroke="url(#badge-rim)" stroke-width="2.5" />
+  <circle cx="32" cy="32" r="27.5" fill="none" stroke="#f5f5f4" stroke-width="0.6" stroke-opacity="0.2" />
+
+  <!-- Cheery Doodle Face -->
+  <!-- Glasses -->
+  <circle cx="22" cy="26" r="9.5" stroke="#faf8f5" stroke-width="2.5" fill="none" />
+  <circle cx="42" cy="26" r="9.5" stroke="#faf8f5" stroke-width="2.5" fill="none" />
+  <!-- Bridge -->
+  <path d="M31.5 26 L32.5 24" stroke="#faf8f5" stroke-width="2.5" stroke-linecap="round" />
+  <!-- Spectacle Arms -->
+  <path d="M12.5 24.5 L6.5 22" stroke="#faf8f5" stroke-width="2" stroke-linecap="round" />
+  <path d="M51.5 24.5 L57.5 22" stroke="#faf8f5" stroke-width="2" stroke-linecap="round" />
+  <!-- Eyes with warm golden sparkle -->
+  <circle cx="22" cy="26" r="2.6" fill="#fbbf24" />
+  <circle cx="42" cy="26" r="2.6" fill="#fbbf24" />
+  <!-- Nose -->
+  <path d="M31 28.5 L31 37.5 L35.5 37.5" stroke="#faf8f5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <!-- Smile -->
+  <path d="M22 43 C26.5 49 37.5 49 42 43" stroke="#faf8f5" stroke-width="2.4" stroke-linecap="round" fill="none" />
+  <!-- Beard zigzag -->
+  <path d="M26 50.5 L28.5 56.5 L31.5 50.5 L34.5 56.5 L37 50.5" stroke="#faf8f5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+</svg>
