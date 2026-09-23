@@ -4,12 +4,66 @@ import React, { useState } from "react";
 import { FOUNDATION_LEVELS, ADVANCED_MODULES } from "@/data/animDaddyModules";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { AnimationLab } from "@/components/anim-daddy/AnimationLab";
-import { AnimatedPrincipleCard } from "@/components/anim-daddy/AnimatedPrincipleCard";
+import { LottieAnimationPlayer } from "@/components/anim-daddy/LottieAnimationPlayer";
 import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
-import { BookOpen, GraduationCap, Video, Users } from "lucide-react";
+import { BookOpen, GraduationCap, Video, Users, Sparkles, Film, Compass, Clapperboard, Palette } from "lucide-react";
 
 export default function AnimDaddyPage() {
   const [selectedLevel, setSelectedLevel] = useState(FOUNDATION_LEVELS[0]);
+
+  // Group curriculum logically into 5 distinct thematic studios as requested
+  const curriculumTracks = [
+    {
+      id: "track-mechanics",
+      title: "Foundations & Body Mechanics",
+      tagline: "Physics, Weight & Locomotion",
+      icon: Film,
+      lottieSrc: "/anim-daddy/lottie-cat-walk.json",
+      lottieLabel: "STUDIO CEL • WALK CYCLE MECHANICS",
+      lottieCaption: "24 FPS contact, passing, and foot-fall breakdown",
+      modules: ADVANCED_MODULES.filter((m) => [1, 2, 4, 7].includes(m.num)),
+    },
+    {
+      id: "track-acting",
+      title: "Character Performance & Acting",
+      tagline: "Emotional Staging & Dialogue Pacing",
+      icon: Clapperboard,
+      lottieSrc: "/anim-daddy/lottie-character-acting.json",
+      lottieLabel: "STUDIO CEL • CHARACTER PERFORMANCE",
+      lottieCaption: "Anticipation, comedic timing, and expressive pantomime",
+      modules: ADVANCED_MODULES.filter((m) => [3, 5].includes(m.num)),
+    },
+    {
+      id: "track-storyboard",
+      title: "Visual Development & Storyboarding",
+      tagline: "Cinematic Staging & Narrative Beats",
+      icon: Compass,
+      lottieSrc: "/anim-daddy/lottie-shape-morph.json",
+      lottieLabel: "STUDIO CEL • METAMORPHOSIS & ARCS",
+      lottieCaption: "Elastic shape-flow, dynamic transitions, and spatial staging",
+      modules: ADVANCED_MODULES.filter((m) => [6, 8, 9].includes(m.num)),
+    },
+    {
+      id: "track-digital",
+      title: "Digital 2D Production & Design",
+      tagline: "Hand-Drawn Inbetweening to Final Pipeline",
+      icon: Palette,
+      lottieSrc: "/anim-daddy/lottie-draw-on.json",
+      lottieLabel: "STUDIO CEL • DIGITAL CLEANUP LINE",
+      lottieCaption: "Pencil test line resolution into inked vector cel",
+      modules: ADVANCED_MODULES.filter((m) => [10, 11, 13, 14].includes(m.num)),
+    },
+    {
+      id: "track-caricature",
+      title: "The Art of Caricature Masterclass",
+      tagline: "Signature Funny-Bone Mentorship with Cheery",
+      icon: Sparkles,
+      lottieSrc: "/anim-daddy/lottie-character.json",
+      lottieLabel: "STUDIO CEL • EXAGGERATION & PERSONALITY",
+      lottieCaption: "Extracting comedic gold, living expressions, and iconic silhouettes",
+      modules: ADVANCED_MODULES.filter((m) => [12].includes(m.num)),
+    },
+  ];
 
   return (
     <main className="min-h-screen pt-24 pb-20 bg-[#faf8f5]">
@@ -40,7 +94,7 @@ export default function AnimDaddyPage() {
               </p>
 
               <p className="mt-4 text-stone-700 text-base sm:text-lg max-w-xl leading-relaxed">
-                The learning and mentoring arm of Cheerys for curious artists who want to understand the craft behind animation and visual storytelling.
+                The learning and mentoring arm of Cheerys for curious artists who want to understand the craft behind animation, movement, and visual storytelling from 20+ year studio veterans.
               </p>
 
               {/* Mentoring mode pillars */}
@@ -48,17 +102,17 @@ export default function AnimDaddyPage() {
                 <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono shadow-xs">
                   <Video className="w-4 h-4 text-blue-600 mb-1" />
                   <strong className="block text-stone-900">Online Mentoring</strong>
-                  <span className="text-stone-500 text-[11px]">Flexible feedback from home</span>
+                  <span className="text-stone-500 text-[11px]">Direct 1-on-1 feedback</span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono shadow-xs">
                   <Users className="w-4 h-4 text-blue-600 mb-1" />
-                  <strong className="block text-stone-900">Offline Mentoring</strong>
-                  <span className="text-stone-500 text-[11px]">Workshops for schools & homes</span>
+                  <strong className="block text-stone-900">Offline Workshops</strong>
+                  <span className="text-stone-500 text-[11px]">Intensive in-person masterclasses</span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs font-mono col-span-2 sm:col-span-1 shadow-xs">
                   <GraduationCap className="w-4 h-4 text-blue-600 mb-1" />
                   <strong className="block text-stone-900">Old-School Craft</strong>
-                  <span className="text-stone-500 text-[11px]">20+ yrs industry faculty</span>
+                  <span className="text-stone-500 text-[11px]">Disney & Warner Bros. principles</span>
                 </div>
               </div>
 
@@ -69,7 +123,7 @@ export default function AnimDaddyPage() {
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-stone-900 text-white font-mono text-sm font-bold hover:bg-blue-600 transition-colors shadow-lg"
                 >
                   <BookOpen className="w-4 h-4 text-blue-400" />
-                  Explore The Curriculum Journey
+                  Explore The Curriculum Tracks
                 </a>
 
                 <a
@@ -81,7 +135,7 @@ export default function AnimDaddyPage() {
               </div>
             </div>
 
-            {/* Right Hero: Replaced dark booklet with Handcrafted Interactive Animation Lab */}
+            {/* Right Hero: Interactive Animator Lab */}
             <div className="lg:col-span-6">
               <AnimationLab />
             </div>
@@ -101,12 +155,12 @@ export default function AnimDaddyPage() {
             &ldquo;anim_daddy is not only about software. It is about learning to observe, think, draw, act, animate and tell a story with intention.&rdquo;
           </p>
           <p className="mt-4 text-sm font-mono text-stone-500">
-            Guided by a group of animation and design professionals with over 20 years of industry experience.
+            Guided by Cheery and a network of industry directors with over 24 years of international studio experience.
           </p>
         </div>
       </section>
 
-      {/* Foundation Levels (Interactive Sketchbook Timeline) */}
+      {/* Foundation Levels (Stepping Stones) */}
       <section id="curriculum" className="py-20 md:py-28 bg-[#faf8f5] border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -123,10 +177,11 @@ export default function AnimDaddyPage() {
           </div>
 
           {/* Level Switcher Tabs */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
             {FOUNDATION_LEVELS.map((lvl) => (
               <button
                 key={lvl.level}
+                type="button"
                 onClick={() => setSelectedLevel(lvl)}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
                   selectedLevel.level === lvl.level
@@ -160,15 +215,27 @@ export default function AnimDaddyPage() {
               </p>
 
               <div className="mt-8 p-4 rounded-2xl bg-stone-50 border border-stone-200 text-xs font-mono text-stone-600">
-                <span>Fee structure (from curriculum): <strong>₹5,000/- per student</strong> (Online or Offline options)</span>
+                <span>Foundation fee: <strong>₹5,000/- per student</strong> (Online or Offline workshop options available)</span>
               </div>
             </div>
 
-            {/* Handcrafted animated principle illustration instead of dark booklet screenshot */}
+            {/* Dynamic Interactive Lottie Motion Cel */}
             <div className="lg:col-span-5">
-              <AnimatedPrincipleCard
-                type={selectedLevel.principleType}
-                className="shadow-md"
+              <LottieAnimationPlayer
+                src={
+                  selectedLevel.level === "Level A"
+                    ? "/anim-daddy/lottie-cat-walk.json"
+                    : selectedLevel.level === "Level B"
+                    ? "/anim-daddy/lottie-draw-on.json"
+                    : selectedLevel.level === "Level C"
+                    ? "/anim-daddy/lottie-shape-morph.json"
+                    : "/anim-daddy/lottie-character.json"
+                }
+                autoplay={true}
+                loop={true}
+                label={`${selectedLevel.level} Motion Study`}
+                caption="Kinetic vector cel playback"
+                className="w-full shadow-lg"
               />
             </div>
           </div>
@@ -176,7 +243,7 @@ export default function AnimDaddyPage() {
         </div>
       </section>
 
-      {/* Advanced Modules List (1 to 14 from Student Booklet) */}
+      {/* Advanced Thematic Studios */}
       <section className="py-20 md:py-28 bg-white border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -185,48 +252,85 @@ export default function AnimDaddyPage() {
               Advanced Mastery
             </span>
             <h2 className="text-3xl sm:text-5xl font-black font-serif text-stone-900 mt-2">
-              Advanced Modules (1 to 14)
+              Advanced Studios & Modules
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base">
-              From Body Mechanics and Acting to Environmental Art, Creature VFX, Storyboarding, and Caricature.
+              Curated into 5 dedicated craft studios. Real animation movement paired with clear curriculum hierarchy.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {ADVANCED_MODULES.map((mod) => (
-              <div
-                key={mod.num}
-                className="bg-[#faf8f5] rounded-2xl p-6 border border-stone-200 hover:border-stone-900 transition-all flex flex-col justify-between shadow-xs hover:shadow-md"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="w-8 h-8 rounded-full bg-stone-900 text-white font-mono text-xs font-bold flex items-center justify-center">
-                      {mod.num}
-                    </span>
-                    <span className="text-[11px] font-mono text-blue-800 bg-blue-100 px-2.5 py-0.5 rounded-full font-medium">
-                      {mod.tag}
-                    </span>
+          <div className="space-y-16">
+            {curriculumTracks.map((track, idx) => {
+              const TrackIcon = track.icon;
+              const isEven = idx % 2 === 0;
+
+              return (
+                <div
+                  key={track.id}
+                  className="bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-8 sm:p-12 shadow-xl overflow-hidden"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    
+                    {/* Left/Right Text & Curriculum List */}
+                    <div className={`lg:col-span-7 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+                      <div className="flex items-center gap-2 mb-2 text-xs font-mono font-bold text-blue-700 uppercase tracking-wider">
+                        <TrackIcon className="w-4 h-4 text-blue-600" />
+                        <span>Studio Track 0{idx + 1}</span>
+                      </div>
+
+                      <h3 className="text-2xl sm:text-3xl font-black font-serif text-stone-900">
+                        {track.title}
+                      </h3>
+                      <p className="text-sm font-mono text-stone-600 mt-1">
+                        {track.tagline}
+                      </p>
+
+                      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {track.modules.map((mod) => (
+                          <div
+                            key={mod.num}
+                            className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs hover:border-stone-900 transition-colors"
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-mono text-xs font-bold flex items-center justify-center">
+                                {mod.num}
+                              </span>
+                              <span className="text-[10px] font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-semibold">
+                                {mod.tag}
+                              </span>
+                            </div>
+                            <h4 className="font-serif font-bold text-stone-900 text-base">
+                              {mod.title}
+                            </h4>
+                            <p className="text-xs text-stone-600 mt-1 leading-relaxed">
+                              {mod.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Dedicated Motion Showcase Cel */}
+                    <div className={`lg:col-span-5 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+                      <LottieAnimationPlayer
+                        src={track.lottieSrc}
+                        autoplay={true}
+                        loop={true}
+                        label={track.lottieLabel}
+                        caption={track.lottieCaption}
+                        showControls={true}
+                        className="shadow-md"
+                      />
+                    </div>
+
                   </div>
-
-                  <h3 className="text-lg font-bold font-serif text-stone-900 mb-2">
-                    {mod.title}
-                  </h3>
-
-                  <p className="text-xs text-stone-600 leading-relaxed mb-4">
-                    {mod.description}
-                  </p>
                 </div>
-
-                {/* Handcrafted animated card diagram */}
-                <div className="mt-2">
-                  <AnimatedPrincipleCard type={mod.principleType} />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          <div className="mt-12 p-6 rounded-2xl bg-stone-100 border border-stone-300 text-xs font-mono text-stone-700 text-center max-w-2xl mx-auto">
-            Advanced modules range from <strong>₹20,000/- to ₹40,000/-</strong> (Online & Offline options available).
+          <div className="mt-16 p-6 rounded-2xl bg-stone-100 border border-stone-300 text-xs font-mono text-stone-700 text-center max-w-2xl mx-auto">
+            Advanced modules range from <strong>₹20,000/- to ₹40,000/-</strong> (Online & Offline options available with custom portfolio reviews).
           </div>
 
         </div>

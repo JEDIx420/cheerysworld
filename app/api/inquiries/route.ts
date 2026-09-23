@@ -1,7 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getCheeryWhatsAppNumber } from "@/lib/whatsapp";
 
-// Default Sheet ID as specified in requirements
+// Default Target Sheet ID as specified in requirements:
+// Title: "CHEERYS Business Intake & Website Forms"
 const DEFAULT_SHEET_ID = "1Zs8q1f_qZsQZqCsUiwdp3Kd2zoZyiD45Qx8gfkCzh1U";
+
+/**
+ * Health check handler exposing configuration status safely without leaking secrets.
+ */
+export async function GET() {
+  const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+  const sheetId = process.env.GOOGLE_SHEET_ID || DEFAULT_SHEET_ID;
+  const phone = getCheeryWhatsAppNumber();
+
+  return NextResponse.json({
+    webhookConfigured: Boolean(webhookUrl && webhookUrl.trim().length > 0),
+    sheetConfigured: Boolean(sheetId && sheetId.trim().length > 0),
+    whatsappConfigured: Boolean(phone && phone.trim().length >= 10),
+  });
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -48,22 +65,25 @@ export async function POST(request: NextRequest) {
 
     const submissionTime = new Date().toISOString();
 
-    // 4. Normalized lead format for Master Leads
+    // 4. Normalized lead format strictly conforming to Master Leads schema:
+    // A Submission ID, B Submitted At, C Venture, D Inquiry Type, E Full Name, F WhatsApp,
+    // G Email, H City, I Status, J Priority, K Preferred Contact, L Source Page,
+    // M Summary, N Consent to Contact, O Assigned To, P Follow-up Date, Q Last Contacted, R Internal Notes
     const normalizedMasterLead = {
       submissionId,
       submittedAt: submissionTime,
       venture: formType,
-      sourcePath,
+      inquiryType: fields.commissionType || fields.artMedium || fields.trackInterest || fields.orderType || fields.category || "Inquiry",
       name: fullName,
       whatsapp,
       email: fields.email || "",
       city: fields.city || fields.location || "",
-      summary: fields.summary || fields.commissionType || fields.artMedium || fields.trackInterest || fields.orderType || fields.category || "",
-      deadline: fields.deadline || "",
-      budget: fields.budgetRange || fields.budget || "",
       status: "New",
       priority: "Normal",
       preferredContact: "WhatsApp",
+      sourcePath,
+      summary: fields.summary || fields.personalStory || fields.learningGoal || fields.designTheme || fields.flavourNotes || "",
+      consent: Boolean(fields.consent),
     };
 
     // 5. Check if webhook is configured
@@ -72,8 +92,6 @@ export async function POST(request: NextRequest) {
     const sharedSecret = process.env.GOOGLE_SHEETS_SHARED_SECRET || "";
 
     if (!webhookUrl) {
-      // Per instructions: DO NOT pretend the inquiry was saved if webhook is absent!
-      // Provide explicit failure JSON and graceful WhatsApp fallback instructions
       return NextResponse.json(
         {
           success: false,
@@ -115,6 +133,29 @@ export async function POST(request: NextRequest) {
       }
 
       const webhookResult = await webhookResponse.json();
+
+      // Per instruction: Validate that webhookResult.success is explicitly true!
+      // Do not show "Inquiry Recorded Successfully" unless the Sheet actually confirmed the append!
+      if (!webhookResult || webhookResult.success !== true) {
+        const errMsg = webhookResult?.error || "Unknown Google Apps Script write failure";
+        console.error("Apps Script returned failure result:", webhookResult);
+
+        return NextResponse.json(
+          {
+            success: false,
+            configured: true,
+            submissionId,
+            message: `The inquiry could not be recorded into the Google Sheet: ${errMsg}. You can proceed directly with Cheery on WhatsApp.`,
+            data: {
+              submissionId,
+              normalizedMasterLead,
+              ventureDetails: fields,
+            },
+            webhookResult,
+          },
+          { status: 200 }
+        );
+      }
 
       return NextResponse.json({
         success: true,

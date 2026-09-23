@@ -1,44 +1,13 @@
 "use client";
 
 import React, { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "@/lib/gsap";
+import Image from "next/image";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
-import { Utensils, Sparkles, Wheat } from "lucide-react";
+import { Utensils, Heart, Award, ShieldAlert, Newspaper, Quote } from "lucide-react";
 
 export default function CheerysBakesPage() {
   const containerRef = useRef<HTMLElement>(null);
-  const wheatStemRef = useRef<SVGPathElement>(null);
-
-  useGSAP(
-    () => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        return;
-      }
-
-      // Draw wheat stem path on scroll
-      if (wheatStemRef.current) {
-        const len = wheatStemRef.current.getTotalLength();
-        gsap.set(wheatStemRef.current, {
-          strokeDasharray: len,
-          strokeDashoffset: len,
-        });
-
-        gsap.to(wheatStemRef.current, {
-          strokeDashoffset: 0,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: "#craft-philosophy",
-            start: "top 75%",
-            end: "bottom 85%",
-            scrub: 1.5,
-          },
-        });
-      }
-    },
-    { scope: containerRef }
-  );
 
   const menuItems = [
     {
@@ -46,24 +15,28 @@ export default function CheerysBakesPage() {
       name: "Handcrafted Sourdough & Specialty Loaves",
       desc: "Slow-fermented artisan breads baked to order with careful flour blending and natural crust development.",
       badge: "Gluten-Free Option",
+      image: "/cheerys-bakes/bake-round-loaf.jpg",
     },
     {
       category: "Buns & Bagels",
       name: "Artisan Bagels & Brioche-Style Buns",
       desc: "Golden boiled and baked bagels with classic seed toppings, plus cloud-soft dinner and burger buns.",
       badge: "Sugar-Free Recipe",
+      image: "/cheerys-bakes/bake-chocolate-twists.jpg",
     },
     {
       category: "Focaccia & Savory",
-      name: "Herb & Olive Olive-Oil Focaccia",
-      desc: "Rosemary, roasted cherry tomato, and extra virgin olive oil focaccia baked fresh on your schedule.",
+      name: "Herb & Olive Extra Virgin Olive-Oil Focaccia",
+      desc: "Rosemary, roasted cherry tomato, and cold-pressed extra virgin olive oil focaccia baked fresh on your schedule.",
       badge: "Made to Order",
+      image: "/cheerys-bakes/bake-savory-platter.jpg",
     },
     {
-      category: "Pretzels to Churros",
-      name: "Bavarian Soft Pretzels & Baked Churros",
-      desc: "Coarse sea-salt soft pretzels alongside naturally sweetened baked cinnamon-dusted churro treats.",
+      category: "Pretzels to Pastries",
+      name: "Bavarian Soft Pretzels & Mini Pastries",
+      desc: "Coarse sea-salt soft pretzels alongside naturally sweetened baked cinnamon-dusted pastries and treats.",
       badge: "Custom Dietary",
+      image: "/cheerys-bakes/bake-mini-pies.jpg",
     },
   ];
 
@@ -95,12 +68,12 @@ export default function CheerysBakesPage() {
               </p>
 
               <p className="mt-4 text-stone-700 text-base sm:text-lg max-w-xl leading-relaxed">
-                cheerys_bakes brings a thoughtful, health-conscious approach to home baking—creating breads and baked treats around real dietary needs, allergies and personal preferences.
+                cheerys_bakes brings a thoughtful, health-conscious approach to home baking—creating breads, rolls, and baked treats crafted around real dietary needs, allergies, and lifestyle choices.
               </p>
 
               <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                {["Breads & Buns", "Focaccia", "Bagels & Pretzels", "Baked Churros"].map((item) => (
-                  <div key={item} className="p-3 rounded-xl bg-white border border-stone-200 text-center">
+                {["Sourdough Loaves", "Herb Focaccia", "Artisan Bagels", "Bavarian Pretzels"].map((item) => (
+                  <div key={item} className="p-3 rounded-xl bg-white border border-stone-200 text-center shadow-2xs">
                     <span className="text-xs font-mono font-bold text-stone-800">{item}</span>
                   </div>
                 ))}
@@ -116,42 +89,55 @@ export default function CheerysBakesPage() {
                 </a>
 
                 <a
-                  href="#menu"
+                  href="#archive"
                   className="inline-flex items-center gap-2 px-6 py-4 rounded-full bg-white border border-stone-300 text-stone-800 font-mono text-xs font-semibold hover:bg-stone-50"
                 >
-                  View Menu Concept
+                  From the Archive Clipping ↓
                 </a>
               </div>
             </div>
 
-            {/* Right Hero Card */}
+            {/* Right Hero Card: Rich Editorial Scrapbook Composition */}
             <div className="lg:col-span-5">
               <div className="relative bg-white rounded-3xl p-6 border-2 border-stone-900 shadow-2xl rotate-1">
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-emerald-50/50 p-4 flex flex-col justify-between border border-emerald-100">
                   
-                  <div className="p-4 rounded-2xl bg-white/90 border border-emerald-200">
-                    <span className="text-[11px] font-mono text-emerald-800 uppercase font-bold tracking-wider block">
-                      Mindful Kitchen Philosophy
-                    </span>
-                    <h3 className="font-serif font-bold text-stone-900 text-lg mt-1">
-                      Made-To-Order Freshness
-                    </h3>
-                    <p className="text-xs text-stone-600 mt-1 leading-relaxed">
-                      Every batch is prepared exclusively for your request using organic and farmer-sourced ingredients wherever practical.
-                    </p>
+                  {/* Real Food Photography Feature */}
+                  <div className="relative h-52 w-full rounded-xl overflow-hidden border border-stone-300 shadow-sm">
+                    <Image
+                      src="/cheerys-bakes/bake-archive-spread.jpg"
+                      alt="Artisan breads and pastries baked by Cheery"
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute top-2.5 right-2.5 bg-stone-900/85 backdrop-blur-xs text-stone-100 text-[10px] font-mono px-2.5 py-0.5 rounded-full">
+                      Authentic Studio Bake
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
+                  {/* Editorial Note & Standards */}
+                  <div className="space-y-2 mt-3">
                     <div className="p-3 rounded-xl bg-white border border-stone-200 text-xs font-mono flex items-center justify-between">
-                      <span>✓ Gluten-Free Options</span>
+                      <span className="flex items-center gap-1.5 font-medium text-stone-700">
+                        <Heart className="w-3.5 h-3.5 text-emerald-600" />
+                        Gluten-Free Recipes
+                      </span>
                       <span className="text-emerald-700 font-bold">Standard</span>
                     </div>
                     <div className="p-3 rounded-xl bg-white border border-stone-200 text-xs font-mono flex items-center justify-between">
-                      <span>✓ Sugar-Free Alternatives</span>
+                      <span className="flex items-center gap-1.5 font-medium text-stone-700">
+                        <Award className="w-3.5 h-3.5 text-emerald-600" />
+                        Sugar-Free Alternatives
+                      </span>
                       <span className="text-emerald-700 font-bold">Custom</span>
                     </div>
                     <div className="p-3 rounded-xl bg-white border border-stone-200 text-xs font-mono flex items-center justify-between">
-                      <span>✓ Allergy Considerations</span>
+                      <span className="flex items-center gap-1.5 font-medium text-stone-700">
+                        <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
+                        Allergy Consideration
+                      </span>
                       <span className="text-emerald-700 font-bold">Tailored</span>
                     </div>
                   </div>
@@ -159,7 +145,7 @@ export default function CheerysBakesPage() {
                 </div>
                 <div className="mt-3 text-center">
                   <span className="text-xs font-mono font-bold text-stone-900">
-                    cheerys_bakes • Thoughtful Home Craft
+                    cheerys_bakes • &ldquo;The kitchen is another studio.&rdquo;
                   </span>
                 </div>
               </div>
@@ -170,62 +156,91 @@ export default function CheerysBakesPage() {
         </div>
       </section>
 
-      {/* Signature Craft & Wheat Drawing Section */}
-      <section id="craft-philosophy" className="py-20 md:py-28 bg-white border-b border-stone-200/80">
+      {/* From The Archive Editorial Feature */}
+      <section id="archive" className="py-20 md:py-28 bg-white border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="max-w-4xl mx-auto bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-8 sm:p-14 shadow-2xl relative overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-              
-              {/* Hand-drawn Wheat Stem Vector */}
-              <div className="md:col-span-5 flex flex-col items-center justify-center">
-                <svg viewBox="0 0 200 300" fill="none" className="w-48 h-auto text-emerald-800 overflow-visible">
-                  <path
-                    ref={wheatStemRef}
-                    d="M 100 280 
-                       L 100 80 
-                       M 100 80 C 80 60, 60 70, 75 90 C 90 100, 100 85, 100 80
-                       M 100 80 C 120 60, 140 70, 125 90 C 110 100, 100 85, 100 80
-                       M 100 120 C 75 100, 55 110, 70 130 C 85 140, 100 125, 100 120
-                       M 100 120 C 125 100, 145 110, 130 130 C 115 140, 100 125, 100 120
-                       M 100 160 C 75 140, 55 150, 70 170 C 85 180, 100 165, 100 160
-                       M 100 160 C 125 140, 145 150, 130 170 C 115 180, 100 165, 100 160
-                       M 100 50 L 100 20"
-                    stroke="currentColor"
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 text-xs font-mono font-bold mb-3">
+              <Newspaper className="w-3.5 h-3.5 text-emerald-700" />
+              From the Archive
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black font-serif text-stone-900">
+              Before cheerys_bakes had a name
+            </h2>
+            <p className="mt-3 text-stone-600 text-base sm:text-lg">
+              Long before launching the studio venture, Cheery spent years experimenting in the kitchen, studying bread craft, and baking for friends, colleagues, and family.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* The Actual Editorial Newspaper Clipping */}
+            <div className="lg:col-span-6 flex justify-center">
+              <div className="relative bg-[#f5f2eb] p-5 sm:p-7 rounded-3xl border-2 border-stone-800 shadow-2xl -rotate-1 max-w-md w-full">
+                
+                {/* Washi tape header graphic */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-amber-100/90 border border-amber-300 shadow-xs -rotate-2 z-10" />
+
+                <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden border border-stone-300 shadow-inner bg-white">
+                  <Image
+                    src="/cheerys-bakes/technopark-cheery-baker-clipping.jpg"
+                    alt="Technopark's Cheery Baker historical feature clipping"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-contain"
                   />
-                </svg>
-                <span className="text-xs font-mono text-emerald-900 font-bold mt-2">
-                  Hand-Drawn Wheat & Grain
-                </span>
+                </div>
+
+                <div className="mt-3 flex items-center justify-between text-[11px] font-mono text-stone-500 px-1">
+                  <span>Archived Magazine Feature</span>
+                  <span className="font-semibold text-stone-800">&ldquo;Creative Works Corner&rdquo;</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Story & Verified Quotes from the Feature */}
+            <div className="lg:col-span-6 space-y-6">
+              
+              <div className="p-6 rounded-3xl bg-[#faf8f5] border border-stone-200 shadow-xs space-y-4">
+                <Quote className="w-8 h-8 text-emerald-600 opacity-60" />
+                <p className="font-serif italic text-lg sm:text-xl text-stone-900 leading-snug">
+                  &ldquo;While Cheery learnt the basics alongside his mother during his childhood, he took his own timeout to attend classes to enhance his skills... finding one intention: the flavours, the aromas, seeing the reaction when someone tastes a cake or those cookies—that’s so fulfilling for me.&rdquo;
+                </p>
+                <div className="pt-3 border-t border-stone-200 text-xs font-mono text-stone-600 flex items-center justify-between">
+                  <span>From &ldquo;Technopark’s Cheery Baker&rdquo;</span>
+                  <span className="text-emerald-700 font-bold">Deepu Aby Varghese</span>
+                </div>
               </div>
 
-              <div className="md:col-span-7">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 text-xs font-mono font-bold mb-3">
-                  <Wheat className="w-3.5 h-3.5 text-emerald-700" />
-                  Nourishing Craft
-                </div>
-                <h3 className="font-serif font-bold text-3xl text-stone-900">
-                  Mindful Table & Clean Nutrition
-                </h3>
-                <p className="text-stone-700 text-sm sm:text-base mt-3 leading-relaxed">
-                  We believe that eating with dietary requirements should always feel celebratory, never restrictive. Using small-batch methods, wholesome grains, and custom sweetness profiles, our kitchen creates breads, bagels, and treats shaped around your family&apos;s lifestyle.
+              <div className="space-y-4 text-stone-700 text-base leading-relaxed">
+                <p>
+                  Cheery’s baking began as a sanctuary away from the digital screen—unwinding by perfecting the temperature of the oven, working wholewheat flour into multi-bread loaves, and hand-shaping knotted chocolate twists and rustic focaccia.
                 </p>
-                <div className="mt-6 pt-4 border-t border-stone-200 flex items-center gap-2 text-xs font-mono text-stone-600">
-                  <Sparkles className="w-4 h-4 text-emerald-700" />
-                  Organic & farmer-sourced ingredients wherever practical.
+                <p>
+                  Today, that same quiet patience forms the heart of <strong>cheerys_bakes</strong>: a dedicated bakehouse making everything fresh to order, customized around gluten-free flours, diabetic-friendly natural sweeteners, and strict allergy safeguards.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-2xl bg-white border border-stone-200 shadow-2xs">
+                  <span className="block text-xs font-mono uppercase font-bold text-emerald-800">Childhood Roots</span>
+                  <p className="text-xs text-stone-600 mt-1">Learnt the early foundation alongside his mother at home.</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-white border border-stone-200 shadow-2xs">
+                  <span className="block text-xs font-mono uppercase font-bold text-emerald-800">Mindful Craft</span>
+                  <p className="text-xs text-stone-600 mt-1">Trained and refined in classes to master sourdough and crust structure.</p>
                 </div>
               </div>
 
             </div>
+
           </div>
 
         </div>
       </section>
 
-      {/* Visual Menu Concept */}
+      {/* Visual Menu Concept with Real Photography */}
       <section id="menu" className="py-20 md:py-28 bg-[#faf8f5] border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -237,17 +252,28 @@ export default function CheerysBakesPage() {
               From Pretzels to Churros
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base">
-              A growing range of breads and baked treats tailored to your table and dietary needs.
+              Hand-baked specialties crafted from scratch and tailored to your household&apos;s table.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {menuItems.map((item) => (
               <div
                 key={item.name}
-                className="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group"
               >
                 <div>
+                  {/* Photo crop */}
+                  <div className="relative h-48 w-full rounded-2xl overflow-hidden mb-6 border border-stone-200 bg-stone-100">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-mono text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full font-bold">
                       {item.category}
@@ -261,15 +287,18 @@ export default function CheerysBakesPage() {
                     {item.name}
                   </h3>
 
-                  <p className="text-stone-600 text-sm leading-relaxed">
+                  <p className="text-sm text-stone-600 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-mono text-stone-500">
-                  <span>Custom Batch Ordering</span>
-                  <a href="#custom-order" className="text-emerald-800 font-bold hover:underline">
-                    Order In Batch →
+                <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-mono text-stone-500">
+                  <span>Custom Batch Size</span>
+                  <a
+                    href="#custom-order"
+                    className="text-emerald-800 font-bold hover:underline flex items-center gap-1"
+                  >
+                    Order Batch →
                   </a>
                 </div>
               </div>
@@ -279,8 +308,25 @@ export default function CheerysBakesPage() {
         </div>
       </section>
 
-      {/* Real Structured Custom Baking Intake Form */}
-      <section id="custom-order" className="py-20 md:py-28 bg-white">
+      {/* Dietary Caution Notice */}
+      <section className="py-12 bg-white border-b border-stone-200/80">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="p-6 rounded-2xl bg-amber-50/70 border border-amber-300 text-stone-800 flex items-start gap-4">
+            <ShieldAlert className="w-6 h-6 text-amber-700 shrink-0 mt-0.5" />
+            <div className="space-y-1 text-xs font-mono leading-relaxed">
+              <strong className="block text-stone-950 font-bold text-sm">
+                Dietary & Allergy Notice:
+              </strong>
+              <p>
+                Every order is mixed, proofed, and baked in dedicated batches tailored to your specific intolerances. While we implement strict cross-contamination protocols, please specify all severe allergies (celiac, tree nuts, eggs, sesame) explicitly in the form below so we can prepare with utmost care.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Custom Baking Order Inquiry Form */}
+      <section id="custom-order" className="py-20 md:py-28 bg-[#faf8f5]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <VentureInquiryForm formType="cheerys-bakes" />
         </div>

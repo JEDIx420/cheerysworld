@@ -140,8 +140,8 @@ export const VENTURES: Venture[] = [
     ],
     promise:
       "anim_daddy is not only about software. It is about learning to observe, think, draw, act, animate and tell a story with intention.",
-    previewImage: "/anim-daddy/page-01.png",
-    imageAlt: "AnimDaddy Student Booklet Cover - Learn Animation",
+    previewImage: "/anim-daddy/animdaddy-banner.png",
+    imageAlt: "AnimDaddy Animation Mentoring - Movement and Storytelling",
   },
   {
     id: "cheerys-tees",

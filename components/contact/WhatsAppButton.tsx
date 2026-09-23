@@ -3,13 +3,10 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
+import { buildCheeryWhatsAppUrl } from "@/lib/whatsapp";
 
 export function WhatsAppButton() {
   const pathname = usePathname();
-
-  const rawPhone = process.env.NEXT_PUBLIC_CHEERYS_WHATSAPP_NUMBER || "";
-  // Strip non-digits for E.164 clean URL
-  const phoneDigits = rawPhone.replace(/\D/g, "");
 
   // Contextual prefilled messages per user spec
   const getContextMessage = (path: string): string => {
@@ -32,12 +29,7 @@ export function WhatsAppButton() {
   };
 
   const message = getContextMessage(pathname || "/");
-  const encodedMessage = encodeURIComponent(message);
-
-  // Fallback behavior when phone number is absent in development
-  const href = phoneDigits
-    ? `https://wa.me/${phoneDigits}?text=${encodedMessage}`
-    : `https://wa.me/?text=${encodedMessage}`;
+  const href = buildCheeryWhatsAppUrl(message);
 
   return (
     <aside

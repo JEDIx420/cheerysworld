@@ -6,6 +6,7 @@ import Link from "next/link";
 import { VENTURES } from "@/data/ventures";
 import { SparkleDoodle, ScribbleUnderline, CheerySmileDoodle } from "../doodles/DoodleIcons";
 import { ArrowRight, CheckCircle2, ArrowUpRight, Film, Shirt, Utensils, Sparkles, Palette } from "lucide-react";
+import { AnimDaddyVenturePreview, CheerysBakesVenturePreview } from "./VentureCardPreviews";
 
 export function CreativeWorldsSection() {
   const worldIcons = [Sparkles, Palette, Film, Shirt, Utensils];
@@ -125,27 +126,33 @@ export function CreativeWorldsSection() {
 
                     {/* Artwork Preview Column */}
                     <div className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
-                      <div className="relative group bg-stone-100 rounded-2xl p-4 border border-stone-200 shadow-inner">
-                        <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-white p-2">
-                          <Image
-                            src={venture.previewImage}
-                            alt={venture.imageAlt}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 40vw"
-                            className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
+                      {venture.id === "anim-daddy" ? (
+                        <AnimDaddyVenturePreview />
+                      ) : venture.id === "cheerys-bakes" ? (
+                        <CheerysBakesVenturePreview />
+                      ) : (
+                        <div className="relative group bg-stone-100 rounded-2xl p-4 border border-stone-200 shadow-inner">
+                          <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-white p-2">
+                            <Image
+                              src={venture.previewImage}
+                              alt={venture.imageAlt}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 40vw"
+                              className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                            />
+                          </div>
 
-                        <div className="mt-3 flex items-center justify-between text-xs font-mono text-stone-600 px-1">
-                          <span className="font-semibold">Original Studio Art</span>
-                          <Link
-                            href={venture.actionHref}
-                            className="inline-flex items-center gap-1 text-stone-900 font-bold hover:underline"
-                          >
-                            Explore World <ArrowUpRight className="w-3.5 h-3.5" />
-                          </Link>
+                          <div className="mt-3 flex items-center justify-between text-xs font-mono text-stone-600 px-1">
+                            <span className="font-semibold">Original Studio Art</span>
+                            <Link
+                              href={venture.actionHref}
+                              className="inline-flex items-center gap-1 text-stone-900 font-bold hover:underline"
+                            >
+                              Explore World <ArrowUpRight className="w-3.5 h-3.5" />
+                            </Link>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
 
                   </div>

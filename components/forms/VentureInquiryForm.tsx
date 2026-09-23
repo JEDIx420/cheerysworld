@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { FormType, INQUIRY_FORMS } from "@/data/inquiryForms";
 import { FormField } from "./FormField";
 import { CheckCircle2, MessageCircle, AlertCircle, Sparkles, Send } from "lucide-react";
+import { buildCheeryWhatsAppUrl } from "@/lib/whatsapp";
 
 export function VentureInquiryForm({
   formType,
@@ -90,17 +91,12 @@ export function VentureInquiryForm({
     }
   };
 
-  const rawPhone = process.env.NEXT_PUBLIC_CHEERYS_WHATSAPP_NUMBER || "";
-  const phoneDigits = rawPhone.replace(/\D/g, "");
-
   const getWhatsAppHref = () => {
-    const text = submissionResult?.whatsappText
-      ? encodeURIComponent(`${config.whatsappPrompt}\n\n${submissionResult.whatsappText}`)
-      : encodeURIComponent(config.whatsappPrompt);
+    const message = submissionResult?.whatsappText
+      ? `${config.whatsappPrompt}\n\n${submissionResult.whatsappText}`
+      : config.whatsappPrompt;
 
-    return phoneDigits
-      ? `https://wa.me/${phoneDigits}?text=${text}`
-      : `https://wa.me/?text=${text}`;
+    return buildCheeryWhatsAppUrl(message);
   };
 
   // SUCCESS / CONFIRMATION STATE
