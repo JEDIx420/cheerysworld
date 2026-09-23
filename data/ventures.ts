@@ -56,8 +56,8 @@ export const VENTURES: Venture[] = [
     ],
     promise:
       "The goal is simple: make people smile, recognise themselves and feel that their story has been given a distinctive creative identity.",
-    previewImage: "/cheery-fic/page-4.png",
-    imageAlt: "Cheery-fic Caricature of a smiling boy by Cheery",
+    previewImage: "/cheery-fic/page-1.png",
+    imageAlt: "Cheery-fic Signature Handcrafted Caricature by Cheery",
   },
   {
     id: "cheerys-art",

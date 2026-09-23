@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import { FOUNDATION_LEVELS, ADVANCED_MODULES } from "@/data/animDaddyModules";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
-import { AnimationLab } from "@/components/anim-daddy/AnimationLab";
+import { AnimDaddyHeroReel } from "@/components/anim-daddy/AnimDaddyHeroReel";
 import { LottieAnimationPlayer } from "@/components/anim-daddy/LottieAnimationPlayer";
 import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
-import { BookOpen, GraduationCap, Video, Users, Sparkles, Film, Compass, Clapperboard, Palette } from "lucide-react";
+import { BookOpen, GraduationCap, Video, Users, Sparkles, Film, Compass, Clapperboard, Palette, CheckCircle2 } from "lucide-react";
 
 export default function AnimDaddyPage() {
   const [selectedLevel, setSelectedLevel] = useState(FOUNDATION_LEVELS[0]);
@@ -135,9 +135,9 @@ export default function AnimDaddyPage() {
               </div>
             </div>
 
-            {/* Right Hero: Interactive Animator Lab */}
+            {/* Right Hero: Character-Driven Animator Reel */}
             <div className="lg:col-span-6">
-              <AnimationLab />
+              <AnimDaddyHeroReel />
             </div>
 
           </div>
@@ -189,55 +189,221 @@ export default function AnimDaddyPage() {
                     : "bg-white text-stone-800 border-stone-200 hover:border-stone-400"
                 }`}
               >
-                <span className="block text-xs font-mono uppercase tracking-wider opacity-80">
-                  {lvl.level}
-                </span>
-                <span className="block text-base font-serif font-bold mt-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono uppercase tracking-wider opacity-80">
+                    {lvl.level}
+                  </span>
+                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
+                    selectedLevel.level === lvl.level ? "bg-white/20 text-white" : "bg-stone-100 text-stone-600"
+                  }`}>
+                    {lvl.level === "Level A" ? "Principles" : lvl.level === "Level B" ? "Drawing" : lvl.level === "Level C" ? "Design" : "Caricature"}
+                  </span>
+                </div>
+                <span className="block text-base font-serif font-bold mt-2">
                   {lvl.name}
                 </span>
               </button>
             ))}
           </div>
 
-          {/* Active Level Detail View */}
-          <div className="bg-white rounded-3xl border-2 border-stone-900 p-8 sm:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold mb-4">
-                {selectedLevel.level} • {selectedLevel.name}
+          {/* Active Level Detail Container with stable height and bespoke layouts */}
+          <div className="bg-white rounded-3xl border-2 border-stone-900 p-6 sm:p-10 shadow-xl overflow-hidden min-h-[520px] flex flex-col justify-between">
+            {selectedLevel.level === "Level A" && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-6 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold">
+                    Level A • The Stepping Stones Desk
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
+                    {selectedLevel.summary}
+                  </h3>
+                  <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                    {selectedLevel.detail}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
+                      <span className="block font-bold text-stone-900">Squash & Stretch</span>
+                      <span className="text-stone-500 text-[11px]">Volume conservation rules</span>
+                    </div>
+                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
+                      <span className="block font-bold text-stone-900">Timing & Spacing</span>
+                      <span className="text-stone-500 text-[11px]">Slow-in, slow-out arcs</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between text-xs font-mono text-stone-600 bg-stone-50 p-3 rounded-xl border border-stone-200">
+                    <span>Foundation Enrollment: <strong>₹5,000/- per student</strong></span>
+                    <span className="text-blue-700 font-bold">Online & Offline</span>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <LottieAnimationPlayer
+                    src="/anim-daddy/lottie-cat-walk.json"
+                    autoplay={true}
+                    loop={true}
+                    label="LEVEL A • LOCOMOTION PRINCIPLE CEL"
+                    caption="24 FPS contact, passing, and foot-fall breakdown"
+                    aspectRatio="aspect-[4/3]"
+                    className="w-full shadow-md"
+                  />
+                </div>
               </div>
-              
-              <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
-                {selectedLevel.summary}
-              </h3>
+            )}
 
-              <p className="mt-4 text-stone-700 text-base leading-relaxed">
-                {selectedLevel.detail}
-              </p>
+            {selectedLevel.level === "Level B" && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-6 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold">
+                    Level B • Let&apos;s Draw (Sketchbook Stage)
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
+                    {selectedLevel.summary}
+                  </h3>
+                  <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                    {selectedLevel.detail}
+                  </p>
 
-              <div className="mt-8 p-4 rounded-2xl bg-stone-50 border border-stone-200 text-xs font-mono text-stone-600">
-                <span>Foundation fee: <strong>₹5,000/- per student</strong> (Online or Offline workshop options available)</span>
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
+                      <span className="block font-bold text-stone-900">Direct Pen Sketching</span>
+                      <span className="text-stone-500 text-[11px]">Unlocking raw confidence</span>
+                    </div>
+                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
+                      <span className="block font-bold text-stone-900">Beautiful Asymmetry</span>
+                      <span className="text-stone-500 text-[11px]">Natural character quirks</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between text-xs font-mono text-stone-600 bg-stone-50 p-3 rounded-xl border border-stone-200">
+                    <span>Foundation Enrollment: <strong>₹5,000/- per student</strong></span>
+                    <span className="text-blue-700 font-bold">Online & Offline</span>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <LottieAnimationPlayer
+                    src="/anim-daddy/lottie-draw-on.json"
+                    autoplay={true}
+                    loop={true}
+                    label="LEVEL B • PENCIL TEST TO INKED LINE"
+                    caption="Clean-up stroke resolution from raw pencil lines"
+                    aspectRatio="aspect-[4/3]"
+                    className="w-full shadow-md"
+                  />
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Dynamic Interactive Lottie Motion Cel */}
-            <div className="lg:col-span-5">
-              <LottieAnimationPlayer
-                src={
-                  selectedLevel.level === "Level A"
-                    ? "/anim-daddy/lottie-cat-walk.json"
-                    : selectedLevel.level === "Level B"
-                    ? "/anim-daddy/lottie-draw-on.json"
-                    : selectedLevel.level === "Level C"
-                    ? "/anim-daddy/lottie-shape-morph.json"
-                    : "/anim-daddy/lottie-character.json"
-                }
-                autoplay={true}
-                loop={true}
-                label={`${selectedLevel.level} Motion Study`}
-                caption="Kinetic vector cel playback"
-                className="w-full shadow-lg"
-              />
-            </div>
+            {selectedLevel.level === "Level C" && (
+              <div className="space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-stone-200 pb-4">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold mb-2">
+                      Level C • Character Design & Visual Development Board
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
+                      {selectedLevel.summary}
+                    </h3>
+                  </div>
+                  <div className="text-right text-xs font-mono text-stone-600">
+                    <span className="block">Foundation fee: <strong>₹5,000/-</strong></span>
+                    <span className="text-blue-700 font-bold">Silhouette to Production Asset</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                  <div className="lg:col-span-5 space-y-4">
+                    <p className="text-stone-700 text-sm leading-relaxed">
+                      {selectedLevel.detail}
+                    </p>
+
+                    <div className="space-y-2 text-xs font-mono">
+                      <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                        <span><strong>Silhouette Readability:</strong> Immediate recognition at thumbnail scale</span>
+                      </div>
+                      <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                        <span><strong>Costume & Volume:</strong> Turnaround sheets with animator-friendly forms</span>
+                      </div>
+                      <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                        <span><strong>Expressive Acting Model:</strong> Emotion range from broad smile to subtle smirk</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <LottieAnimationPlayer
+                      src="/anim-daddy/lottie-shape-morph.json"
+                      autoplay={true}
+                      loop={true}
+                      label="VOLUME MORPH & PROPORTION"
+                      caption="Dynamic anatomy & volume conservation"
+                      aspectRatio="aspect-[4/3]"
+                      className="shadow-sm"
+                    />
+                    <LottieAnimationPlayer
+                      src="/anim-daddy/lottie-character-acting.json"
+                      autoplay={true}
+                      loop={true}
+                      label="EXPRESSION & ACTING CEL"
+                      caption="Rigged character personality in motion"
+                      aspectRatio="aspect-[4/3]"
+                      className="shadow-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {selectedLevel.level === "Level D" && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-6 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold">
+                    Level D • The Art of Caricature Masterclass
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
+                    {selectedLevel.summary}
+                  </h3>
+                  <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                    {selectedLevel.detail}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
+                      <span className="block font-bold text-stone-900">Facial Architecture</span>
+                      <span className="text-stone-500 text-[11px]">Identifying core distinct features</span>
+                    </div>
+                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
+                      <span className="block font-bold text-stone-900">Comedic Exaggeration</span>
+                      <span className="text-stone-500 text-[11px]">Pushing forms while keeping likeness</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between text-xs font-mono text-stone-600 bg-stone-50 p-3 rounded-xl border border-stone-200">
+                    <span>Foundation Enrollment: <strong>₹5,000/- per student</strong></span>
+                    <a href="/cheery-fic" className="text-blue-700 font-bold hover:underline inline-flex items-center gap-1">
+                      See Cheery&apos;s Caricatures →
+                    </a>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <LottieAnimationPlayer
+                    src="/anim-daddy/lottie-character.json"
+                    autoplay={true}
+                    loop={true}
+                    label="LEVEL D • CARICATURE WIT & EXPRESSION"
+                    caption="Pushed silhouette with instant comic recognition"
+                    aspectRatio="aspect-[4/3]"
+                    className="w-full shadow-md"
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
         </div>

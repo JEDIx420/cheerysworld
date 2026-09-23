@@ -13,6 +13,7 @@ interface LottieAnimationPlayerProps {
   caption?: string;
   showControls?: boolean;
   onHoverPlay?: boolean;
+  aspectRatio?: string; // e.g. "aspect-square", "aspect-[4/3]", "aspect-[16/9]"
 }
 
 export function LottieAnimationPlayer({
@@ -24,6 +25,7 @@ export function LottieAnimationPlayer({
   caption,
   showControls = true,
   onHoverPlay = false,
+  aspectRatio = "aspect-square",
 }: LottieAnimationPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<AnimationItem | null>(null);
@@ -135,7 +137,7 @@ export function LottieAnimationPlayer({
                 type="button"
                 onClick={togglePlay}
                 aria-label={isPlaying ? "Pause animation" : "Play animation"}
-                className="p-1 hover:text-stone-900 hover:bg-stone-200 rounded transition-colors"
+                className="p-1 hover:text-stone-900 hover:bg-stone-200 rounded transition-colors cursor-pointer"
               >
                 {isPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
               </button>
@@ -143,7 +145,7 @@ export function LottieAnimationPlayer({
                 type="button"
                 onClick={restart}
                 aria-label="Restart animation"
-                className="p-1 hover:text-stone-900 hover:bg-stone-200 rounded transition-colors"
+                className="p-1 hover:text-stone-900 hover:bg-stone-200 rounded transition-colors cursor-pointer"
               >
                 <RefreshCw className="w-3 h-3" />
               </button>
@@ -152,17 +154,28 @@ export function LottieAnimationPlayer({
         </div>
       )}
 
-      {/* Animation Stage */}
-      <div className="relative w-full h-full flex items-center justify-center p-3 overflow-hidden min-h-[180px]">
+      {/* Animation Stage - Zero layout shift with strict aspect ratio container */}
+      <div className={`relative w-full ${aspectRatio} flex items-center justify-center p-3 overflow-hidden bg-stone-50/40`}>
         {/* Cel registration crosshairs & pegbar cues */}
-        <div className="absolute top-2 left-2 text-[9px] font-mono text-stone-300 pointer-events-none">
+        <div className="absolute top-2 left-2 text-[9px] font-mono text-stone-300 pointer-events-none select-none z-10">
           + REG_01
         </div>
-        <div className="absolute top-2 right-2 text-[9px] font-mono text-stone-300 pointer-events-none">
+        <div className="absolute top-2 right-2 text-[9px] font-mono text-stone-300 pointer-events-none select-none z-10">
           REG_02 +
         </div>
 
-        <div ref={containerRef} className="w-full h-full flex items-center justify-center" />
+        {/* Pegbar holes simulation */}
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-none opacity-20 z-10">
+          <span className="w-1.5 h-3 rounded-full bg-stone-500" />
+          <span className="w-2.5 h-2.5 rounded-full bg-stone-500" />
+          <span className="w-1.5 h-3 rounded-full bg-stone-500" />
+        </div>
+
+        {/* Inner container fills aspect box precisely */}
+        <div
+          ref={containerRef}
+          className="absolute inset-0 flex items-center justify-center p-4 [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:h-auto [&>svg]:block"
+        />
       </div>
 
       {/* Caption footer */}

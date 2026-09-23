@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
-import { Utensils, Heart, Award, ShieldAlert, Newspaper, Quote } from "lucide-react";
+import { Utensils, ShieldAlert, Newspaper, Quote, Sparkles, Flame } from "lucide-react";
 
 export default function CheerysBakesPage() {
   const containerRef = useRef<HTMLElement>(null);
@@ -97,56 +97,90 @@ export default function CheerysBakesPage() {
               </div>
             </div>
 
-            {/* Right Hero Card: Rich Editorial Scrapbook Composition */}
+            {/* Right Hero Card: Rich Editorial Scrapbook & Baking Motion Composition */}
             <div className="lg:col-span-5">
-              <div className="relative bg-white rounded-3xl p-6 border-2 border-stone-900 shadow-2xl rotate-1">
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-emerald-50/50 p-4 flex flex-col justify-between border border-emerald-100">
+              <div className="relative bg-white rounded-3xl p-6 sm:p-7 border-2 border-stone-900 shadow-2xl rotate-1">
+                <div className="space-y-4">
                   
-                  {/* Real Food Photography Feature */}
-                  <div className="relative h-52 w-full rounded-xl overflow-hidden border border-stone-300 shadow-sm">
+                  {/* Real Food Photography Feature with Steam Micro-animation */}
+                  <div className="relative h-60 w-full rounded-2xl overflow-hidden border border-stone-300 shadow-sm bg-stone-900 group">
                     <Image
                       src="/cheerys-bakes/bake-archive-spread.jpg"
                       alt="Artisan breads and pastries baked by Cheery"
                       fill
                       priority
                       sizes="(max-width: 768px) 100vw, 40vw"
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute top-2.5 right-2.5 bg-stone-900/85 backdrop-blur-xs text-stone-100 text-[10px] font-mono px-2.5 py-0.5 rounded-full">
+                    
+                    {/* Dark gradient for badge contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-stone-950/40" />
+
+                    {/* Studio label badge */}
+                    <div className="absolute top-3 left-3 bg-stone-950/85 backdrop-blur-xs text-stone-100 text-[11px] font-mono px-3 py-1 rounded-full flex items-center gap-1.5 border border-stone-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       Authentic Studio Bake
                     </div>
-                  </div>
 
-                  {/* Editorial Note & Standards */}
-                  <div className="space-y-2 mt-3">
-                    <div className="p-3 rounded-xl bg-white border border-stone-200 text-xs font-mono flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 font-medium text-stone-700">
-                        <Heart className="w-3.5 h-3.5 text-emerald-600" />
-                        Gluten-Free Recipes
-                      </span>
-                      <span className="text-emerald-700 font-bold">Standard</span>
+                    {/* Rising Steam Micro-Cues */}
+                    <div className="absolute top-2 right-4 flex items-center gap-1 opacity-70 pointer-events-none">
+                      <svg width="24" height="32" viewBox="0 0 24 32" className="text-white/60 animate-bounce duration-1000">
+                        <path d="M6 28 C6 20, 14 16, 10 8 C8 4, 12 2, 12 0" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="3 3" />
+                      </svg>
+                      <svg width="24" height="32" viewBox="0 0 24 32" className="text-white/60 animate-bounce duration-700">
+                        <path d="M12 30 C12 22, 18 18, 14 10 C12 6, 16 3, 16 0" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="3 3" />
+                      </svg>
                     </div>
-                    <div className="p-3 rounded-xl bg-white border border-stone-200 text-xs font-mono flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 font-medium text-stone-700">
-                        <Award className="w-3.5 h-3.5 text-emerald-600" />
-                        Sugar-Free Alternatives
+
+                    <div className="absolute bottom-3 left-3 right-3 text-white">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-300 font-bold block">
+                        Slow Fermentation & Fire
                       </span>
-                      <span className="text-emerald-700 font-bold">Custom</span>
-                    </div>
-                    <div className="p-3 rounded-xl bg-white border border-stone-200 text-xs font-mono flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 font-medium text-stone-700">
-                        <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
-                        Allergy Consideration
-                      </span>
-                      <span className="text-emerald-700 font-bold">Tailored</span>
+                      <p className="text-xs font-serif italic text-stone-200 mt-0.5 line-clamp-1">
+                        Handcrafted sourdough crusts, golden braided loaves & morning treats
+                      </p>
                     </div>
                   </div>
 
-                </div>
-                <div className="mt-3 text-center">
-                  <span className="text-xs font-mono font-bold text-stone-900">
-                    cheerys_bakes • &ldquo;The kitchen is another studio.&rdquo;
-                  </span>
+                  {/* Artisan Craft Motion Cel & Fermentation Callout */}
+                  <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-stone-800 space-y-2.5">
+                    <div className="flex items-center justify-between text-xs font-mono">
+                      <span className="flex items-center gap-1.5 font-bold text-emerald-950">
+                        <Flame className="w-3.5 h-3.5 text-emerald-700" />
+                        Slow-Fermented Craft Standards
+                      </span>
+                      <span className="text-[10px] bg-emerald-200/70 text-emerald-900 px-2 py-0.5 rounded-full font-bold">
+                        100% Hand-Crafted
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 text-[11px] font-mono text-center">
+                      <div className="p-2 rounded-xl bg-white border border-emerald-100 shadow-2xs">
+                        <span className="block font-bold text-stone-900">Gluten-Free</span>
+                        <span className="text-[10px] text-emerald-700">Clean Flour</span>
+                      </div>
+                      <div className="p-2 rounded-xl bg-white border border-emerald-100 shadow-2xs">
+                        <span className="block font-bold text-stone-900">Sugar-Free</span>
+                        <span className="text-[10px] text-emerald-700">Natural Sweet</span>
+                      </div>
+                      <div className="p-2 rounded-xl bg-white border border-emerald-100 shadow-2xs">
+                        <span className="block font-bold text-stone-900">Custom Order</span>
+                        <span className="text-[10px] text-emerald-700">Baked Fresh</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Studio Quote Footer */}
+                  <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-[11px] font-mono text-stone-600">
+                    <span className="flex items-center gap-1 font-bold text-stone-900">
+                      <Sparkles className="w-3 h-3 text-emerald-600" />
+                      &ldquo;The kitchen is another studio.&rdquo;
+                    </span>
+                    <span className="text-emerald-800 font-semibold text-[10px] uppercase">
+                      CHEERYS Bakes
+                    </span>
+                  </div>
+
                 </div>
               </div>
             </div>

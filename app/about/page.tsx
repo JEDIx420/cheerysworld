@@ -59,12 +59,13 @@ export default function AboutPage() {
     },
   ];
 
-  // Industry recommendations from colleagues and mentors
+  // Industry recommendations from colleagues and mentors with authentic portrait avatars
   const recommendations = [
     {
       name: "Shine Bose",
       title: "2D Animation Director @ Zebu Animation Studios",
-      context: "Worked with Cheery on the same team",
+      context: "Direct peer & animation collaborator",
+      avatar: "/testimonials/shine-bose.jpg",
       quote:
         "I've had the privilege of working with Cheery Cherian Thomas, an inspiring professional with over 24 years of experience in animation and mentorship. His unique ability to blend creativity with guidance has helped countless aspiring artists grow. With a keen eye for detail and a gift for simplifying complex concepts, Cheery empowers his students to thrive. I'm excited about his new online course and confident it will be transformative for anyone pursuing a career in animation. I highly recommend him as an outstanding animator, mentor, and leader.",
     },
@@ -72,13 +73,15 @@ export default function AboutPage() {
       name: "Vinod Thomas",
       title: "CEO @ Probeplus",
       context: "Managed Cheery directly as creative consultant",
+      avatar: "/testimonials/vinod-thomas.jpg",
       quote:
         "Cheery Thomas has worked for me as a creative consultant back in the day. His creativity was above and beyond, that my team benefitted from his contribution in every angle and level. His hardwork and dedication to the craft was exemplary. He will be a high value addition to any organization. Wishing him all the very best.",
     },
     {
       name: "Camila Mary Jerome Philip",
       title: "DGM - HR | MBA | CIPD",
-      context: "Senior colleague at Toonz Animation",
+      context: "Senior leadership at Toonz Animation",
+      avatar: "/testimonials/camila-philip.jpg",
       quote:
         "I had the pleasure of working with Cheery, Show Director and Animation Director at Toonz, and it was a highly rewarding experience. He brings strong expertise in directing international animation projects, with deep technical knowledge of tools like Shotgun and Maya, and a solid command of end-to-end animation pipelines...",
     },
@@ -86,6 +89,7 @@ export default function AboutPage() {
       name: "Nideep Varghese",
       title: "Animator at DreamWorks",
       context: "Worked with Cheery for ~4 years at Toonz",
+      avatar: "/testimonials/nideep-varghese.jpg",
       quote:
         "I have worked with Cheery for around 4 years at Toonz. He was a really passionate and talented artist. He was also very pro-active. He did whatever job he was assigned, with great responsibility and dedication. I would definitely recommend Cheery to be part of any artistic company. He would be a great asset to any team.",
     },
@@ -93,13 +97,15 @@ export default function AboutPage() {
       name: "Atul Rao",
       title: "Professor at Loyalist College",
       context: "Colleague at Toonz for 4 years",
+      avatar: "/testimonials/atul-rao.jpg",
       quote:
         "Cheery is a talented writer and creative executive with decades of experience. He's great to work with and an asset to any organization. I'm lucky to have worked with him for four years at Toonz.",
     },
     {
       name: "Sreekumar Sree",
-      title: "3D Exhibit Designer at Al Fajer Information & Services",
-      context: "Worked with Cheery across creative projects",
+      title: "3D Exhibit Designer at Al Fajer Info",
+      context: "Creative collaborator across international projects",
+      avatar: "/testimonials/sreekumar-sree.jpg",
       quote:
         "He has been the most efficient Talent Artist I've been working with. He always has been available when I had some questions and he makes you feel very comfortable. He is very passionate, very professional.",
     },
@@ -252,33 +258,48 @@ export default function AboutPage() {
             {recommendations.map((rec) => (
               <div
                 key={rec.name}
-                className="bg-white rounded-3xl p-7 border-2 border-stone-900 shadow-md hover:shadow-xl transition-all flex flex-col justify-between"
+                className="bg-white rounded-3xl p-7 sm:p-8 border-2 border-stone-900 shadow-md hover:shadow-xl transition-all flex flex-col justify-between"
               >
                 <div>
-                  {/* Subtle quote icon & badge */}
-                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-stone-100">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full font-semibold border border-amber-200">
-                      Recommendation
-                    </span>
-                    <span className="text-[11px] font-mono text-stone-400">
+                  {/* Author Header with Authentic Portrait Avatar */}
+                  <div className="flex items-center gap-3.5 pb-4 mb-5 border-b border-stone-100">
+                    <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-stone-900 bg-amber-50 shadow-xs shrink-0">
+                      <Image
+                        src={rec.avatar}
+                        alt={`${rec.name} portrait`}
+                        fill
+                        sizes="48px"
+                        className="object-cover"
+                      />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-serif font-bold text-stone-950 text-base leading-tight truncate">
+                        {rec.name}
+                      </h4>
+                      <p className="text-[11px] font-mono text-stone-500 truncate mt-0.5">
+                        {rec.title}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Context Badge */}
+                  <div className="mb-4">
+                    <span className="inline-block text-[10px] font-mono uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-semibold border border-amber-200">
                       {rec.context}
                     </span>
                   </div>
 
-                  {/* Recommendation Text */}
+                  {/* Recommendation Quote Text */}
                   <p className="text-stone-700 text-sm font-sans leading-relaxed italic">
                     &ldquo;{rec.quote}&rdquo;
                   </p>
                 </div>
 
-                {/* Author Info */}
-                <div className="mt-6 pt-4 border-t border-stone-200">
-                  <h4 className="font-serif font-bold text-stone-950 text-base">
-                    {rec.name}
-                  </h4>
-                  <p className="text-xs font-mono text-stone-500 mt-0.5">
-                    {rec.title}
-                  </p>
+                {/* Card footer studio mark */}
+                <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-[10px] font-mono text-stone-400">
+                  <span>Verified Colleague</span>
+                  <span className="text-amber-700 font-bold uppercase tracking-wider">CHEERYS Network</span>
                 </div>
               </div>
             ))}
