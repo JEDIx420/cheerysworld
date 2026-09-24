@@ -19,23 +19,38 @@ export function MeetCheerySection() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left signature portrait column */}
+            {/* Left portrait photograph column */}
             <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="relative w-full max-w-sm aspect-square bg-[#faf8f5] rounded-3xl border-2 border-dashed border-stone-400 p-6 flex flex-col items-center justify-center text-center shadow-inner group">
-                
-                {/* Handdrawn signature doodle */}
-                <div className="relative w-56 h-56 sm:w-64 sm:h-64">
+              <div className="relative w-full max-w-md bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-3 sm:p-4 shadow-xl rotate-[-0.5deg] hover:rotate-0 transition-transform duration-300">
+                {/* Real Photograph with editorial aspect ratio */}
+                <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border border-stone-300 bg-stone-100 shadow-inner">
                   <Image
-                    src="/brand/cheery-signature-clean.jpg"
-                    alt="Cheery original self portrait doodle and signature"
+                    src="/cheery-portrait-studio.jpg"
+                    alt="Cheery Thomas Cherian - Artist, Animator, and Founder of Cheerys World holding pens and brushes"
                     fill
-                    className="object-contain group-hover:scale-105 transition-transform duration-300"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 420px"
+                    className="object-cover object-[center_28%]"
                   />
+
+                  {/* Corner Accent: Authentic Cheery Sign Mark */}
+                  <div className="absolute top-3 right-3 bg-stone-950/80 backdrop-blur-xs px-2.5 py-1 rounded-full border border-stone-700/80 flex items-center gap-1.5 shadow-sm pointer-events-none select-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    <span className="text-[10px] font-mono text-stone-200 uppercase tracking-wider font-semibold">
+                      In the Studio
+                    </span>
+                  </div>
                 </div>
 
-                <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-900 text-stone-100 font-mono text-xs">
-                  <RoughCircle size={14} className="text-amber-400" />
-                  Self-Portrait & Signature by Cheery
+                {/* Editorial Caption Strip */}
+                <div className="mt-3 px-2 py-1.5 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-stone-900 font-bold">
+                    <RoughCircle size={14} className="text-amber-500 shrink-0" />
+                    <span>Cheery — Artist • Animator • Mentor</span>
+                  </div>
+                  <span className="text-[11px] font-mono text-stone-400 hidden sm:inline">
+                    EST. 2000
+                  </span>
                 </div>
               </div>
             </div>
