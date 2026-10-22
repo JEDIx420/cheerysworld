@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { VENTURES } from "@/data/ventures";
 import { SparkleDoodle, ScribbleUnderline, CheerySmileDoodle } from "../doodles/DoodleIcons";
-import { ArrowRight, CheckCircle2, ArrowUpRight, Film, Shirt, Utensils, Sparkles, Palette } from "lucide-react";
-import { AnimDaddyVenturePreview, CheerysBakesVenturePreview } from "./VentureCardPreviews";
+import { ArrowRight, CheckCircle2, ArrowUpRight, Film, Shirt, Sparkles, Palette } from "lucide-react";
+import { AnimDaddyVenturePreview } from "./VentureCardPreviews";
 
 export function CreativeWorldsSection() {
-  const worldIcons = [Sparkles, Palette, Film, Shirt, Utensils];
+  const worldIcons = [Sparkles, Palette, Film, Shirt];
 
   return (
     <section
@@ -22,7 +22,7 @@ export function CreativeWorldsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-900 text-stone-100 text-xs font-mono tracking-widest uppercase mb-4 shadow-xs">
             <SparkleDoodle size={14} className="text-amber-400" />
-            Section 03 • The Five Expressions
+            Section 03 • The Four Expressions
           </div>
 
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black font-serif tracking-tight text-stone-950">
@@ -128,8 +128,6 @@ export function CreativeWorldsSection() {
                     <div className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
                       {venture.id === "anim-daddy" ? (
                         <AnimDaddyVenturePreview />
-                      ) : venture.id === "cheerys-bakes" ? (
-                        <CheerysBakesVenturePreview />
                       ) : (
                         <div className="relative group bg-stone-100 rounded-2xl p-4 border border-stone-200 shadow-inner">
                           <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-white p-2">
@@ -168,7 +166,7 @@ export function CreativeWorldsSection() {
             <CheerySmileDoodle size={36} className="text-amber-400" />
           </div>
           <span className="font-serif font-bold text-xl text-stone-900">
-            Five ventures. One creative culture.
+            Four ventures. One creative culture.
           </span>
           <span className="font-mono text-xs text-stone-500 mt-1">
             Handcrafted by Cheery

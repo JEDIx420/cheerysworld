@@ -10,7 +10,6 @@ export function Footer() {
     { name: "cheerys_art", href: "/cheerys-art", desc: "Canvas, resin & clock dial painting work" },
     { name: "anim_daddy", href: "/anim-daddy", desc: "Animation & art mentoring" },
     { name: "cheerys_tees", href: "/cheerys-tees", desc: "Personalised apparel & merchandise" },
-    { name: "cheerys_bakes", href: "/cheerys-bakes", desc: "Nutritious • gluten-free • sugar-free" },
   ];
 
   return (
@@ -36,8 +35,8 @@ export function Footer() {
               </div>
 
               <p className="text-stone-400 text-sm leading-relaxed max-w-sm">
-                One name. Five creative expressions. One unified culture.
-                Bringing together imagination, fine art, mentorship, personal style, and mindful nourishment under one creative spirit.
+                One name. Four creative expressions. One unified culture.
+                Bringing together imagination, fine art, mentorship, and personal style under one creative spirit.
               </p>
 
               <div className="mt-6 flex items-center gap-3">
@@ -58,7 +57,7 @@ export function Footer() {
             </div>
 
             <div className="mt-8 text-xs font-mono text-stone-500">
-              CREATE • PAINT • TEACH • PERSONALISE • NOURISH
+              CREATE • PAINT • TEACH • PERSONALISE
             </div>
           </div>
 
@@ -119,11 +118,6 @@ export function Footer() {
               <li>
                 <Link href="/cheerys-tees" className="text-stone-300 hover:text-white transition-colors">
                   Custom Apparel Lookbook
-                </Link>
-              </li>
-              <li>
-                <Link href="/cheerys-bakes" className="text-stone-300 hover:text-white transition-colors">
-                  Baking Inquiry Form
                 </Link>
               </li>
             </ul>

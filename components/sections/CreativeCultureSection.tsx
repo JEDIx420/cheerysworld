@@ -22,8 +22,7 @@ export function CreativeCultureSection() {
             CREATE.<br />
             PAINT.<br />
             TEACH.<br />
-            PERSONALISE.<br />
-            NOURISH.
+            PERSONALISE.
           </h2>
 
           <div className="flex justify-center mt-6">
@@ -31,11 +30,11 @@ export function CreativeCultureSection() {
           </div>
 
           <p className="mt-8 text-xl sm:text-2xl md:text-3xl font-serif italic text-stone-300 max-w-2xl mx-auto">
-            &ldquo;Five ventures. One creative spirit.&rdquo;
+            &ldquo;Four ventures. One creative spirit.&rdquo;
           </p>
 
           <p className="mt-6 text-stone-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-            Cheerys is a living culture built around the things that matter most: imagination, fine painting, learning, personal expression and well-being.
+            Cheerys is a living culture built around the things that matter most: imagination, fine painting, learning, and personal expression.
           </p>
 
           {/* Division tags ribbon */}
@@ -51,9 +50,6 @@ export function CreativeCultureSection() {
             </span>
             <span className="px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-300">
               04 cheerys_tees
-            </span>
-            <span className="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
-              05 cheerys_bakes
             </span>
           </div>
 

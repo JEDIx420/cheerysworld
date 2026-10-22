@@ -24,7 +24,6 @@ export function Navbar() {
     { name: "cheerys_art", href: "/cheerys-art", label: "Paintings", accent: "hover:text-purple-700" },
     { name: "anim_daddy", href: "/anim-daddy", label: "Mentoring", accent: "hover:text-blue-700" },
     { name: "cheerys_tees", href: "/cheerys-tees", label: "Apparel", accent: "hover:text-orange-700" },
-    { name: "cheerys_bakes", href: "/cheerys-bakes", label: "Baking", accent: "hover:text-emerald-700" },
     { name: "About", href: "/about", label: "Cheery", accent: "hover:text-stone-900" },
   ];
 

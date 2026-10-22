@@ -2,8 +2,7 @@ export type FormType =
   | "cheery-fic"
   | "cheerys-art"
   | "anim-daddy"
-  | "cheerys-tees"
-  | "cheerys-bakes";
+  | "cheerys-tees";
 
 export interface FormFieldSchema {
   id: string;
@@ -356,88 +355,6 @@ export const INQUIRY_FORMS: Record<FormType, VentureFormConfig> = {
           {
             id: "consent",
             label: "I consent to Cheerys Tees contacting me with mockup samples and batch pricing.",
-            type: "checkbox",
-            required: true,
-          },
-        ],
-      },
-    ],
-  },
-
-  "cheerys-bakes": {
-    formType: "cheerys-bakes",
-    ventureName: "cheerys_bakes",
-    ventureCode: "BAKES",
-    title: "Custom Bakehouse Order Inquiry",
-    subtitle: "Nutritious, thoughtful home baking crafted around real allergies and dietary lifestyles. Every batch is made to order with clean ingredients.",
-    accentColor: "emerald",
-    badgeText: "Venture 05 • Healthy Custom Baking",
-    whatsappPrompt: "Hi Cheery, I just submitted an inquiry for a custom bake order.",
-    sections: [
-      {
-        title: "Your Details",
-        fields: [
-          { id: "fullName", label: "Full Name", type: "text", required: true, placeholder: "e.g. Sarah Jenkins" },
-          { id: "whatsapp", label: "WhatsApp Number", type: "tel", required: true, placeholder: "+91 98765 43210" },
-          { id: "email", label: "Email Address", type: "email", required: true, placeholder: "sarah@example.com" },
-          { id: "city", label: "Delivery Area / Locality", type: "text", required: true, placeholder: "e.g. Indiranagar, Bangalore" },
-        ],
-      },
-      {
-        title: "Bakehouse Menu & Diet",
-        fields: [
-          {
-            id: "category",
-            label: "Menu Item / Baked Specialty",
-            type: "select",
-            required: true,
-            options: [
-              "Artisan Sourdough & Specialty Loaves",
-              "Artisan Bagels & Brioche-Style Buns",
-              "Herb & Olive Extra Virgin Focaccia",
-              "Bavarian Soft Pretzels & Baked Churros",
-              "Custom Celebration Assortment",
-            ],
-          },
-          { id: "quantity", label: "Quantity / Batch Size", type: "text", required: true, placeholder: "e.g. 2 Loaves + 6 Bagels" },
-          {
-            id: "dietaryPreference",
-            label: "Primary Dietary Preference",
-            type: "select",
-            required: true,
-            options: ["Gluten-Free Recipe", "Sugar-Free / Diabetic-Friendly", "Dairy-Free", "Low Carb", "Traditional Artisan Wholesome Grain"],
-          },
-          {
-            id: "allergies",
-            label: "ALLERGIES / Specific Ingredients to Strictly Avoid",
-            type: "textarea",
-            required: true,
-            placeholder: "Please list all known allergies: nuts, eggs, soy, seeds, specific flours, artificial preservatives...",
-            importantNote: "Safety Notice: While we take careful precautions in small-batch preparation, our home kitchen is not an FDA-certified medical sterile facility. Always list strict sensitivities clearly.",
-          },
-          {
-            id: "flavourNotes",
-            label: "Flavor Preferences & Instructions",
-            type: "textarea",
-            placeholder: "e.g. Rosemary & garlic focaccia, lightly salted pretzels, mild cinnamon churros...",
-          },
-        ],
-      },
-      {
-        title: "Event Date & Delivery",
-        fields: [
-          { id: "deadline", label: "Needed-by Date & Time", type: "text", required: true, placeholder: "e.g. Saturday morning, Oct 17 by 10 AM" },
-          {
-            id: "pickupDelivery",
-            label: "Pickup or Delivery",
-            type: "select",
-            required: true,
-            options: ["Local Pickup from Kitchen", "Home Delivery via Local Courier"],
-          },
-          { id: "deliveryAddress", label: "Full Delivery Address (if courier requested)", type: "textarea", placeholder: "House/Flat number, Street, Landmark..." },
-          {
-            id: "consent",
-            label: "I confirm the dietary and allergy specifications provided above.",
             type: "checkbox",
             required: true,
           },

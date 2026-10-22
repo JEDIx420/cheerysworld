@@ -185,46 +185,4 @@ export const VENTURES: Venture[] = [
     previewImage: "/cheerys-tees/page-08.png",
     imageAlt: "Cheerys Tees Living Water Design T-Shirt",
   },
-  {
-    id: "cheerys-bakes",
-    number: "05",
-    name: "cheerys_bakes",
-    slug: "/cheerys-bakes",
-    tagline: "Nutritious • gluten-free • sugar-free • made to order",
-    accentColor: "text-emerald-800",
-    accentBg: "bg-emerald-500/10",
-    badgeBorder: "border-emerald-600/30",
-    pillColor: "bg-emerald-100 text-emerald-900 border-emerald-300",
-    description:
-      "Brings a thoughtful, health-conscious approach to home baking—creating breads and baked treats around real dietary needs, allergies and personal preferences.",
-    bulletPill: "HEALTHY, CUSTOM BAKING",
-    actionText: "DISCOVER CHEERYS_BAKES",
-    actionHref: "/cheerys-bakes",
-    offerings: [
-      {
-        title: "Made to Order",
-        description:
-          "Each order is prepared with the customer's dietary requirements, allergy considerations and customised menu preferences in mind.",
-      },
-      {
-        title: "Health-Conscious Recipes",
-        description:
-          "Gluten-free and sugar-free options are at the heart of the offering, with an emphasis on nutritious ingredients and careful preparation.",
-      },
-      {
-        title: "Breads + Baked Goods",
-        description:
-          "Breads, buns, focaccia, bagels and pretzels are crafted for people who want to enjoy baked favourites with a more mindful approach.",
-      },
-      {
-        title: "From Pretzels to Churros",
-        description:
-          "A growing range of treats is baked to perfection at home, using organic and farmer-sourced ingredients wherever practical and available.",
-      },
-    ],
-    promise:
-      "cheerys_bakes is about proving that thoughtful food does not have to feel like a compromise. Better ingredients, personalised choices and careful baking can make every bite count.",
-    previewImage: "/brand/overview-page-5.png",
-    imageAlt: "Cheerys Bakes overview from brand book",
-  },
 ];

@@ -1,7 +1,7 @@
 export interface GalleryItem {
   id: string;
   title: string;
-  category: "cheery-fic" | "cheerys-art" | "anim-daddy" | "cheerys-tees" | "cheerys-bakes";
+  category: "cheery-fic" | "cheerys-art" | "anim-daddy" | "cheerys-tees";
   categoryLabel: string;
   imageSrc: string;
   aspectRatio: "portrait" | "square" | "landscape";

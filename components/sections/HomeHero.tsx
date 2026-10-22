@@ -17,7 +17,6 @@ export function HomeHero() {
     { word: "PAINT.", desc: "cheerys_art", color: "text-purple-900 bg-purple-50/80 border-purple-200" },
     { word: "TEACH.", desc: "anim_daddy", color: "text-blue-900 bg-blue-50/80 border-blue-200" },
     { word: "PERSONALISE.", desc: "cheerys_tees", color: "text-orange-950 bg-orange-50/80 border-orange-200" },
-    { word: "NOURISH.", desc: "cheerys_bakes", color: "text-emerald-950 bg-emerald-50/80 border-emerald-200" },
   ];
 
   useGSAP(
@@ -162,15 +161,15 @@ export function HomeHero() {
 
             {/* Supporting Core Positioning Message */}
             <p className="hero-tagline mt-8 text-xl sm:text-2xl md:text-3xl font-serif italic text-stone-800 leading-snug">
-              &ldquo;One name. Five expressions. One creative culture.&rdquo;
+              &ldquo;One name. Four expressions. One creative culture.&rdquo;
             </p>
 
             <p className="hero-subcopy mt-4 text-stone-600 text-base sm:text-lg max-w-xl leading-relaxed">
-              Cheerys brings together five distinct creative ventures—caricatures, fine canvas & resin art, animation mentoring, custom apparel, and mindful baking—connected by one vision: to create, paint, teach, personalise and nourish with heart.
+              Cheerys brings together four distinct creative ventures—caricatures, fine canvas & resin art, animation mentoring, and custom apparel—connected by one vision: to create, paint, teach, and personalise with heart.
             </p>
 
-            {/* Five Action Pillars */}
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-5 gap-2 max-w-3xl">
+            {/* Four Action Pillars */}
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-3xl">
               {pillars.map((pillar) => (
                 <div
                   key={pillar.word}
@@ -214,7 +213,7 @@ export function HomeHero() {
             <div className="hidden sm:block absolute -bottom-10 -left-8 text-stone-800 rotate-12 pointer-events-none">
               <SketchArrow direction="curved-down" />
               <span className="block font-mono text-[11px] text-stone-500 -mt-2 ml-4">
-                Scroll for the five expressions
+                Scroll for the four expressions
               </span>
             </div>
           </div>

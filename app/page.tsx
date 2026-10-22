@@ -6,9 +6,9 @@ import { SelectedWorkGallery } from "@/components/gallery/SelectedWorkGallery";
 import { CreativeCultureSection } from "@/components/sections/CreativeCultureSection";
 
 export const metadata = {
-  title: "CHEERYS • One name. Five expressions. One creative culture.",
+  title: "CHEERYS • One name. Four expressions. One creative culture.",
   description:
-    "Cheerys brings together five distinct creative ventures by Cheery: cheery_fic (caricatures), cheerys_art (fine art & resin), anim_daddy (animation mentoring), cheerys_tees (apparel), and cheerys_bakes (custom healthy baking).",
+    "Cheerys brings together four distinct creative ventures by Cheery: cheery_fic (caricatures), cheerys_art (fine art & resin), anim_daddy (animation mentoring), and cheerys_tees (apparel).",
 };
 
 export default function HomePage() {

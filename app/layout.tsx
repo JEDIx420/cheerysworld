@@ -27,9 +27,9 @@ const monoFont = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cheerysworld.netlify.app"),
-  title: "CHEERYS • One Name. Five Expressions. One Creative Culture.",
+  title: "CHEERYS • One Name. Four Expressions. One Creative Culture.",
   description:
-    "Cheerys brings together five distinct creative ventures by Cheery: cheery_fic (caricatures), cheerys_art (canvas & resin paintings), anim_daddy (animation mentoring), cheerys_tees (apparel), and cheerys_bakes (healthy custom baking).",
+    "Cheerys brings together four distinct creative ventures by Cheery: cheery_fic (caricatures), cheerys_art (canvas & resin paintings), anim_daddy (animation mentoring), and cheerys_tees (apparel).",
   keywords: [
     "Cheerys",
     "Cheery",
@@ -37,18 +37,16 @@ export const metadata: Metadata = {
     "cheerys_art",
     "anim_daddy",
     "cheerys_tees",
-    "cheerys_bakes",
     "caricatures",
     "resin art",
     "canvas painting",
     "animation mentoring",
     "custom apparel",
-    "healthy baking",
   ],
   authors: [{ name: "Cheery" }],
   openGraph: {
     title: "CHEERYS • Creative Culture by Cheery",
-    description: "One name. Five expressions. One creative culture.",
+    description: "One name. Four expressions. One creative culture.",
     url: "https://cheerysworld.netlify.app",
     siteName: "CHEERYS",
     images: [

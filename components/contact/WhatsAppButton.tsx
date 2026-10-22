@@ -22,9 +22,6 @@ export function WhatsAppButton() {
     if (path.startsWith("/cheerys-tees")) {
       return "Hi Cheery, I’d like to enquire about a custom apparel order.";
     }
-    if (path.startsWith("/cheerys-bakes")) {
-      return "Hi Cheery, I’d like to enquire about a custom bake.";
-    }
     return "Hi Cheery, I found Cheerys World and would like to know more.";
   };
 

@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ScribbleUnderline, SparkleDoodle, CheerySmileDoodle } from "@/components/doodles/DoodleIcons";
-import { Palette, Sparkles, Film, Shirt, Utensils, ArrowRight, Quote } from "lucide-react";
+import { Palette, Sparkles, Film, Shirt, ArrowRight, Quote } from "lucide-react";
 
 export const metadata = {
   title: "About Cheery • CHEERYS Creative Culture",
   description:
-    "Founder • Artist • Animator • Designer • Storyteller • Mentor. The human and artistic vision behind cheery_fic, cheerys_art, anim_daddy, cheerys_tees, and cheerys_bakes.",
+    "Founder • Artist • Animator • Designer • Storyteller • Mentor. The human and artistic vision behind cheery_fic, cheerys_art, anim_daddy, and cheerys_tees.",
 };
 
 export default function AboutPage() {
@@ -47,15 +47,6 @@ export default function AboutPage() {
       icon: Shirt,
       href: "/cheerys-tees",
       accent: "text-orange-700 bg-orange-50 border-orange-200",
-    },
-    {
-      num: "05",
-      name: "cheerys_bakes",
-      label: "Healthy, Custom Baking",
-      desc: "Nutritious, gluten-free, sugar-free made-to-order baking crafted with care around real dietary needs.",
-      icon: Utensils,
-      href: "/cheerys-bakes",
-      accent: "text-emerald-700 bg-emerald-50 border-emerald-200",
     },
   ];
 
@@ -146,15 +137,15 @@ export default function AboutPage() {
               </div>
 
               <p className="mt-8 text-xl sm:text-2xl font-serif italic text-stone-800 leading-snug">
-                &ldquo;One name. Five expressions. One creative culture.&rdquo;
+                &ldquo;One name. Four expressions. One creative culture.&rdquo;
               </p>
 
               <div className="mt-6 space-y-4 text-stone-600 text-base sm:text-lg leading-relaxed">
                 <p>
-                  Cheerys is the creative world of Cheery—an artist, caricaturist, animation director, and mentor whose calling is to infuse ideas, faces, spaces, and nourishment with unmistakable character and human warmth.
+                  Cheerys is the creative world of Cheery—an artist, caricaturist, animation director, and mentor whose calling is to infuse ideas, faces, spaces, and stories with unmistakable character and human warmth.
                 </p>
                 <p>
-                  With over 24 years in international animation pipelines, visual storytelling, and bespoke art, Cheery unites distinct crafts—from paper caricature to fine canvas art, animation instruction, custom faith merchandise, and mindful baking—into one coherent handcrafted culture.
+                  With over 24 years in international animation pipelines, visual storytelling, and bespoke art, Cheery unites distinct crafts—from paper caricature to fine canvas art, animation instruction, and custom faith merchandise—into one coherent handcrafted culture.
                 </p>
               </div>
 
@@ -228,10 +219,10 @@ export default function AboutPage() {
             Creative Spirit
           </span>
           <h2 className="text-3xl sm:text-4xl font-black font-serif text-stone-900 mb-6">
-            CREATE • PAINT • TEACH • PERSONALISE • NOURISH
+            CREATE • PAINT • TEACH • PERSONALISE
           </h2>
           <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
-            Every piece created under CHEERYS begins with the human touch. From the pencil strokes of a live caricature to the vivid acrylic layers of a fine art canvas, the timing curves of character animation, the customized fabric of everyday apparel, and the mindful preparation of home-baked loaves, our work puts personal connection and craftsmanship first.
+            Every piece created under CHEERYS begins with the human touch. From the pencil strokes of a live caricature to the vivid acrylic layers of a fine art canvas, the timing curves of character animation, and the customized fabric of everyday apparel, our work puts personal connection and craftsmanship first.
           </p>
         </div>
       </section>
@@ -314,20 +305,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* The Five Expressions Cards */}
+      {/* The Four Expressions Cards */}
       <section className="py-20 md:py-28 bg-white border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-black font-serif text-stone-900">
-              The Five Expressions Under Cheerys
+              The Four Expressions Under Cheerys
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base">
               Explore how Cheery&apos;s artistic voice takes shape across each discipline.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {ventures.map((v) => {
               const Icon = v.icon;
               return (
