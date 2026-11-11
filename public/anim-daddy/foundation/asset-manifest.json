@@ -1,0 +1,289 @@
+[
+  {
+    "level": "A",
+    "name": "level-a-bouncing-ball",
+    "alt": "A blue ball demonstrating timing, spacing, squash and stretch.",
+    "sourcePage": "https://pixabay.com/gifs/ball-blue-jump-bouncing-968/",
+    "directDownload": "https://cdn.pixabay.com/animation/2022/10/03/17/54/17-54-34-215_512.gif",
+    "creator": "Winterflower",
+    "license": "Pixabay Content License",
+    "licenseUrl": "https://pixabay.com/service/license-summary/",
+    "width": 112,
+    "height": 512,
+    "frames": 34,
+    "durationMs": 3400,
+    "loop": 0,
+    "posterFrame": 17,
+    "files": {
+      "level-a-bouncing-ball.gif": {
+        "bytes": 33165,
+        "sha256": "f897577dfe63122bef875b0dcb2f3d5d531ab710ecbf662db3e9454f333d5993"
+      },
+      "level-a-bouncing-ball.webp": {
+        "bytes": 29334,
+        "sha256": "3e29b6d9ec4f02614ccc6887f3bce99aeefb74cb23b1321bc8c3996c04a92d73"
+      },
+      "level-a-bouncing-ball-poster.webp": {
+        "bytes": 740,
+        "sha256": "0208cb1c547b52b56af0475036224a90a6f1146ba955c0049443788d3ae286f9"
+      }
+    },
+    "sourceFrameDurationsMs": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "playbackFrameDurationsMs": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "sourceEncodedDurationMs": 0,
+    "timingNote": "Original GIF frame delays of 0ms normalized to 100ms in WebP, matching libwebp GIF timing policy; original GIF unchanged.",
+    "validation": {
+      "decodedFrameCountMatches": true,
+      "decodedFramesVisuallyLossless": true,
+      "allWebpFrameDurationsPositive": true,
+      "webpDurationsMatchPlaybackDurations": true
+    }
+  },
+  {
+    "level": "B",
+    "name": "level-b-pencil-drawing",
+    "alt": "A pencil drawing a simple heart outline, illustrating drawing confidence.",
+    "sourcePage": "https://pixabay.com/gifs/heart-love-draw-pencil-pen-17120/",
+    "directDownload": "https://cdn.pixabay.com/animation/2025/01/06/20/14/20-14-05-610_512.gif",
+    "creator": "Anilga",
+    "license": "Pixabay Content License",
+    "licenseUrl": "https://pixabay.com/service/license-summary/",
+    "width": 512,
+    "height": 475,
+    "frames": 9,
+    "durationMs": 2250,
+    "loop": 0,
+    "posterFrame": 8,
+    "files": {
+      "level-b-pencil-drawing.gif": {
+        "bytes": 110677,
+        "sha256": "eb831e9fed174f8132c894cf12e8430a985d0f36a2c6633434e9833baf6784b2"
+      },
+      "level-b-pencil-drawing.webp": {
+        "bytes": 90932,
+        "sha256": "af6eb18e59d4113785c9722735848fd4f0fb9b85e00e154ffb83f691507db52f"
+      },
+      "level-b-pencil-drawing-poster.webp": {
+        "bytes": 10598,
+        "sha256": "54e2f3f14257a696c19e3728bafc33f126cbcaafd20fe1c8334cbc15cf4115c1"
+      }
+    },
+    "sourceFrameDurationsMs": [
+      250,
+      250,
+      250,
+      250,
+      250,
+      250,
+      250,
+      250,
+      250
+    ],
+    "playbackFrameDurationsMs": [
+      250,
+      250,
+      250,
+      250,
+      250,
+      250,
+      250,
+      250,
+      250
+    ],
+    "sourceEncodedDurationMs": 2250,
+    "timingNote": "Original timing preserved in WebP.",
+    "validation": {
+      "decodedFrameCountMatches": true,
+      "decodedFramesVisuallyLossless": true,
+      "allWebpFrameDurationsPositive": true,
+      "webpDurationsMatchPlaybackDurations": true
+    }
+  },
+  {
+    "level": "C",
+    "name": "level-c-character-eyes",
+    "alt": "Hand-drawn eyes blinking and looking, illustrating character anatomy and expression.",
+    "sourcePage": "https://pixabay.com/gifs/eyes-human-look-blink-eyelashes-19009/",
+    "directDownload": "https://cdn.pixabay.com/animation/2025/03/16/23/01/23-01-43-411_512.gif",
+    "creator": "MXJ_files",
+    "license": "Pixabay Content License",
+    "licenseUrl": "https://pixabay.com/service/license-summary/",
+    "width": 512,
+    "height": 318,
+    "frames": 10,
+    "durationMs": 1850,
+    "loop": 0,
+    "posterFrame": 5,
+    "files": {
+      "level-c-character-eyes.gif": {
+        "bytes": 47104,
+        "sha256": "aef0ef96ed1d845a50a9b0e7f86cfcc7acf3ca41e5424959bd68209750972bab"
+      },
+      "level-c-character-eyes.webp": {
+        "bytes": 41830,
+        "sha256": "d0e42df26de68eddf07011b59643ff1304cfe7ee7248018da0a5a0a82a3cb1c6"
+      },
+      "level-c-character-eyes-poster.webp": {
+        "bytes": 8530,
+        "sha256": "8fedcee17e31c4e9e1f3e1c6aac58518997cef551ca622b05b4b37caeccba552"
+      }
+    },
+    "sourceFrameDurationsMs": [
+      250,
+      100,
+      300,
+      50,
+      250,
+      100,
+      300,
+      100,
+      200,
+      200
+    ],
+    "playbackFrameDurationsMs": [
+      250,
+      100,
+      300,
+      50,
+      250,
+      100,
+      300,
+      100,
+      200,
+      200
+    ],
+    "sourceEncodedDurationMs": 1850,
+    "timingNote": "Original timing preserved in WebP.",
+    "validation": {
+      "decodedFrameCountMatches": true,
+      "decodedFramesVisuallyLossless": true,
+      "allWebpFrameDurationsPositive": true,
+      "webpDurationsMatchPlaybackDurations": true
+    }
+  },
+  {
+    "level": "D",
+    "name": "level-d-facial-expressions",
+    "alt": "A simplified cartoon face showing changes of expression.",
+    "sourcePage": "https://pixabay.com/gifs/cartoon-face-expressions-gestures-1814/",
+    "directDownload": "https://cdn.pixabay.com/animation/2022/11/10/02/48/02-48-52-718_512.gif",
+    "creator": "VectorBy",
+    "license": "Pixabay Content License",
+    "licenseUrl": "https://pixabay.com/service/license-summary/",
+    "width": 512,
+    "height": 512,
+    "frames": 6,
+    "durationMs": 3600,
+    "loop": 0,
+    "posterFrame": 1,
+    "files": {
+      "level-d-facial-expressions.gif": {
+        "bytes": 47013,
+        "sha256": "c308a5a00a73edae6b9b48bb7d35b5d234c987f0edc9fd854340aecab2f3df1c"
+      },
+      "level-d-facial-expressions.webp": {
+        "bytes": 33060,
+        "sha256": "5b44056e80e68d134e82108dfbf173a49b33eeff2882ba7811b6225c38e8280c"
+      },
+      "level-d-facial-expressions-poster.webp": {
+        "bytes": 9358,
+        "sha256": "bc0a4ef7ad5252413a8942c71e173b5a00c1cbdb91b21b290413c87d14784445"
+      }
+    },
+    "sourceFrameDurationsMs": [
+      600,
+      600,
+      600,
+      600,
+      600,
+      600
+    ],
+    "playbackFrameDurationsMs": [
+      600,
+      600,
+      600,
+      600,
+      600,
+      600
+    ],
+    "sourceEncodedDurationMs": 3600,
+    "timingNote": "Original timing preserved in WebP.",
+    "validation": {
+      "decodedFrameCountMatches": true,
+      "decodedFramesVisuallyLossless": true,
+      "allWebpFrameDurationsPositive": true,
+      "webpDurationsMatchPlaybackDurations": true
+    },
+    "creatorProfileUrl": "https://pixabay.com/users/vectorby-8633812/"
+  }
+]
