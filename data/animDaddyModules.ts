@@ -1,13 +1,19 @@
 export interface FoundationLevel {
   level: string;
   name: string;
+  tag: string;
   summary: string;
   detail: string;
-  principleType:
-    | "squash-stretch"
-    | "body-mechanics"
-    | "concept-preprod"
-    | "caricature-art";
+  points: { title: string; desc: string }[];
+  media: {
+    webp: string;
+    gif: string;
+    poster: string;
+    alt: string;
+    caption: string;
+  };
+  link?: { href: string; label: string };
+  principleType?: string;
 }
 
 export interface ModuleMedia {
@@ -48,33 +54,82 @@ export const FOUNDATION_LEVELS: FoundationLevel[] = [
   {
     level: "Level A",
     name: "Stepping Stones",
+    tag: "Principles",
     summary: "Animating everyday inanimate objects & learning core founding principles.",
     detail:
       "Try the waters with us. Understand if animation is for you by animating everyday inanimate objects where you get accustomed to the founding principles as you play around creating the illusion of life!",
+    points: [
+      { title: "Squash & Stretch", desc: "Volume conservation and timing fundamentals" },
+      { title: "Timing & Spacing", desc: "Slow-in, slow-out arcs and natural motion" },
+    ],
+    media: {
+      webp: "/anim-daddy/foundation/level-a-bouncing-ball.webp",
+      gif: "/anim-daddy/foundation/level-a-bouncing-ball.gif",
+      poster: "/anim-daddy/foundation/level-a-bouncing-ball-poster.webp",
+      alt: "Bouncing ball animation demonstrating squash, stretch, and timing",
+      caption: "Level A • Timing, spacing & bouncing ball squash-and-stretch",
+    },
     principleType: "squash-stretch",
   },
   {
     level: "Level B",
     name: "Let's Draw",
+    tag: "Drawing",
     summary: "Drawing confidence, asymmetry, pen sketching, and natural line beauty.",
     detail:
       "Time to dig out those pencils and sharpeners. Boost your confidence to even sketch with a pen! Trial and error is part of the journey, for there is no 'perfect' drawing. It's the errors and asymmetry that bring natural beauty to your masterpiece.",
+    points: [
+      { title: "Direct Pen Sketching", desc: "Unlocking raw confidence without fear of errors" },
+      { title: "Beautiful Asymmetry", desc: "Embracing natural quirks that give life to drawings" },
+    ],
+    media: {
+      webp: "/anim-daddy/foundation/level-b-pencil-drawing.webp",
+      gif: "/anim-daddy/foundation/level-b-pencil-drawing.gif",
+      poster: "/anim-daddy/foundation/level-b-pencil-drawing-poster.webp",
+      alt: "Pencil sketching a heart outline illustrating natural hand drawing",
+      caption: "Level B • Sketching confidence & hand-drawn pencil line",
+    },
     principleType: "body-mechanics",
   },
   {
     level: "Level C",
     name: "Character Creation",
-    summary: "Concept art, anatomy exploration, costume silhouette, and story personality.",
+    tag: "Design",
+    summary: "Character anatomy, silhouette, expressive eyes, and visual development.",
     detail:
       "What is concept art and how do you master it? Journey with us into character anatomy, silhouettes, emotional tone, and expressive visual development.",
+    points: [
+      { title: "Silhouette & Readability", desc: "Immediate recognition at thumbnail and stage scale" },
+      { title: "Gaze & Attention", desc: "Directing focus with expressive eyes and subtle micro-blinks" },
+    ],
+    media: {
+      webp: "/anim-daddy/foundation/level-c-character-eyes.webp",
+      gif: "/anim-daddy/foundation/level-c-character-eyes.gif",
+      poster: "/anim-daddy/foundation/level-c-character-eyes-poster.webp",
+      alt: "Hand-drawn character eyes blinking and looking attentively",
+      caption: "Level C • Expression study: gaze, blinking & character attention",
+    },
     principleType: "concept-preprod",
   },
   {
     level: "Level D",
     name: "Caricature Away!",
+    tag: "Caricature",
     summary: "Exaggeration techniques, turning anatomy into comedic gold, and visual wit.",
     detail:
       "Have everyone laugh out loud with your exaggeration skills! Learn how to extract key facial cues and amplify personality with charm and comedic precision.",
+    points: [
+      { title: "Facial Architecture", desc: "Identifying key identifying traits and anchor shapes" },
+      { title: "Comedic Exaggeration", desc: "Pushing forms and emotion while preserving unmistakable likeness" },
+    ],
+    media: {
+      webp: "/anim-daddy/foundation/level-d-facial-expressions.webp",
+      gif: "/anim-daddy/foundation/level-d-facial-expressions.gif",
+      poster: "/anim-daddy/foundation/level-d-facial-expressions-poster.webp",
+      alt: "Simplified cartoon face shifting through smiles, surprise, and comical expressions",
+      caption: "Level D • Facial expression cycles & comedic personality exaggeration",
+    },
+    link: { href: "/cheery-fic", label: "See Cheery's Caricatures →" },
     principleType: "caricature-art",
   },
 ];

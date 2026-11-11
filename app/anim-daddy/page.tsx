@@ -6,21 +6,18 @@ import { FOUNDATION_LEVELS, ADVANCED_MODULES } from "@/data/animDaddyModules";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { ModuleMediaPreview } from "@/components/anim-daddy/ModuleMediaPreview";
 import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
-import { BookOpen, GraduationCap, Video, Users, Sparkles, Film, Compass, Clapperboard, Palette, CheckCircle2 } from "lucide-react";
+import { BookOpen, GraduationCap, Video, Users, Sparkles, Film, Compass, Clapperboard, Palette } from "lucide-react";
 
 export default function AnimDaddyPage() {
   const [selectedLevel, setSelectedLevel] = useState(FOUNDATION_LEVELS[0]);
 
-  // Group curriculum logically into 5 distinct thematic studios as requested
+  // Group curriculum logically into 5 distinct thematic studios
   const curriculumTracks = [
     {
       id: "track-mechanics",
       title: "Foundations & Body Mechanics",
       tagline: "Physics, Weight & Locomotion",
       icon: Film,
-      gifSrc: "/anim-daddy/module-02-hamster.gif",
-      gifAlt: "Body Mechanics • Weight, anticipation & barbell bench press",
-      caption: "Body mechanics, weight & barbell workout",
       modules: ADVANCED_MODULES.filter((m) => [1, 2, 4, 7].includes(m.num)),
     },
     {
@@ -28,9 +25,6 @@ export default function AnimDaddyPage() {
       title: "Character Performance & Acting",
       tagline: "Emotional Staging & Dialogue Pacing",
       icon: Clapperboard,
-      gifSrc: "/anim-daddy/module-03-tut-dance.gif",
-      gifAlt: "Character Acting • Rhythmic tutting dance performance",
-      caption: "Pantomime, rhythmic timing & character performance",
       modules: ADVANCED_MODULES.filter((m) => [3, 5].includes(m.num)),
     },
     {
@@ -38,9 +32,6 @@ export default function AnimDaddyPage() {
       title: "Visual Development & Storyboarding",
       tagline: "Cinematic Staging & Narrative Beats",
       icon: Compass,
-      gifSrc: "/anim-daddy/level-c-morph.gif",
-      gifAlt: "Visual Development & Metamorphosis",
-      caption: "Elastic shape-flow, dynamic transitions & arcs",
       modules: ADVANCED_MODULES.filter((m) => [6, 8, 9].includes(m.num)),
     },
     {
@@ -48,9 +39,6 @@ export default function AnimDaddyPage() {
       title: "Digital 2D Production & Design",
       tagline: "Hand-Drawn Inbetweening to Final Pipeline",
       icon: Palette,
-      gifSrc: "/anim-daddy/level-b-draw.gif",
-      gifAlt: "Digital Cleanup Line & Inking",
-      caption: "Pencil test line resolution into inked vector art",
       modules: ADVANCED_MODULES.filter((m) => [10, 11, 13, 14].includes(m.num)),
     },
     {
@@ -58,9 +46,6 @@ export default function AnimDaddyPage() {
       title: "The Art of Caricature Masterclass",
       tagline: "Signature Funny-Bone Mentorship with Cheery",
       icon: Sparkles,
-      gifSrc: "/anim-daddy/level-d-caricature.gif",
-      gifAlt: "Caricature Exaggeration & Likeness",
-      caption: "Extracting comedic gold, living expressions & personality",
       modules: ADVANCED_MODULES.filter((m) => [12].includes(m.num)),
     },
   ];
@@ -135,7 +120,7 @@ export default function AnimDaddyPage() {
               </div>
             </div>
 
-            {/* Right Hero: Character-Driven Animator Reel */}
+            {/* Right Hero: Plain, Character-Driven Animation Cel */}
             <div className="lg:col-span-6 flex justify-center">
               <div className="relative w-full max-w-lg bg-white rounded-3xl p-5 sm:p-6 border-2 border-stone-800 shadow-xl rotate-1 hover:rotate-0 transition-transform duration-300">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-4">
@@ -194,268 +179,103 @@ export default function AnimDaddyPage() {
           </div>
 
           {/* Level Switcher Tabs */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
-            {FOUNDATION_LEVELS.map((lvl) => (
-              <button
-                key={lvl.level}
-                type="button"
-                onClick={() => setSelectedLevel(lvl)}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-                  selectedLevel.level === lvl.level
-                    ? "bg-blue-600 text-white border-blue-600 shadow-md font-bold"
-                    : "bg-white text-stone-800 border-stone-200 hover:border-stone-400"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase tracking-wider opacity-80">
-                    {lvl.level}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10" role="tablist" aria-label="Foundation Curriculum Levels">
+            {FOUNDATION_LEVELS.map((lvl) => {
+              const isSelected = selectedLevel.level === lvl.level;
+              return (
+                <button
+                  key={lvl.level}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => setSelectedLevel(lvl)}
+                  className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-blue-600 text-white border-blue-600 shadow-md font-bold"
+                      : "bg-white text-stone-800 border-stone-200 hover:border-stone-400"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono uppercase tracking-wider opacity-80">
+                      {lvl.level}
+                    </span>
+                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
+                      isSelected ? "bg-white/20 text-white" : "bg-stone-100 text-stone-600"
+                    }`}>
+                      {lvl.tag}
+                    </span>
+                  </div>
+                  <span className="block text-base font-serif font-bold mt-2">
+                    {lvl.name}
                   </span>
-                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
-                    selectedLevel.level === lvl.level ? "bg-white/20 text-white" : "bg-stone-100 text-stone-600"
-                  }`}>
-                    {lvl.level === "Level A" ? "Principles" : lvl.level === "Level B" ? "Drawing" : lvl.level === "Level C" ? "Design" : "Caricature"}
-                  </span>
-                </div>
-                <span className="block text-base font-serif font-bold mt-2">
-                  {lvl.name}
-                </span>
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
 
-          {/* Active Level Detail Container with stable height and bespoke layouts */}
-          <div className="bg-white rounded-3xl border-2 border-stone-900 p-6 sm:p-10 shadow-xl overflow-hidden min-h-[520px] flex flex-col justify-between">
-            {selectedLevel.level === "Level A" && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-6 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold">
-                    Level A • The Stepping Stones Desk
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
-                    {selectedLevel.summary}
-                  </h3>
-                  <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
-                    {selectedLevel.detail}
-                  </p>
+          {/* Single Data-Driven, Stable Foundation Container */}
+          <div className="bg-white rounded-3xl border-2 border-stone-900 p-6 sm:p-10 shadow-xl overflow-hidden min-h-[480px]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              {/* Left Column: Lesson Details */}
+              <div className="lg:col-span-6 space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold">
+                  {selectedLevel.level} • {selectedLevel.name}
+                </div>
+                
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
+                  {selectedLevel.summary}
+                </h3>
+                
+                <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                  {selectedLevel.detail}
+                </p>
 
-                  <div className="grid grid-cols-2 gap-3 pt-2">
-                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
-                      <span className="block font-bold text-stone-900">Squash & Stretch</span>
-                      <span className="text-stone-500 text-[11px]">Volume conservation rules</span>
+                {/* Core Learning Points */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  {selectedLevel.points.map((pt, i) => (
+                    <div key={i} className="p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
+                      <span className="block font-bold text-stone-900 mb-0.5">{pt.title}</span>
+                      <span className="text-stone-500 text-[11px] leading-snug block">{pt.desc}</span>
                     </div>
-                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
-                      <span className="block font-bold text-stone-900">Timing & Spacing</span>
-                      <span className="text-stone-500 text-[11px]">Slow-in, slow-out arcs</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-2 flex items-center justify-between text-xs font-mono text-stone-600 bg-stone-50 p-3 rounded-xl border border-stone-200">
-                    <span>Foundation Enrollment: <strong>₹5,000/- per student</strong></span>
-                    <span className="text-blue-700 font-bold">Online & Offline</span>
-                  </div>
+                  ))}
                 </div>
 
-                <div className="lg:col-span-6 flex justify-center">
-                  <div className="relative w-full max-w-md bg-white rounded-2xl p-4 border border-stone-200 shadow-md">
-                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-3">
-                      <Image
-                        src="/anim-daddy/level-a-cat-walk.gif"
-                        alt="Walk Cycle & Locomotion Mechanics"
-                        fill
-                        unoptimized
-                        loading="lazy"
-                        className="object-contain p-2"
-                        sizes="(max-width: 768px) 100vw, 40vw"
-                      />
-                    </div>
-                    <p className="mt-2 text-center text-xs font-mono text-stone-600">
-                      Level A • Locomotion &amp; Walk Cycle Mechanics
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {selectedLevel.level === "Level B" && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-6 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold">
-                    Level B • Let&apos;s Draw (Sketchbook Stage)
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
-                    {selectedLevel.summary}
-                  </h3>
-                  <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
-                    {selectedLevel.detail}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-3 pt-2">
-                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
-                      <span className="block font-bold text-stone-900">Direct Pen Sketching</span>
-                      <span className="text-stone-500 text-[11px]">Unlocking raw confidence</span>
-                    </div>
-                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
-                      <span className="block font-bold text-stone-900">Beautiful Asymmetry</span>
-                      <span className="text-stone-500 text-[11px]">Natural character quirks</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-2 flex items-center justify-between text-xs font-mono text-stone-600 bg-stone-50 p-3 rounded-xl border border-stone-200">
-                    <span>Foundation Enrollment: <strong>₹5,000/- per student</strong></span>
-                    <span className="text-blue-700 font-bold">Online & Offline</span>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-6 flex justify-center">
-                  <div className="relative w-full max-w-md bg-white rounded-2xl p-4 border border-stone-200 shadow-md">
-                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-3">
-                      <Image
-                        src="/anim-daddy/level-b-draw.gif"
-                        alt="Pencil Test to Clean Inked Line"
-                        fill
-                        unoptimized
-                        loading="lazy"
-                        className="object-contain p-2"
-                        sizes="(max-width: 768px) 100vw, 40vw"
-                      />
-                    </div>
-                    <p className="mt-2 text-center text-xs font-mono text-stone-600">
-                      Level B • Pencil Test to Inked Line
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {selectedLevel.level === "Level C" && (
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-stone-200 pb-4">
-                  <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold mb-2">
-                      Level C • Character Design & Visual Development Board
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
-                      {selectedLevel.summary}
-                    </h3>
-                  </div>
-                  <div className="text-right text-xs font-mono text-stone-600">
-                    <span className="block">Foundation fee: <strong>₹5,000/-</strong></span>
-                    <span className="text-blue-700 font-bold">Silhouette to Production Asset</span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                  <div className="lg:col-span-5 space-y-4">
-                    <p className="text-stone-700 text-sm leading-relaxed">
-                      {selectedLevel.detail}
-                    </p>
-
-                    <div className="space-y-2 text-xs font-mono">
-                      <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                        <span><strong>Silhouette Readability:</strong> Immediate recognition at thumbnail scale</span>
-                      </div>
-                      <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                        <span><strong>Costume & Volume:</strong> Turnaround sheets with animator-friendly forms</span>
-                      </div>
-                      <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                        <span><strong>Expressive Acting Model:</strong> Emotion range from broad smile to subtle smirk</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="bg-white rounded-2xl p-3 border border-stone-200 shadow-sm">
-                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-2">
-                        <Image
-                          src="/anim-daddy/level-c-morph.gif"
-                          alt="Volume Morph & Dynamic Anatomy"
-                          fill
-                          unoptimized
-                          loading="lazy"
-                          className="object-contain p-2"
-                          sizes="(max-width: 768px) 100vw, 25vw"
-                        />
-                      </div>
-                      <p className="mt-2 text-center text-xs font-mono text-stone-600">
-                        Volume Morph &amp; Proportion
-                      </p>
-                    </div>
-                    <div className="bg-white rounded-2xl p-3 border border-stone-200 shadow-sm">
-                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-2">
-                        <Image
-                          src="/anim-daddy/hero-character-acting.gif"
-                          alt="Expression & Acting Cel"
-                          fill
-                          unoptimized
-                          loading="lazy"
-                          className="object-contain p-2"
-                          sizes="(max-width: 768px) 100vw, 25vw"
-                        />
-                      </div>
-                      <p className="mt-2 text-center text-xs font-mono text-stone-600">
-                        Expression &amp; Acting
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {selectedLevel.level === "Level D" && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-6 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-mono font-bold">
-                    Level D • The Art of Caricature Masterclass
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
-                    {selectedLevel.summary}
-                  </h3>
-                  <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
-                    {selectedLevel.detail}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-3 pt-2">
-                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
-                      <span className="block font-bold text-stone-900">Facial Architecture</span>
-                      <span className="text-stone-500 text-[11px]">Identifying core distinct features</span>
-                    </div>
-                    <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs font-mono">
-                      <span className="block font-bold text-stone-900">Comedic Exaggeration</span>
-                      <span className="text-stone-500 text-[11px]">Pushing forms while keeping likeness</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-2 flex items-center justify-between text-xs font-mono text-stone-600 bg-stone-50 p-3 rounded-xl border border-stone-200">
-                    <span>Foundation Enrollment: <strong>₹5,000/- per student</strong></span>
-                    <a href="/cheery-fic" className="text-blue-700 font-bold hover:underline inline-flex items-center gap-1">
-                      See Cheery&apos;s Caricatures →
+                {/* Fee & Enrollment Bar */}
+                <div className="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-stone-600 bg-stone-50 p-3.5 rounded-xl border border-stone-200">
+                  <span>Foundation Enrollment: <strong>₹5,000/- per student</strong></span>
+                  {selectedLevel.link ? (
+                    <a href={selectedLevel.link.href} className="text-blue-700 font-bold hover:underline">
+                      {selectedLevel.link.label}
                     </a>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-6 flex justify-center">
-                  <div className="relative w-full max-w-md bg-white rounded-2xl p-4 border border-stone-200 shadow-md">
-                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-3">
-                      <Image
-                        src="/anim-daddy/level-d-caricature.gif"
-                        alt="Caricature Wit & Expression"
-                        fill
-                        unoptimized
-                        loading="lazy"
-                        className="object-contain p-2"
-                        sizes="(max-width: 768px) 100vw, 40vw"
-                      />
-                    </div>
-                    <p className="mt-2 text-center text-xs font-mono text-stone-600">
-                      Level D • Caricature Wit &amp; Expression
-                    </p>
-                  </div>
+                  ) : (
+                    <span className="text-blue-700 font-bold">Online &amp; Offline</span>
+                  )}
                 </div>
               </div>
-            )}
+
+              {/* Right Column: Clean Visual Loop Container */}
+              <div className="lg:col-span-6 flex justify-center">
+                <div className="w-full max-w-md bg-stone-50 rounded-2xl p-4 border border-stone-200 shadow-sm flex flex-col items-center">
+                  <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-white border border-stone-200 flex items-center justify-center p-3">
+                    <Image
+                      key={selectedLevel.media.webp}
+                      src={selectedLevel.media.webp}
+                      alt={selectedLevel.media.alt}
+                      fill
+                      unoptimized
+                      priority
+                      className="object-contain p-2"
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                    />
+                  </div>
+                  <p className="mt-3 text-center text-xs font-mono text-stone-600">
+                    {selectedLevel.media.caption}
+                  </p>
+                </div>
+              </div>
+
+            </div>
           </div>
 
         </div>
@@ -473,87 +293,59 @@ export default function AnimDaddyPage() {
               Advanced Studios & Modules
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base">
-              Curated into 5 dedicated craft studios. Real animation movement paired with clear curriculum hierarchy.
+              Curated into 5 dedicated craft studios with all 14 comprehensive professional modules.
             </p>
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-12">
             {curriculumTracks.map((track, idx) => {
               const TrackIcon = track.icon;
-              const isEven = idx % 2 === 0;
 
               return (
                 <div
                   key={track.id}
-                  className="bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-8 sm:p-12 shadow-xl overflow-hidden"
+                  className="bg-[#faf8f5] rounded-3xl border-2 border-stone-900 p-6 sm:p-10 shadow-lg overflow-hidden"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                    
-                    {/* Left/Right Text & Curriculum List */}
-                    <div className={`lg:col-span-7 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
-                      <div className="flex items-center gap-2 mb-2 text-xs font-mono font-bold text-blue-700 uppercase tracking-wider">
-                        <TrackIcon className="w-4 h-4 text-blue-600" />
-                        <span>Studio Track 0{idx + 1}</span>
-                      </div>
+                  <div className="flex items-center gap-2 mb-2 text-xs font-mono font-bold text-blue-700 uppercase tracking-wider">
+                    <TrackIcon className="w-4 h-4 text-blue-600" />
+                    <span>Studio Track 0{idx + 1}</span>
+                  </div>
 
-                      <h3 className="text-2xl sm:text-3xl font-black font-serif text-stone-900">
-                        {track.title}
-                      </h3>
-                      <p className="text-sm font-mono text-stone-600 mt-1">
-                        {track.tagline}
-                      </p>
+                  <h3 className="text-2xl sm:text-3xl font-black font-serif text-stone-900">
+                    {track.title}
+                  </h3>
+                  <p className="text-sm font-mono text-stone-600 mt-1">
+                    {track.tagline}
+                  </p>
 
-                      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {track.modules.map((mod) => (
-                          <div
-                            key={mod.num}
-                            className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs hover:border-stone-900 transition-colors flex flex-col justify-between"
-                          >
-                            <div>
-                              <div className="flex items-center justify-between mb-2">
-                                <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-mono text-xs font-bold flex items-center justify-center">
-                                  {mod.num}
-                                </span>
-                                <span className="text-[10px] font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-semibold">
-                                  {mod.tag}
-                                </span>
-                              </div>
-                              <h4 className="font-serif font-bold text-stone-900 text-base">
-                                {mod.title}
-                              </h4>
-                              <p className="text-xs text-stone-600 mt-1 leading-relaxed">
-                                {mod.description}
-                              </p>
-                            </div>
-
-                            {mod.media && (
-                              <ModuleMediaPreview media={mod.media} />
-                            )}
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {track.modules.map((mod) => (
+                      <div
+                        key={mod.num}
+                        className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs hover:border-stone-900 transition-colors flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-mono text-xs font-bold flex items-center justify-center">
+                              {mod.num}
+                            </span>
+                            <span className="text-[10px] font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-semibold">
+                              {mod.tag}
+                            </span>
                           </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Dedicated Motion Showcase */}
-                    <div className={`lg:col-span-5 ${isEven ? "lg:order-2" : "lg:order-1"} flex justify-center`}>
-                      <div className="w-full max-w-md bg-white rounded-2xl p-4 border border-stone-200 shadow-md">
-                        <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-3">
-                          <Image
-                            src={track.gifSrc}
-                            alt={track.gifAlt}
-                            fill
-                            unoptimized
-                            loading="lazy"
-                            className="object-contain p-2"
-                            sizes="(max-width: 768px) 100vw, 40vw"
-                          />
+                          <h4 className="font-serif font-bold text-stone-900 text-base">
+                            {mod.title}
+                          </h4>
+                          <p className="text-xs text-stone-600 mt-1 leading-relaxed">
+                            {mod.description}
+                          </p>
                         </div>
-                        <p className="mt-2.5 text-center text-xs font-mono text-stone-600">
-                          {track.caption}
-                        </p>
-                      </div>
-                    </div>
 
+                        {mod.media && (
+                          <ModuleMediaPreview media={mod.media} />
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
               );
