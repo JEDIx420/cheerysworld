@@ -32,13 +32,25 @@ External motion assets are downloaded into the local repository (no CDN hotlinki
 
 ### B. Curriculum Demonstration Animations (Pixabay Content License)
 
-The following external demonstration animations were selected by the client, downloaded locally, and integrated into the curriculum modules via `<ModuleMediaPreview />` with reduced-motion still previews and interactive play/pause controls:
+The following external demonstration animations were selected by the client, downloaded locally, and integrated into the curriculum modules via `<ModuleMediaPreview />` with clean plain container presentation:
 
 | Asset Filename | Source Page | Direct Download URL | License | Module & Demonstration Purpose |
 | :--- | :--- | :--- | :--- | :--- |
 | **`public/anim-daddy/module-01-wizard.gif`** (still: `module-01-wizard-still.png`) | [Pixabay Elder Wizard](https://pixabay.com/gifs/elder-wizard-meditation-fantasy-26145/) | `https://cdn.pixabay.com/animation/2026/03/03/12/18/12-18-34-510_512.gif` | Pixabay Content License | **Module 01: Founding Steps** • Client-selected elder wizard meditating inside a turquoise magic ring, illustrating pixel-art loop timing and effects. |
 | **`public/anim-daddy/module-02-hamster.gif`** (still: `module-02-hamster-still.png`) | [Pixabay Workout Hamster](https://pixabay.com/gifs/hamster-blue-workout-exercise-15197/) | `https://cdn.pixabay.com/animation/2024/10/08/14/59/14-59-28-221_512.gif` | Pixabay Content License | **Module 02: Basic Body Mechanics** • Blue cartoon hamster bench-pressing a barbell, demonstrating weight, anticipation, muscle exertion, and dynamic follow-through. |
 | **`public/anim-daddy/module-03-tut-dance.gif`** (still: `module-03-tut-dance-still.png`) | [Pixabay Dancing Figure](https://pixabay.com/gifs/dance-dancing-dancer-party-music-21964/) | `https://cdn.pixabay.com/animation/2025/08/11/04/05/04-05-10-511_512.gif` | Pixabay Content License | **Module 03: Basic Acting** • Glossy white 3D humanoid performing a rhythmic tut dance with raised palms and crossed legs, demonstrating pantomime and gestural performance against a dark studio stage. |
+
+### C. Lightweight Native GIFs (Rendered from MIT Lottie Sources)
+
+To eliminate browser load latency and avoid client-side JSON fetching / `lottie-web` overhead, vector motion cels were rendered to lightweight native GIF assets:
+
+| Asset Filename | Source Vector Origin | Dimensions / Weight | Role on Page |
+| :--- | :--- | :--- | :--- |
+| **`public/anim-daddy/hero-character-acting.gif`** | `airbnb/lottie-web` (`demo/adrock`) | 480 × 360, 163 KB | **Hero Reel** • Expressive character dialogue pantomime |
+| **`public/anim-daddy/level-a-cat-walk.gif`** | `airbnb/lottie-web` (`demo/gatin`) | 480 × 360, 125 KB | **Level A** • Locomotion & walk cycle mechanics |
+| **`public/anim-daddy/level-b-draw.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 50 KB | **Level B & Track 04** • Pencil test into inked line cleanup |
+| **`public/anim-daddy/level-c-morph.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 40 KB | **Level C & Track 03** • Volume morph & proportion conservation |
+| **`public/anim-daddy/level-d-caricature.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 146 KB | **Level D & Track 05** • Caricature wit & character expression |
 
 ---
 

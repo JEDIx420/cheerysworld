@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { FOUNDATION_LEVELS, ADVANCED_MODULES } from "@/data/animDaddyModules";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
-import { AnimDaddyHeroReel } from "@/components/anim-daddy/AnimDaddyHeroReel";
-import { LottieAnimationPlayer } from "@/components/anim-daddy/LottieAnimationPlayer";
 import { ModuleMediaPreview } from "@/components/anim-daddy/ModuleMediaPreview";
 import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
 import { BookOpen, GraduationCap, Video, Users, Sparkles, Film, Compass, Clapperboard, Palette, CheckCircle2 } from "lucide-react";
@@ -19,9 +18,9 @@ export default function AnimDaddyPage() {
       title: "Foundations & Body Mechanics",
       tagline: "Physics, Weight & Locomotion",
       icon: Film,
-      lottieSrc: "/anim-daddy/lottie-cat-walk.json",
-      lottieLabel: "STUDIO CEL • WALK CYCLE MECHANICS",
-      lottieCaption: "24 FPS contact, passing, and foot-fall breakdown",
+      gifSrc: "/anim-daddy/module-02-hamster.gif",
+      gifAlt: "Body Mechanics • Weight, anticipation & barbell bench press",
+      caption: "Body mechanics, weight & barbell workout",
       modules: ADVANCED_MODULES.filter((m) => [1, 2, 4, 7].includes(m.num)),
     },
     {
@@ -29,9 +28,9 @@ export default function AnimDaddyPage() {
       title: "Character Performance & Acting",
       tagline: "Emotional Staging & Dialogue Pacing",
       icon: Clapperboard,
-      lottieSrc: "/anim-daddy/lottie-character-acting.json",
-      lottieLabel: "STUDIO CEL • CHARACTER PERFORMANCE",
-      lottieCaption: "Anticipation, comedic timing, and expressive pantomime",
+      gifSrc: "/anim-daddy/module-03-tut-dance.gif",
+      gifAlt: "Character Acting • Rhythmic tutting dance performance",
+      caption: "Pantomime, rhythmic timing & character performance",
       modules: ADVANCED_MODULES.filter((m) => [3, 5].includes(m.num)),
     },
     {
@@ -39,9 +38,9 @@ export default function AnimDaddyPage() {
       title: "Visual Development & Storyboarding",
       tagline: "Cinematic Staging & Narrative Beats",
       icon: Compass,
-      lottieSrc: "/anim-daddy/lottie-shape-morph.json",
-      lottieLabel: "STUDIO CEL • METAMORPHOSIS & ARCS",
-      lottieCaption: "Elastic shape-flow, dynamic transitions, and spatial staging",
+      gifSrc: "/anim-daddy/level-c-morph.gif",
+      gifAlt: "Visual Development & Metamorphosis",
+      caption: "Elastic shape-flow, dynamic transitions & arcs",
       modules: ADVANCED_MODULES.filter((m) => [6, 8, 9].includes(m.num)),
     },
     {
@@ -49,9 +48,9 @@ export default function AnimDaddyPage() {
       title: "Digital 2D Production & Design",
       tagline: "Hand-Drawn Inbetweening to Final Pipeline",
       icon: Palette,
-      lottieSrc: "/anim-daddy/lottie-draw-on.json",
-      lottieLabel: "STUDIO CEL • DIGITAL CLEANUP LINE",
-      lottieCaption: "Pencil test line resolution into inked vector cel",
+      gifSrc: "/anim-daddy/level-b-draw.gif",
+      gifAlt: "Digital Cleanup Line & Inking",
+      caption: "Pencil test line resolution into inked vector art",
       modules: ADVANCED_MODULES.filter((m) => [10, 11, 13, 14].includes(m.num)),
     },
     {
@@ -59,9 +58,9 @@ export default function AnimDaddyPage() {
       title: "The Art of Caricature Masterclass",
       tagline: "Signature Funny-Bone Mentorship with Cheery",
       icon: Sparkles,
-      lottieSrc: "/anim-daddy/lottie-character.json",
-      lottieLabel: "STUDIO CEL • EXAGGERATION & PERSONALITY",
-      lottieCaption: "Extracting comedic gold, living expressions, and iconic silhouettes",
+      gifSrc: "/anim-daddy/level-d-caricature.gif",
+      gifAlt: "Caricature Exaggeration & Likeness",
+      caption: "Extracting comedic gold, living expressions & personality",
       modules: ADVANCED_MODULES.filter((m) => [12].includes(m.num)),
     },
   ];
@@ -137,8 +136,25 @@ export default function AnimDaddyPage() {
             </div>
 
             {/* Right Hero: Character-Driven Animator Reel */}
-            <div className="lg:col-span-6">
-              <AnimDaddyHeroReel />
+            <div className="lg:col-span-6 flex justify-center">
+              <div className="relative w-full max-w-lg bg-white rounded-3xl p-5 sm:p-6 border-2 border-stone-800 shadow-xl rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-4">
+                  <Image
+                    src="/anim-daddy/hero-character-acting.gif"
+                    alt="Character Animation Acting & Performance demonstration"
+                    fill
+                    priority
+                    unoptimized
+                    className="object-contain p-2"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="mt-3 text-center">
+                  <span className="text-xs font-mono font-medium text-stone-600">
+                    Character Acting &amp; Dialogue Pantomime • 24 FPS
+                  </span>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -239,16 +255,23 @@ export default function AnimDaddyPage() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-6">
-                  <LottieAnimationPlayer
-                    src="/anim-daddy/lottie-cat-walk.json"
-                    autoplay={true}
-                    loop={true}
-                    label="LEVEL A • LOCOMOTION PRINCIPLE CEL"
-                    caption="24 FPS contact, passing, and foot-fall breakdown"
-                    aspectRatio="aspect-[4/3]"
-                    className="w-full shadow-md"
-                  />
+                <div className="lg:col-span-6 flex justify-center">
+                  <div className="relative w-full max-w-md bg-white rounded-2xl p-4 border border-stone-200 shadow-md">
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-3">
+                      <Image
+                        src="/anim-daddy/level-a-cat-walk.gif"
+                        alt="Walk Cycle & Locomotion Mechanics"
+                        fill
+                        unoptimized
+                        loading="lazy"
+                        className="object-contain p-2"
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                      />
+                    </div>
+                    <p className="mt-2 text-center text-xs font-mono text-stone-600">
+                      Level A • Locomotion &amp; Walk Cycle Mechanics
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
@@ -283,16 +306,23 @@ export default function AnimDaddyPage() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-6">
-                  <LottieAnimationPlayer
-                    src="/anim-daddy/lottie-draw-on.json"
-                    autoplay={true}
-                    loop={true}
-                    label="LEVEL B • PENCIL TEST TO INKED LINE"
-                    caption="Clean-up stroke resolution from raw pencil lines"
-                    aspectRatio="aspect-[4/3]"
-                    className="w-full shadow-md"
-                  />
+                <div className="lg:col-span-6 flex justify-center">
+                  <div className="relative w-full max-w-md bg-white rounded-2xl p-4 border border-stone-200 shadow-md">
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-3">
+                      <Image
+                        src="/anim-daddy/level-b-draw.gif"
+                        alt="Pencil Test to Clean Inked Line"
+                        fill
+                        unoptimized
+                        loading="lazy"
+                        className="object-contain p-2"
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                      />
+                    </div>
+                    <p className="mt-2 text-center text-xs font-mono text-stone-600">
+                      Level B • Pencil Test to Inked Line
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
@@ -337,24 +367,38 @@ export default function AnimDaddyPage() {
                   </div>
 
                   <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <LottieAnimationPlayer
-                      src="/anim-daddy/lottie-shape-morph.json"
-                      autoplay={true}
-                      loop={true}
-                      label="VOLUME MORPH & PROPORTION"
-                      caption="Dynamic anatomy & volume conservation"
-                      aspectRatio="aspect-[4/3]"
-                      className="shadow-sm"
-                    />
-                    <LottieAnimationPlayer
-                      src="/anim-daddy/lottie-character-acting.json"
-                      autoplay={true}
-                      loop={true}
-                      label="EXPRESSION & ACTING CEL"
-                      caption="Rigged character personality in motion"
-                      aspectRatio="aspect-[4/3]"
-                      className="shadow-sm"
-                    />
+                    <div className="bg-white rounded-2xl p-3 border border-stone-200 shadow-sm">
+                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-2">
+                        <Image
+                          src="/anim-daddy/level-c-morph.gif"
+                          alt="Volume Morph & Dynamic Anatomy"
+                          fill
+                          unoptimized
+                          loading="lazy"
+                          className="object-contain p-2"
+                          sizes="(max-width: 768px) 100vw, 25vw"
+                        />
+                      </div>
+                      <p className="mt-2 text-center text-xs font-mono text-stone-600">
+                        Volume Morph &amp; Proportion
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-2xl p-3 border border-stone-200 shadow-sm">
+                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-2">
+                        <Image
+                          src="/anim-daddy/hero-character-acting.gif"
+                          alt="Expression & Acting Cel"
+                          fill
+                          unoptimized
+                          loading="lazy"
+                          className="object-contain p-2"
+                          sizes="(max-width: 768px) 100vw, 25vw"
+                        />
+                      </div>
+                      <p className="mt-2 text-center text-xs font-mono text-stone-600">
+                        Expression &amp; Acting
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -392,16 +436,23 @@ export default function AnimDaddyPage() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-6">
-                  <LottieAnimationPlayer
-                    src="/anim-daddy/lottie-character.json"
-                    autoplay={true}
-                    loop={true}
-                    label="LEVEL D • CARICATURE WIT & EXPRESSION"
-                    caption="Pushed silhouette with instant comic recognition"
-                    aspectRatio="aspect-[4/3]"
-                    className="w-full shadow-md"
-                  />
+                <div className="lg:col-span-6 flex justify-center">
+                  <div className="relative w-full max-w-md bg-white rounded-2xl p-4 border border-stone-200 shadow-md">
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-3">
+                      <Image
+                        src="/anim-daddy/level-d-caricature.gif"
+                        alt="Caricature Wit & Expression"
+                        fill
+                        unoptimized
+                        loading="lazy"
+                        className="object-contain p-2"
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                      />
+                    </div>
+                    <p className="mt-2 text-center text-xs font-mono text-stone-600">
+                      Level D • Caricature Wit &amp; Expression
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
@@ -476,24 +527,31 @@ export default function AnimDaddyPage() {
                             </div>
 
                             {mod.media && (
-                              <ModuleMediaPreview media={mod.media} moduleNum={mod.num} />
+                              <ModuleMediaPreview media={mod.media} />
                             )}
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* Dedicated Motion Showcase Cel */}
-                    <div className={`lg:col-span-5 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
-                      <LottieAnimationPlayer
-                        src={track.lottieSrc}
-                        autoplay={true}
-                        loop={true}
-                        label={track.lottieLabel}
-                        caption={track.lottieCaption}
-                        showControls={true}
-                        className="shadow-md"
-                      />
+                    {/* Dedicated Motion Showcase */}
+                    <div className={`lg:col-span-5 ${isEven ? "lg:order-2" : "lg:order-1"} flex justify-center`}>
+                      <div className="w-full max-w-md bg-white rounded-2xl p-4 border border-stone-200 shadow-md">
+                        <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center p-3">
+                          <Image
+                            src={track.gifSrc}
+                            alt={track.gifAlt}
+                            fill
+                            unoptimized
+                            loading="lazy"
+                            className="object-contain p-2"
+                            sizes="(max-width: 768px) 100vw, 40vw"
+                          />
+                        </div>
+                        <p className="mt-2.5 text-center text-xs font-mono text-stone-600">
+                          {track.caption}
+                        </p>
+                      </div>
                     </div>
 
                   </div>
