@@ -46,11 +46,18 @@ To eliminate browser load latency and avoid client-side JSON fetching / `lottie-
 
 | Asset Filename | Source Vector Origin | Dimensions / Weight | Role on Page |
 | :--- | :--- | :--- | :--- |
-| **`public/anim-daddy/hero-character-acting.gif`** | `airbnb/lottie-web` (`demo/adrock`) | 480 × 360, 163 KB | **Hero Reel** • Expressive character dialogue pantomime |
-| **`public/anim-daddy/level-a-cat-walk.gif`** | `airbnb/lottie-web` (`demo/gatin`) | 480 × 360, 125 KB | **Level A** • Locomotion & walk cycle mechanics |
-| **`public/anim-daddy/level-b-draw.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 50 KB | **Level B & Track 04** • Pencil test into inked line cleanup |
-| **`public/anim-daddy/level-c-morph.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 40 KB | **Level C & Track 03** • Volume morph & proportion conservation |
-| **`public/anim-daddy/level-d-caricature.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 146 KB | **Level D & Track 05** • Caricature wit & character expression |
+| **`public/anim-daddy/hero-character-acting.gif`** | `airbnb/lottie-web` (`demo/adrock`) | 480 × 360, 163 KB | **Hero Reel & Module 06** • Expressive character dialogue pantomime |
+| **`public/anim-daddy/level-a-cat-walk.gif`** | `airbnb/lottie-web` (`demo/gatin`) | 480 × 360, 125 KB | **Level A & Module 11** • Locomotion & walk cycle mechanics |
+| **`public/anim-daddy/level-b-draw.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 50 KB | **Level B & Module 10** • Pencil test into inked line cleanup |
+| **`public/anim-daddy/level-c-morph.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 40 KB | **Level C & Module 08** • Volume morph & proportion conservation |
+| **`public/anim-daddy/level-d-caricature.gif`** | `obeskay/lottie-animator-skill` | 480 × 360, 146 KB | **Level D & Module 14** • Caricature wit & character expression |
+| **`public/anim-daddy/module-rocket-launch.gif`** | `obeskay/lottie-animator-skill` | 400 × 400, 78 KB | **Module 03** • Dynamic action, acceleration, and extreme physics |
+| **`public/anim-daddy/module-creature-horse.gif`** | Wikimedia Commons (Eadweard Muybridge) | 650 × 239, 373 KB | **Module 04** • Quadruped locomotion and creature mechanics (Public Domain) |
+| **`public/anim-daddy/module-creature-bird.gif`** | Wikimedia Commons | 419 × 314, 481 KB | **Module 07** • Atmospheric environmental depth and flight arcs (Public Domain) |
+| **`public/anim-daddy/module-card-stack.gif`** | `obeskay/lottie-animator-skill` | 400 × 400, 41 KB | **Module 09** • Storyboard camera staging and sequential beat progression |
+| **`public/anim-daddy/module-paper-plane.gif`** | `obeskay/lottie-animator-skill` | 400 × 400, 37 KB | Pre-production flight arcs and design concepts |
+| **`public/anim-daddy/module-equalizer.gif`** | `obeskay/lottie-animator-skill` | 400 × 400, 72 KB | **Module 12** • Graphic design visual balance, rhythm & grid hierarchy |
+| **`public/anim-daddy/module-confetti-burst.gif`** | `obeskay/lottie-animator-skill` | 400 × 400, 48 KB | **Module 13** • Commercial art color explosion and brand assets |
 
 ---
 

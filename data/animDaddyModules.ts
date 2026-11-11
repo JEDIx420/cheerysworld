@@ -135,6 +135,7 @@ export const FOUNDATION_LEVELS: FoundationLevel[] = [
 ];
 
 export const ADVANCED_MODULES: AdvancedModule[] = [
+  // --- Studio Track 01: Foundations & Body Mechanics (Cards 01 - 04) ---
   {
     num: 1,
     title: "Founding Steps",
@@ -163,7 +164,7 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
       src: "/anim-daddy/module-02-hamster.gif",
       stillSrc: "/anim-daddy/module-02-hamster-still.png",
       alt: "Blue cartoon hamster bench-pressing a barbell with dynamic lifting mechanics",
-      caption: "Body Mechanics • Weight, anticipation & barbell bench press",
+      caption: "Body Mechanics • Weight, anticipation & barbell workout",
       width: 512,
       height: 369,
       aspectRatio: "aspect-[512/369]",
@@ -171,6 +172,40 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
   },
   {
     num: 3,
+    title: "Advanced Body Mechanics",
+    description: "Extreme expression: parkour, dynamic fight sequences, acrobatics, and dance rhythm.",
+    tag: "Action & Acrobatics",
+    principleType: "dynamic-action",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-rocket-launch.gif",
+      alt: "Dynamic Action • Rocket launch acceleration and extreme thrust",
+      caption: "Dynamic Action • Extreme acceleration, thrust & velocity",
+      width: 400,
+      height: 400,
+      aspectRatio: "aspect-square",
+    },
+  },
+  {
+    num: 4,
+    title: "Creature Animation & Basics of VFX",
+    description: "Master quadruped mechanics, predatory motion, wings, tails, and integrated visual effects.",
+    tag: "Creatures & VFX",
+    principleType: "creature-vfx",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-creature-horse.gif",
+      alt: "Quadruped Locomotion • Eadweard Muybridge galloping horse mechanics",
+      caption: "Quadruped Motion • Muybridge galloping horse mechanics",
+      width: 650,
+      height: 239,
+      aspectRatio: "aspect-[650/239]",
+    },
+  },
+
+  // --- Studio Track 02: Character Performance & Acting (Cards 05 - 06) ---
+  {
+    num: 5,
     title: "Basic Acting",
     description: "Transfer acting, mime and pantomime skills to rigged puppets and infuse life into bones.",
     tag: "Performance",
@@ -187,32 +222,38 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
     },
   },
   {
-    num: 4,
-    title: "Advanced Body Mechanics",
-    description: "Extreme expression: parkour, dynamic fight sequences, acrobatics, and dance rhythm.",
-    tag: "Action",
-    principleType: "dynamic-action",
-  },
-  {
-    num: 5,
+    num: 6,
     title: "Advanced Acting",
     description: "Multi-character interaction, dialogue timing, micro-expressions, and subtle nuances.",
     tag: "Drama & Timing",
     principleType: "acting-nuance",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/hero-character-acting.gif",
+      alt: "Character Performance • Dialogue pantomime, staging & eye darts",
+      caption: "Character Acting • Dialogue pantomime, staging & eye darts",
+      width: 480,
+      height: 480,
+      aspectRatio: "aspect-square",
+    },
   },
+
+  // --- Studio Track 03: Visual Development & Storyboarding (Cards 07 - 09) ---
   {
-    num: 6,
+    num: 7,
     title: "Environmental Art for Animation",
     description: "Perspective, lighting, background layout, and atmospheric composition for world-building.",
     tag: "Environments",
     principleType: "environment-layout",
-  },
-  {
-    num: 7,
-    title: "Creature Animation & Basics of VFX",
-    description: "Master quadruped mechanics, predatory motion, wings, tails, and integrated visual effects.",
-    tag: "Creatures & VFX",
-    principleType: "creature-vfx",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-creature-bird.gif",
+      alt: "Atmospheric Staging • Soaring bird in flight demonstrating environmental depth",
+      caption: "Environmental Staging • Depth, flight arcs & atmosphere",
+      width: 419,
+      height: 314,
+      aspectRatio: "aspect-[4/3]",
+    },
   },
   {
     num: 8,
@@ -220,6 +261,15 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
     description: "From written prompt to visual bible: costume sheets, color keys, and character model sheets.",
     tag: "Pre-Production",
     principleType: "concept-preprod",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/level-c-morph.gif",
+      alt: "Visual Development • Shape morphing & character model exploration",
+      caption: "Visual Development • Shape morphing & model exploration",
+      width: 400,
+      height: 400,
+      aspectRatio: "aspect-square",
+    },
   },
   {
     num: 9,
@@ -227,13 +277,33 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
     description: "Camera staging, aspect ratios, shot progression, beat economy, and narrative pacing.",
     tag: "Storyboarding",
     principleType: "storyboarding",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-card-stack.gif",
+      alt: "Storyboard Flow • Sequential card stack beat progression",
+      caption: "Storyboard Flow • Sequential frame progression & beat timing",
+      width: 400,
+      height: 400,
+      aspectRatio: "aspect-square",
+    },
   },
+
+  // --- Studio Track 04: Digital 2D Production & Design (Cards 10 - 13) ---
   {
     num: 10,
     title: "2D Digital Animation — Basics",
     description: "Keyframing, inbetweening, digital timeline navigation, and cleanup workflow.",
     tag: "2D Digital",
     principleType: "2d-digital-basics",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/level-b-draw.gif",
+      alt: "Digital Inking • Pencil test line resolution into inked vector cel",
+      caption: "Digital Inking • Pencil test line resolution into vector ink",
+      width: 400,
+      height: 400,
+      aspectRatio: "aspect-square",
+    },
   },
   {
     num: 11,
@@ -241,26 +311,64 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
     description: "Full scene production, complex physics, lip-sync integration, and export mastering.",
     tag: "2D Mastery",
     principleType: "2d-digital-advanced",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/level-a-cat-walk.gif",
+      alt: "Digital Production • 24 FPS inbetweened locomotion cycle",
+      caption: "Digital Production • 24 FPS inbetweened vector cycle",
+      width: 480,
+      height: 360,
+      aspectRatio: "aspect-[4/3]",
+    },
   },
   {
     num: 12,
-    title: "The Art of Caricature",
-    description: "Get the secrets of adding a funny-bone to your art with Cheery himself.",
-    tag: "Signature Masterclass",
-    principleType: "caricature-art",
-  },
-  {
-    num: 13,
     title: "Graphic Designing — Basic",
     description: "Infuse life into typography, visual balance, color theory, and layout hierarchy.",
     tag: "Design",
     principleType: "graphic-design-basic",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-equalizer.gif",
+      alt: "Visual Balance • Rhythm, color values & grid hierarchy",
+      caption: "Visual Balance • Rhythm, color values & grid hierarchy",
+      width: 400,
+      height: 400,
+      aspectRatio: "aspect-square",
+    },
   },
   {
-    num: 14,
+    num: 13,
     title: "Graphic Designing — Advanced",
     description: "Melting pot of colors, editorial alignment, and commercial brand collateral.",
     tag: "Advanced Design",
     principleType: "graphic-design-advanced",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-confetti-burst.gif",
+      alt: "Commercial Art • Brand collateral & vibrant color explosion",
+      caption: "Commercial Art • Brand collateral & vibrant color explosion",
+      width: 400,
+      height: 400,
+      aspectRatio: "aspect-square",
+    },
+  },
+
+  // --- Studio Track 05: The Art of Caricature Masterclass (Card 14) ---
+  {
+    num: 14,
+    title: "The Art of Caricature",
+    description: "Get the secrets of adding a funny-bone to your art with Cheery himself.",
+    tag: "Signature Masterclass",
+    principleType: "caricature-art",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/level-d-caricature.gif",
+      alt: "Caricature Masterclass • Comic exaggeration & expressive wit",
+      caption: "Caricature Masterclass • Comic exaggeration & expressive wit",
+      width: 400,
+      height: 400,
+      aspectRatio: "aspect-square",
+    },
   },
 ];

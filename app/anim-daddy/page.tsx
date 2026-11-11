@@ -18,35 +18,40 @@ export default function AnimDaddyPage() {
       title: "Foundations & Body Mechanics",
       tagline: "Physics, Weight & Locomotion",
       icon: Film,
-      modules: ADVANCED_MODULES.filter((m) => [1, 2, 4, 7].includes(m.num)),
+      gridCols: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+      modules: ADVANCED_MODULES.filter((m) => [1, 2, 3, 4].includes(m.num)),
     },
     {
       id: "track-acting",
       title: "Character Performance & Acting",
       tagline: "Emotional Staging & Dialogue Pacing",
       icon: Clapperboard,
-      modules: ADVANCED_MODULES.filter((m) => [3, 5].includes(m.num)),
+      gridCols: "grid-cols-1 sm:grid-cols-2 max-w-3xl",
+      modules: ADVANCED_MODULES.filter((m) => [5, 6].includes(m.num)),
     },
     {
       id: "track-storyboard",
       title: "Visual Development & Storyboarding",
       tagline: "Cinematic Staging & Narrative Beats",
       icon: Compass,
-      modules: ADVANCED_MODULES.filter((m) => [6, 8, 9].includes(m.num)),
+      gridCols: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+      modules: ADVANCED_MODULES.filter((m) => [7, 8, 9].includes(m.num)),
     },
     {
       id: "track-digital",
       title: "Digital 2D Production & Design",
       tagline: "Hand-Drawn Inbetweening to Final Pipeline",
       icon: Palette,
-      modules: ADVANCED_MODULES.filter((m) => [10, 11, 13, 14].includes(m.num)),
+      gridCols: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+      modules: ADVANCED_MODULES.filter((m) => [10, 11, 12, 13].includes(m.num)),
     },
     {
       id: "track-caricature",
       title: "The Art of Caricature Masterclass",
       tagline: "Signature Funny-Bone Mentorship with Cheery",
       icon: Sparkles,
-      modules: ADVANCED_MODULES.filter((m) => [12].includes(m.num)),
+      gridCols: "grid-cols-1 max-w-md",
+      modules: ADVANCED_MODULES.filter((m) => [14].includes(m.num)),
     },
   ];
 
@@ -318,7 +323,7 @@ export default function AnimDaddyPage() {
                     {track.tagline}
                   </p>
 
-                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className={`mt-6 grid ${track.gridCols || "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"} gap-4`}>
                     {track.modules.map((mod) => (
                       <div
                         key={mod.num}
@@ -326,9 +331,14 @@ export default function AnimDaddyPage() {
                       >
                         <div>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-mono text-xs font-bold flex items-center justify-center">
-                              {mod.num}
-                            </span>
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-mono text-xs font-bold flex items-center justify-center">
+                                {mod.num < 10 ? `0${mod.num}` : mod.num}
+                              </span>
+                              <span className="text-[11px] font-mono text-stone-500 font-semibold">
+                                Card {mod.num < 10 ? `0${mod.num}` : mod.num}
+                              </span>
+                            </div>
                             <span className="text-[10px] font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-semibold">
                               {mod.tag}
                             </span>
