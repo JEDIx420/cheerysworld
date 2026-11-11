@@ -19,7 +19,7 @@ export function CreativeCultureSection() {
         {/* Big memorable typographic words */}
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black font-serif tracking-tight leading-[0.95] text-white">
-            CREATE.<br />
+            CARICATURE.<br />
             PAINT.<br />
             TEACH.<br />
             PERSONALISE.

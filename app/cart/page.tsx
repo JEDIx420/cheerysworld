@@ -50,7 +50,7 @@ export default function CartPage() {
           </h2>
 
           <p className="text-stone-600 text-sm max-w-md mx-auto mt-2 mb-8">
-            Explore Cheery&apos;s caricatures, custom apparel lookbook, or baking inquiries to assemble your order.
+            Explore Cheery&apos;s caricatures, original artwork, custom apparel lookbook, or mentoring tracks to assemble your inquiry.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">

@@ -5,6 +5,7 @@ import { FOUNDATION_LEVELS, ADVANCED_MODULES } from "@/data/animDaddyModules";
 import { ScribbleUnderline, SparkleDoodle } from "@/components/doodles/DoodleIcons";
 import { AnimDaddyHeroReel } from "@/components/anim-daddy/AnimDaddyHeroReel";
 import { LottieAnimationPlayer } from "@/components/anim-daddy/LottieAnimationPlayer";
+import { ModuleMediaPreview } from "@/components/anim-daddy/ModuleMediaPreview";
 import { VentureInquiryForm } from "@/components/forms/VentureInquiryForm";
 import { BookOpen, GraduationCap, Video, Users, Sparkles, Film, Compass, Clapperboard, Palette, CheckCircle2 } from "lucide-react";
 
@@ -455,22 +456,28 @@ export default function AnimDaddyPage() {
                         {track.modules.map((mod) => (
                           <div
                             key={mod.num}
-                            className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs hover:border-stone-900 transition-colors"
+                            className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs hover:border-stone-900 transition-colors flex flex-col justify-between"
                           >
-                            <div className="flex items-center justify-between mb-2">
-                              <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-mono text-xs font-bold flex items-center justify-center">
-                                {mod.num}
-                              </span>
-                              <span className="text-[10px] font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-semibold">
-                                {mod.tag}
-                              </span>
+                            <div>
+                              <div className="flex items-center justify-between mb-2">
+                                <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-mono text-xs font-bold flex items-center justify-center">
+                                  {mod.num}
+                                </span>
+                                <span className="text-[10px] font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-semibold">
+                                  {mod.tag}
+                                </span>
+                              </div>
+                              <h4 className="font-serif font-bold text-stone-900 text-base">
+                                {mod.title}
+                              </h4>
+                              <p className="text-xs text-stone-600 mt-1 leading-relaxed">
+                                {mod.description}
+                              </p>
                             </div>
-                            <h4 className="font-serif font-bold text-stone-900 text-base">
-                              {mod.title}
-                            </h4>
-                            <p className="text-xs text-stone-600 mt-1 leading-relaxed">
-                              {mod.description}
-                            </p>
+
+                            {mod.media && (
+                              <ModuleMediaPreview media={mod.media} moduleNum={mod.num} />
+                            )}
                           </div>
                         ))}
                       </div>

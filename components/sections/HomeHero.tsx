@@ -13,7 +13,7 @@ export function HomeHero() {
   const underlineRef = useRef<SVGSVGElement>(null);
 
   const pillars = [
-    { word: "CREATE.", desc: "cheery_fic", color: "text-amber-900 bg-amber-50/80 border-amber-200" },
+    { word: "CARICATURE.", desc: "cheery_fic", color: "text-amber-900 bg-amber-50/80 border-amber-200" },
     { word: "PAINT.", desc: "cheerys_art", color: "text-purple-900 bg-purple-50/80 border-purple-200" },
     { word: "TEACH.", desc: "anim_daddy", color: "text-blue-900 bg-blue-50/80 border-blue-200" },
     { word: "PERSONALISE.", desc: "cheerys_tees", color: "text-orange-950 bg-orange-50/80 border-orange-200" },
@@ -175,7 +175,7 @@ export function HomeHero() {
                   key={pillar.word}
                   className={`hero-pillar p-2.5 rounded-xl border text-center transition-transform hover:-translate-y-1 shadow-xs ${pillar.color}`}
                 >
-                  <span className="block text-[11px] font-black font-mono tracking-wider">
+                  <span className="block text-[10px] sm:text-[11px] font-black font-mono tracking-tight sm:tracking-wider truncate">
                     {pillar.word}
                   </span>
                   <span className="block text-[10px] text-stone-600 font-sans mt-0.5">

@@ -57,7 +57,7 @@ export function Footer() {
             </div>
 
             <div className="mt-8 text-xs font-mono text-stone-500">
-              CREATE • PAINT • TEACH • PERSONALISE
+              CARICATURE • PAINT • TEACH • PERSONALISE
             </div>
           </div>
 

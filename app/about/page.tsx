@@ -81,6 +81,7 @@ export default function AboutPage() {
       title: "Animator at DreamWorks",
       context: "Worked with Cheery for ~4 years at Toonz",
       avatar: "/testimonials/nideep-varghese.jpg",
+      avatarClass: "object-cover object-center scale-[1.03]",
       quote:
         "I have worked with Cheery for around 4 years at Toonz. He was a really passionate and talented artist. He was also very pro-active. He did whatever job he was assigned, with great responsibility and dedication. I would definitely recommend Cheery to be part of any artistic company. He would be a great asset to any team.",
     },
@@ -219,7 +220,7 @@ export default function AboutPage() {
             Creative Spirit
           </span>
           <h2 className="text-3xl sm:text-4xl font-black font-serif text-stone-900 mb-6">
-            CREATE • PAINT • TEACH • PERSONALISE
+            CARICATURE • PAINT • TEACH • PERSONALISE
           </h2>
           <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
             Every piece created under CHEERYS begins with the human touch. From the pencil strokes of a live caricature to the vivid acrylic layers of a fine art canvas, the timing curves of character animation, and the customized fabric of everyday apparel, our work puts personal connection and craftsmanship first.
@@ -260,7 +261,7 @@ export default function AboutPage() {
                         alt={`${rec.name} portrait`}
                         fill
                         sizes="48px"
-                        className="object-cover"
+                        className={rec.avatarClass || "object-cover"}
                       />
                     </div>
 

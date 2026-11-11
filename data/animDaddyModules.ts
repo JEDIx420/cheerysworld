@@ -10,6 +10,17 @@ export interface FoundationLevel {
     | "caricature-art";
 }
 
+export interface ModuleMedia {
+  type: "gif" | "lottie";
+  src: string;
+  stillSrc?: string;
+  alt: string;
+  caption?: string;
+  width: number;
+  height: number;
+  aspectRatio?: string;
+}
+
 export interface AdvancedModule {
   num: number;
   title: string;
@@ -30,6 +41,7 @@ export interface AdvancedModule {
     | "caricature-art"
     | "graphic-design-basic"
     | "graphic-design-advanced";
+  media?: ModuleMedia;
 }
 
 export const FOUNDATION_LEVELS: FoundationLevel[] = [
@@ -74,6 +86,16 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
     description: "Tackle inanimate characters with weight, squash, stretch, and pacing.",
     tag: "Core Physics",
     principleType: "squash-stretch",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-01-wizard.gif",
+      stillSrc: "/anim-daddy/module-01-wizard-still.png",
+      alt: "Pixel-art elder wizard meditating inside a glowing turquoise magic ring",
+      caption: "Pixel Animation • Meditation ring timing loop",
+      width: 512,
+      height: 512,
+      aspectRatio: "aspect-square",
+    },
   },
   {
     num: 2,
@@ -81,6 +103,16 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
     description: "Understand the laws of physics as you delve into what leads and what follows in motion.",
     tag: "Mechanics",
     principleType: "body-mechanics",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-02-hamster.gif",
+      stillSrc: "/anim-daddy/module-02-hamster-still.png",
+      alt: "Blue cartoon hamster bench-pressing a barbell with dynamic lifting mechanics",
+      caption: "Body Mechanics • Weight, anticipation & barbell bench press",
+      width: 512,
+      height: 369,
+      aspectRatio: "aspect-[512/369]",
+    },
   },
   {
     num: 3,
@@ -88,6 +120,16 @@ export const ADVANCED_MODULES: AdvancedModule[] = [
     description: "Transfer acting, mime and pantomime skills to rigged puppets and infuse life into bones.",
     tag: "Performance",
     principleType: "acting-pantomime",
+    media: {
+      type: "gif",
+      src: "/anim-daddy/module-03-tut-dance.gif",
+      stillSrc: "/anim-daddy/module-03-tut-dance-still.png",
+      alt: "Glossy white 3D humanoid character performing a tut dance with raised palms",
+      caption: "Pantomime & Acting • Rhythmic tutting dance performance",
+      width: 512,
+      height: 288,
+      aspectRatio: "aspect-[16/9]",
+    },
   },
   {
     num: 4,

@@ -18,7 +18,9 @@ This document records the references, engineering patterns, libraries, and exter
 
 ## 2. Vendored Open-Source Motion Assets (AnimDaddy Motion Cels)
 
-All external motion assets are permissively licensed (MIT), downloaded directly into the local repository (no CDN hotlinking), and rendered on demand using `LottieAnimationPlayer`:
+All external motion assets are permissively licensed, downloaded directly into the local repository (no CDN hotlinking), and rendered on demand using `LottieAnimationPlayer` or `ModuleMediaPreview`:
+
+### A. Vector Lottie Cels (MIT License)
 
 | Asset Filename | Source Repository | Source Path in Repo | License | Modifications Made |
 | :--- | :--- | :--- | :--- | :--- |
@@ -27,6 +29,16 @@ All external motion assets are permissively licensed (MIT), downloaded directly 
 | **`public/anim-daddy/lottie-shape-morph.json`** | [`obeskay/lottie-animator-skill`](https://github.com/obeskay/lottie-animator-skill) | `examples/shape-morph.json` | MIT License | Smooth vector elastic metamorphosis illustrating Disney arcs and volume preservation in Visual Development Track. |
 | **`public/anim-daddy/lottie-draw-on.json`** | [`obeskay/lottie-animator-skill`](https://github.com/obeskay/lottie-animator-skill) | `examples/logo-draw-on.json` | MIT License | Clean vector drawing stroke resolution demonstrating pencil test cleanup in Digital 2D Production Track. |
 | **`public/anim-daddy/lottie-character.json`** | [`obeskay/lottie-animator-skill`](https://github.com/obeskay/lottie-animator-skill) | `examples/panda-loader.json` | MIT License | Expressive facial blinking and exaggeration mechanics for the Caricature Masterclass. |
+
+### B. Curriculum Demonstration Animations (Pixabay Content License)
+
+The following external demonstration animations were selected by the client, downloaded locally, and integrated into the curriculum modules via `<ModuleMediaPreview />` with reduced-motion still previews and interactive play/pause controls:
+
+| Asset Filename | Source Page | Direct Download URL | License | Module & Demonstration Purpose |
+| :--- | :--- | :--- | :--- | :--- |
+| **`public/anim-daddy/module-01-wizard.gif`** (still: `module-01-wizard-still.png`) | [Pixabay Elder Wizard](https://pixabay.com/gifs/elder-wizard-meditation-fantasy-26145/) | `https://cdn.pixabay.com/animation/2026/03/03/12/18/12-18-34-510_512.gif` | Pixabay Content License | **Module 01: Founding Steps** • Pixel-art elder wizard meditating inside a glowing turquoise magic ring, demonstrating loop timing and inanimate character presence. |
+| **`public/anim-daddy/module-02-hamster.gif`** (still: `module-02-hamster-still.png`) | [Pixabay Workout Hamster](https://pixabay.com/gifs/hamster-blue-workout-exercise-15197/) | `https://cdn.pixabay.com/animation/2024/10/08/14/59/14-59-28-221_512.gif` | Pixabay Content License | **Module 02: Basic Body Mechanics** • Blue cartoon hamster bench-pressing a barbell, demonstrating weight, anticipation, muscle exertion, and dynamic follow-through. |
+| **`public/anim-daddy/module-03-tut-dance.gif`** (still: `module-03-tut-dance-still.png`) | [Pixabay Dancing Figure](https://pixabay.com/gifs/dance-dancing-dancer-party-music-21964/) | `https://cdn.pixabay.com/animation/2025/08/11/04/05/04-05-10-511_512.gif` | Pixabay Content License | **Module 03: Basic Acting** • Glossy white 3D humanoid performing a rhythmic tut dance with raised palms and crossed legs, demonstrating pantomime and gestural performance against a dark studio stage. |
 
 ---
 
@@ -50,9 +62,7 @@ All artwork displayed across the website belongs to Cheery's original portfolio:
 - **`public/1.jpeg` – `public/8.jpeg`**: Authentic studio photographs of Cheery powering the stop-motion `<CheeryFlipbook />`.
 - **`public/brand/`**: Cheery's genuine signature and self-portrait drawing.
 - **`public/WhatsApp Image 2026-09-21 at 10.13.23 PM (1).jpeg`**: Authentic photographic portrait of Cheery featured on `/about`.
-- **`public/WhatsApp Image 2026-09-09 at 11.59.28 PM.jpeg`**: Historic *Technopark's Cheery Baker* feature article clipping in `/cheerys-bakes`.
 - **`public/cheery-fic/`**: Authentic caricatures (SRK Rockstar, Studio Duo, Couple Anniversary, Sunny Boy, Distinguished Gentleman, Irene & Philip, Transformation Comparison).
 - **`public/cheerys-tees/`**: Living Water, Lion of Judah, Fearfully & Wonderfully Made typography, Hypernikomen, Soul Well.
-- **`public/cheerys-bakes/`**: Mindful kitchen crops and artisan sourdough, braided twist, and savory platter photography.
 
 No fake stock photography or AI-generated portfolio artworks were used.
