@@ -36,7 +36,7 @@ export interface VentureFormConfig {
 export const INQUIRY_FORMS: Record<FormType, VentureFormConfig> = {
   "cheery-fic": {
     formType: "cheery-fic",
-    ventureName: "cheery_fic",
+    ventureName: "cheery_caricature",
     ventureCode: "FIC",
     title: "Commission a Caricature",
     subtitle: "Share your reference photos, stories, and celebration details. Cheery will craft an expressive caricature tailored with personality.",
@@ -61,7 +61,14 @@ export const INQUIRY_FORMS: Record<FormType, VentureFormConfig> = {
             label: "Commission Type",
             type: "select",
             required: true,
-            options: ["Solo Portrait", "Couple Keepsake", "Family / Group Caricature", "Wedding Invitation Caricature", "Corporate / Executive Avatar"],
+            options: [
+              "Solo Portrait",
+              "Couple Keepsake",
+              "Family / Group Caricature",
+              "Wedding event",
+              "Birthday event",
+              "Corporate event",
+            ],
           },
           {
             id: "numberOfPeople",
@@ -75,7 +82,10 @@ export const INQUIRY_FORMS: Record<FormType, VentureFormConfig> = {
             label: "Preferred Art Style",
             type: "select",
             required: true,
-            options: ["Classic Cheery Full-Color Caricature", "Minimalist Clean Ink Line Art", "Whimsical Story Illustration", "Digital Avatar (Icon/Social)"],
+            options: [
+              "Classic Cheery Full-Color Caricature",
+              "Minimalist Clean Ink Line Art",
+            ],
           },
           { id: "occasion", label: "Occasion / Purpose", type: "text", placeholder: "e.g. 25th Wedding Anniversary, Birthday Gift, Farewell" },
           {
@@ -128,7 +138,7 @@ export const INQUIRY_FORMS: Record<FormType, VentureFormConfig> = {
     ventureName: "cheerys_art",
     ventureCode: "ART",
     title: "Commission Custom Fine Art",
-    subtitle: "Turn your space into a canvas of emotions, beauty, and memories. Inquire about bespoke canvas paintings, fluid resin art, or painted clock dials.",
+    subtitle: "Turn your space into a canvas of emotions, beauty, and memories. Inquire about bespoke canvas paintings, custom wall art, or painted clock dials.",
     accentColor: "purple",
     badgeText: "Venture 02 • Fine Art Commission",
     whatsappPrompt: "Hi Cheery, I just submitted an inquiry for custom artwork.",
@@ -150,7 +160,7 @@ export const INQUIRY_FORMS: Record<FormType, VentureFormConfig> = {
             label: "Artwork Medium",
             type: "select",
             required: true,
-            options: ["Textured Canvas Painting (Impasto / Acrylic)", "Fluid Resin Art (Glossy / Cosmic)", "Hand-Painted Clock Dial Statement Piece", "Mixed Media & Gold Leaf Canvas", "Faith & Scripture Custom Painting"],
+            options: ["Textured Canvas Painting (Impasto / Acrylic)", "Custom Wall Art & Murals", "Hand-Painted Clock Dial Statement Piece", "Mixed Media & Gold Leaf Canvas", "Faith & Scripture Custom Painting"],
           },
           { id: "dimensions", label: "Desired Dimensions / Wall Size", type: "text", required: true, placeholder: "e.g. 24x36 inches, 30x40 inches, or Clock 16-inch diameter" },
           { id: "roomSpace", label: "Destination Space", type: "text", placeholder: "e.g. Living room feature wall, Office boardroom, Master bedroom" },

@@ -1,13 +1,12 @@
 # Google Sheets Webhook Integration for CHEERYS WORLD
 
-This integration allows website inquiry forms across all five ventures to reliably and deterministically write:
+This integration allows website inquiry forms across all four ventures to reliably and deterministically write:
 1. One normalized row to the **`Master Leads`** tab
 2. One detailed row to the specific venture tab:
-   - **`cheery_fic`**
+   - **`cheery_caricature`** (or `cheery_fic`)
    - **`cheerys_art`**
    - **`anim_daddy`**
    - **`cheerys_tees`**
-   - **`cheerys_bakes`**
 
 ---
 

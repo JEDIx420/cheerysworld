@@ -20,7 +20,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "cheery_fic", href: "/cheery-fic", label: "Caricatures", accent: "hover:text-amber-700" },
+    { name: "cheery_caricature", href: "/cheery-fic", label: "Caricatures", accent: "hover:text-amber-700" },
     { name: "cheerys_art", href: "/cheerys-art", label: "Paintings", accent: "hover:text-purple-700" },
     { name: "anim_daddy", href: "/anim-daddy", label: "Mentoring", accent: "hover:text-blue-700" },
     { name: "cheerys_tees", href: "/cheerys-tees", label: "Apparel", accent: "hover:text-orange-700" },

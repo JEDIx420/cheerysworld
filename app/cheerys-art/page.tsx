@@ -17,10 +17,10 @@ export default function CheerysArtPage() {
       sampleImg: "/cheerys-art/sample-01.png",
     },
     {
-      title: "Resin Painting",
+      title: "Custom Wall Art",
       icon: Sparkles,
-      desc: "Discover the beauty of resin art with vibrant colours, glossy finishes, and unique artistic patterns. Each resin painting is carefully handcrafted, making every piece one of a kind.",
-      highlights: ["Glossy glass-like reflections", "Fluid celestial & cosmic depth", "Durable archival pigments"],
+      desc: "Elevate your interior architecture with bespoke wall art, textured murals, and large-format decorative statements tailored to harmonize with your living or workspace.",
+      highlights: ["Tailored to your space dimensions", "Multi-layered textures & rich depth", "Archival pigments & custom framing"],
       sampleImg: "/cheerys-art/sample-02.png",
     },
     {
@@ -76,7 +76,7 @@ export default function CheerysArtPage() {
 
               {/* Mediums tags */}
               <div className="mt-8 flex flex-wrap gap-2.5">
-                {["Canvas Painting", "Resin Painting", "Clock Dial Painting", "Custom Wall Art", "Made to Order"].map((pill) => (
+                {["Canvas Painting", "Custom Wall Art", "Clock Dial Painting", "Mixed Media", "Made to Order"].map((pill) => (
                   <span
                     key={pill}
                     className="px-3.5 py-1.5 rounded-full bg-white border border-stone-300 text-stone-800 text-xs font-mono font-medium shadow-xs"
@@ -217,7 +217,7 @@ export default function CheerysArtPage() {
                 Why Choose Cheerys Art?
               </h2>
               <p className="mt-4 text-stone-600 text-base leading-relaxed">
-                Our passion is turning simple ideas into eye-catching pieces of art. Whether it is a vibrant canvas, a stunning resin artwork, or a beautifully painted clock dial, Cheerys brings creativity into everyday life.
+                Our passion is turning simple ideas into eye-catching pieces of art. Whether it is a vibrant canvas, a stunning custom wall artwork, or a beautifully painted clock dial, Cheerys brings creativity into everyday life.
               </p>
 
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">

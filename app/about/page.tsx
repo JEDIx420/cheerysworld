@@ -7,14 +7,14 @@ import { Palette, Sparkles, Film, Shirt, ArrowRight, Quote } from "lucide-react"
 export const metadata = {
   title: "About Cheery • CHEERYS Creative Culture",
   description:
-    "Founder • Artist • Animator • Designer • Storyteller • Mentor. The human and artistic vision behind cheery_fic, cheerys_art, anim_daddy, and cheerys_tees.",
+    "Founder • Artist • Animator • Designer • Storyteller • Mentor. The human and artistic vision behind cheery_caricature, cheerys_art, anim_daddy, and cheerys_tees.",
 };
 
 export default function AboutPage() {
   const ventures = [
     {
       num: "01",
-      name: "cheery_fic",
+      name: "cheery_caricature",
       label: "Caricatures & Creative Products",
       desc: "Where faces become caricatures, ideas become illustrations, and creativity finds a form people can keep, gift or share.",
       icon: Palette,
@@ -24,8 +24,8 @@ export default function AboutPage() {
     {
       num: "02",
       name: "cheerys_art",
-      label: "Canvas, Resin & Clock Dial Painting Work",
-      desc: "Art that adds life to your space. Handcrafted textured canvas paintings, fluid cosmic resin art, and statement clocks.",
+      label: "Canvas & Clock Dial Painting Work",
+      desc: "Art that adds life to your space. Handcrafted textured canvas paintings and statement hand-painted clocks.",
       icon: Sparkles,
       href: "/cheerys-art",
       accent: "text-purple-700 bg-purple-50 border-purple-200",

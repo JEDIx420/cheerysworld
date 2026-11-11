@@ -6,8 +6,8 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 
 export function Footer() {
   const divisions = [
-    { name: "cheery_fic", href: "/cheery-fic", desc: "Caricatures, characters & creative products" },
-    { name: "cheerys_art", href: "/cheerys-art", desc: "Canvas, resin & clock dial painting work" },
+    { name: "cheery_caricature", href: "/cheery-fic", desc: "Caricatures, characters & creative products" },
+    { name: "cheerys_art", href: "/cheerys-art", desc: "Canvas, fine art & clock dial painting work" },
     { name: "anim_daddy", href: "/anim-daddy", desc: "Animation & art mentoring" },
     { name: "cheerys_tees", href: "/cheerys-tees", desc: "Personalised apparel & merchandise" },
   ];

@@ -50,7 +50,7 @@ export default function CheeryFicPage() {
               </div>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black font-serif tracking-tight text-stone-950">
-                cheery_fic
+                cheery_caricature
               </h1>
 
               <div className="mt-1">
@@ -62,7 +62,7 @@ export default function CheeryFicPage() {
               </p>
 
               <p className="mt-4 text-stone-600 text-base sm:text-lg max-w-xl leading-relaxed">
-                cheery_fic is the playful visual studio of Cheerys. We celebrate real people by turning personality, laughter, and character into unforgettable art.
+                cheery_caricature is the playful visual studio of Cheerys. We celebrate real people by turning personality, laughter, and character into unforgettable art.
               </p>
 
               {/* Offerings pills */}
@@ -236,7 +236,7 @@ export default function CheeryFicPage() {
         </div>
       </section>
 
-      {/* Dedicated cheery_fic Portfolio Gallery */}
+      {/* Dedicated cheery_caricature Portfolio Gallery */}
       <SelectedWorkGallery
         defaultFilter="cheery-fic"
         showHeading={true}

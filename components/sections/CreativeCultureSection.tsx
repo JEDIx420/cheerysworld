@@ -40,7 +40,7 @@ export function CreativeCultureSection() {
           {/* Division tags ribbon */}
           <div className="mt-12 flex flex-wrap justify-center gap-3 font-mono text-xs sm:text-sm">
             <span className="px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
-              01 cheery_fic
+              01 cheery_caricature
             </span>
             <span className="px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300">
               02 cheerys_art

@@ -71,7 +71,7 @@ export function CommissionModal({ isOpen, onClose }: { isOpen: boolean; onClose:
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-700">
-                cheery_fic Studio • Custom Commission
+                cheery_caricature Studio • Custom Commission
               </span>
             </div>
 

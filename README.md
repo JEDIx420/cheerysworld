@@ -6,8 +6,8 @@ Official frontend repository for **CHEERYS**, the multi-disciplinary creative um
 
 The site unites Cheery's four creative ventures into one cohesive, editorial, and art-directed digital world:
 
-1. **`cheery_fic`** (Venture 01): Visual studio for expressive caricatures, family keepsakes, celebration portraits, and illustrated products.
-2. **`cheerys_art`** (Venture 02): Fine art & painting work spanning handcrafted canvas impasto, fluid cosmic resin art, and functional clock dial paintings.
+1. **`cheery_caricature`** (Venture 01): Visual studio for expressive caricatures, family keepsakes, celebration portraits, and illustrated products.
+2. **`cheerys_art`** (Venture 02): Fine art & painting work spanning handcrafted canvas impasto, custom architectural wall art, and functional clock dial paintings.
 3. **`anim_daddy`** (Venture 03): Animation & art mentoring platform with stepping-stone foundations and advanced professional modules taught by veteran industry animators.
 4. **`cheerys_tees`** (Venture 04): Bespoke apparel and streetwear merchandise transforming heavyweight cotton tees into canvases of personal faith, identity, and narrative.
 
@@ -29,8 +29,8 @@ The site unites Cheery's four creative ventures into one cohesive, editorial, an
 | Route | Venture / Page | Description |
 | :--- | :--- | :--- |
 | `/` | **Home Page** | Flipbook hero, "Meet Cheery" founder spotlight, responsive sticky "Creative Worlds" stacking cards, curated visual archive, and Creative Culture banner. |
-| `/cheery-fic` | **cheery_fic** | Caricature gallery, live-drawn couple line art, photo-to-caricature breakdown, and structured commission intake form. |
-| `/cheerys-art` | **cheerys_art** | Canvas paintings, fluid resin art, clock dials, space styling philosophy, and custom painting inquiry form. |
+| `/cheery-fic` | **cheery_caricature** | Caricature gallery, live-drawn couple line art, photo-to-caricature breakdown, and structured commission intake form. |
+| `/cheerys-art` | **cheerys_art** | Canvas paintings, custom wall art, clock dials, space styling philosophy, and custom painting inquiry form. |
 | `/anim-daddy` | **anim_daddy** | Character hero reel, stepping stones foundations, 14 advanced modules with integrated demonstration cels, and mentoring admission inquiry. |
 | `/cheerys-tees` | **cheerys_tees** | Screen-print craft explanation, lookbook gallery, product detail modal preview, and custom batch apparel inquiry. |
 | `/about` | **About Cheery** | The story of how artist, animator, designer, storyteller, and mentor became four related creative expressions, with verified colleague testimonials. |

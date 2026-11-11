@@ -84,7 +84,7 @@ export function MeetCheerySection() {
                   Cheerys isn&apos;t a random collection of unconnected shops—it is the unified artistic studio of a creator whose life work revolves around visual humor, storytelling, mentorship, and thoughtful craft.
                 </p>
                 <p className="text-stone-600 text-base">
-                  Whether capturing someone&apos;s true essence in a caricature, creating expressive canvas and resin art, teaching an aspiring artist the science of motion, or designing meaningful apparel, each venture reflects the same personal care and handcrafted philosophy.
+                  Whether capturing someone&apos;s true essence in a caricature, creating expressive canvas art, teaching an aspiring artist the science of motion, or designing meaningful apparel, each venture reflects the same personal care and handcrafted philosophy.
                 </p>
               </div>
 

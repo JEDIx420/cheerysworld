@@ -10,12 +10,12 @@ export interface GalleryItem {
 }
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  // cheery_fic items
+  // cheery_caricature items
   {
     id: "fic-1",
     title: "SRK Rockstar Caricature",
     category: "cheery-fic",
-    categoryLabel: "cheery_fic",
+    categoryLabel: "cheery_caricature",
     imageSrc: "/cheery-fic/page-1.png",
     aspectRatio: "portrait",
     caption: "Stylized character caricature capturing charisma, jewelry, and dramatic swagger.",
@@ -25,7 +25,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: "fic-2",
     title: "Dynamic Duo Studio Friends",
     category: "cheery-fic",
-    categoryLabel: "cheery_fic",
+    categoryLabel: "cheery_caricature",
     imageSrc: "/cheery-fic/page-2.png",
     aspectRatio: "square",
     caption: "Expressive twin caricature highlighting distinctive facial expressions and curls.",
@@ -35,7 +35,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: "fic-3",
     title: "Couple Anniversary Keepsake",
     category: "cheery-fic",
-    categoryLabel: "cheery_fic",
+    categoryLabel: "cheery_caricature",
     imageSrc: "/cheery-fic/page-3.png",
     aspectRatio: "landscape",
     caption: "Warm, lighthearted couple caricature celebrating enduring love.",
@@ -45,7 +45,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: "fic-4",
     title: "Sunny Boy Portrait",
     category: "cheery-fic",
-    categoryLabel: "cheery_fic",
+    categoryLabel: "cheery_caricature",
     imageSrc: "/cheery-fic/page-4.png",
     aspectRatio: "portrait",
     caption: "Signed original by Cheery capturing the bright joyful innocence of childhood.",
@@ -55,7 +55,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: "fic-5",
     title: "Distinguished Gentleman with Glasses",
     category: "cheery-fic",
-    categoryLabel: "cheery_fic",
+    categoryLabel: "cheery_caricature",
     imageSrc: "/cheery-fic/page-5.png",
     aspectRatio: "portrait",
     caption: "Humorous exaggeration of features, wide smile, and sharp eyewear.",
@@ -65,7 +65,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: "fic-6",
     title: "Irene & Philip (1 Corinthians 13)",
     category: "cheery-fic",
-    categoryLabel: "cheery_fic",
+    categoryLabel: "cheery_caricature",
     imageSrc: "/cheery-fic/page-6.png",
     aspectRatio: "portrait",
     caption: "Minimalist line-art illustration created for an inspiring wedding keepsake.",
@@ -75,7 +75,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: "fic-7",
     title: "Photo to Caricature Transformation",
     category: "cheery-fic",
-    categoryLabel: "cheery_fic",
+    categoryLabel: "cheery_caricature",
     imageSrc: "/cheery-fic/page-7.png",
     aspectRatio: "landscape",
     caption: "Side-by-side demonstration showing the real reference photo alongside the custom caricature.",
@@ -101,7 +101,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageSrc: "/cheerys-art/sample-02.png",
     aspectRatio: "portrait",
     caption: "Deep emerald northern aurora band suspended above floating blue origami petals in starry space.",
-    tags: ["Resin Painting", "Cosmic", "Fluid Art"],
+    tags: ["Custom Wall Art", "Cosmic", "Fluid Art"],
   },
   {
     id: "art-3",

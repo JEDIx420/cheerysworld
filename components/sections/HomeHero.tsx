@@ -13,7 +13,7 @@ export function HomeHero() {
   const underlineRef = useRef<SVGSVGElement>(null);
 
   const pillars = [
-    { word: "CARICATURE.", desc: "cheery_fic", color: "text-amber-900 bg-amber-50/80 border-amber-200" },
+    { word: "CARICATURE.", desc: "cheery_caricature", color: "text-amber-900 bg-amber-50/80 border-amber-200" },
     { word: "PAINT.", desc: "cheerys_art", color: "text-purple-900 bg-purple-50/80 border-purple-200" },
     { word: "TEACH.", desc: "anim_daddy", color: "text-blue-900 bg-blue-50/80 border-blue-200" },
     { word: "PERSONALISE.", desc: "cheerys_tees", color: "text-orange-950 bg-orange-50/80 border-orange-200" },
@@ -165,7 +165,7 @@ export function HomeHero() {
             </p>
 
             <p className="hero-subcopy mt-4 text-stone-600 text-base sm:text-lg max-w-xl leading-relaxed">
-              Cheerys brings together four distinct creative ventures—caricatures, fine canvas & resin art, animation mentoring, and custom apparel—connected by one vision: to create, paint, teach, and personalise with heart.
+              Cheerys brings together four distinct creative ventures—caricatures, fine canvas art, animation mentoring, and custom apparel—connected by one vision: to create, paint, teach, and personalise with heart.
             </p>
 
             {/* Four Action Pillars */}

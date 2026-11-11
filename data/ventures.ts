@@ -25,7 +25,7 @@ export const VENTURES: Venture[] = [
   {
     id: "cheery-fic",
     number: "01",
-    name: "cheery_fic",
+    name: "cheery_caricature",
     slug: "/cheery-fic",
     tagline: "Caricatures, characters & creative products",
     accentColor: "text-amber-700",
@@ -35,7 +35,7 @@ export const VENTURES: Venture[] = [
     description:
       "Turning people, ideas and imagination into playful visual stories and memorable creative products. Where faces become caricatures, ideas become illustrations, and creativity finds a form people can keep, gift or share.",
     bulletPill: "CARICATURES + CREATIVE PRODUCTS",
-    actionText: "EXPLORE CHEERY_FIC",
+    actionText: "EXPLORE CHEERY_CARICATURE",
     actionHref: "/cheery-fic",
     offerings: [
       {
@@ -64,7 +64,7 @@ export const VENTURES: Venture[] = [
     number: "02",
     name: "cheerys_art",
     slug: "/cheerys-art",
-    tagline: "Art that adds life to your space • canvas, resin & clocks",
+    tagline: "Art that adds life to your space • canvas, custom wall art & clocks",
     accentColor: "text-purple-800",
     accentBg: "bg-purple-500/10",
     badgeBorder: "border-purple-600/30",
@@ -81,9 +81,9 @@ export const VENTURES: Venture[] = [
           "Transform your walls with beautiful and expressive textured canvas paintings, from decorative abstracts to personalized creations.",
       },
       {
-        title: "Resin Painting",
+        title: "Custom Wall Art",
         description:
-          "Vibrant colours, glossy finishes, and organic fluid artistic patterns handcrafted to make every piece one of a kind.",
+          "Bespoke textured compositions, architectural wall murals, and mixed-media creations designed to make your space feel truly special.",
       },
       {
         title: "Clock Dial Painting",

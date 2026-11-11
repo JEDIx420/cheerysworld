@@ -273,22 +273,24 @@ function buildVentureRecord(formType, submissionId, submittedAt, lead, fields) {
 
 function getVentureSheetName(formType) {
   switch (formType) {
-    case "cheery-fic": return "cheery_fic";
+    case "cheery-fic":
+    case "cheery-caricature":
+      return "cheery_caricature";
     case "cheerys-art": return "cheerys_art";
     case "anim-daddy": return "anim_daddy";
     case "cheerys-tees": return "cheerys_tees";
-    case "cheerys-bakes": return "cheerys_bakes";
     default: return "";
   }
 }
 
 function getInquiryType(formType, fields) {
   switch (formType) {
-    case "cheery-fic": return fields.commissionType || "Caricature Commission";
+    case "cheery-fic":
+    case "cheery-caricature":
+      return fields.commissionType || "Caricature Commission";
     case "cheerys-art": return fields.artMedium || "Custom Artwork";
     case "anim-daddy": return fields.trackInterest || "Mentoring Enquiry";
     case "cheerys-tees": return fields.orderType || "Custom Apparel";
-    case "cheerys-bakes": return fields.category || "Custom Bake";
     default: return "General Inquiry";
   }
 }
@@ -296,6 +298,7 @@ function getInquiryType(formType, fields) {
 function buildSummary(formType, fields) {
   switch (formType) {
     case "cheery-fic":
+    case "cheery-caricature":
       return [fields.commissionType, fields.numberOfPeople, fields.occasion]
         .filter(Boolean).join(" • ");
     case "cheerys-art":
