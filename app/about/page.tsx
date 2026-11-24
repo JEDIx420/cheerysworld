@@ -79,9 +79,9 @@ export default function AboutPage() {
     {
       name: "Nideep Varghese",
       title: "Animator at DreamWorks",
-      context: "Worked with Cheery for ~4 years at Toonz",
+      context: "Worked with Cheery for 4 years at Toonz",
       avatar: "/testimonials/nideep-varghese.jpg",
-      avatarClass: "object-cover object-center scale-[1.03]",
+      avatarClass: "scale-[1.03]",
       quote:
         "I have worked with Cheery for around 4 years at Toonz. He was a really passionate and talented artist. He was also very pro-active. He did whatever job he was assigned, with great responsibility and dedication. I would definitely recommend Cheery to be part of any artistic company. He would be a great asset to any team.",
     },
@@ -90,6 +90,7 @@ export default function AboutPage() {
       title: "Professor at Loyalist College",
       context: "Colleague at Toonz for 4 years",
       avatar: "/testimonials/atul-rao.jpg",
+      avatarClass: "translate-y-[6%] scale-[1.18]",
       quote:
         "Cheery is a talented writer and creative executive with decades of experience. He's great to work with and an asset to any organization. I'm lucky to have worked with him for four years at Toonz.",
     },
@@ -98,6 +99,7 @@ export default function AboutPage() {
       title: "3D Exhibit Designer at Al Fajer Info",
       context: "Creative collaborator across international projects",
       avatar: "/testimonials/sreekumar-sree.jpg",
+      avatarClass: "-translate-y-[13%] scale-[1.4]",
       quote:
         "He has been the most efficient Talent Artist I've been working with. He always has been available when I had some questions and he makes you feel very comfortable. He is very passionate, very professional.",
     },
@@ -255,13 +257,14 @@ export default function AboutPage() {
                 <div>
                   {/* Author Header with Authentic Portrait Avatar */}
                   <div className="flex items-center gap-3.5 pb-4 mb-5 border-b border-stone-100">
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-stone-900 bg-amber-50 shadow-xs shrink-0">
+                    <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-stone-900 bg-amber-50 shrink-0">
+                      {/* Crop out the dark screenshot margins in the source portraits. */}
                       <Image
                         src={rec.avatar}
                         alt={`${rec.name} portrait`}
                         fill
                         sizes="48px"
-                        className={rec.avatarClass || "object-cover"}
+                        className={`object-cover object-center ${rec.avatarClass || "translate-y-[3%] scale-[1.12]"}`}
                       />
                     </div>
 

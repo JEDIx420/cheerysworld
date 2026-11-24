@@ -111,7 +111,7 @@ export default function CheerysArtPage() {
                 <div className="relative aspect-[3/4] rounded-2xl bg-stone-950 p-2 overflow-hidden border border-stone-200">
                   <Image
                     src="/cheerys-art/sample-01.png"
-                    alt="Radiant Star Burst Canvas by Cheery"
+                    alt="Phoenix Rising — an abstract painting of a phoenix rising from fiery embers by Cheery"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 40vw"
