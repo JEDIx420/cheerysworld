@@ -85,13 +85,13 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   // cheerys_art items
   {
     id: "art-1",
-    title: "Radiant Golden Star Burst",
+    title: "Phoenix Rising",
     category: "cheerys-art",
     categoryLabel: "cheerys_art",
     imageSrc: "/cheerys-art/sample-01.png",
     aspectRatio: "portrait",
-    caption: "Textured acrylic canvas bursting with blue celestial rays and an organic earth-toned center.",
-    tags: ["Canvas Painting", "Abstract", "Textured Acrylic"],
+    caption: "An abstract painting of a phoenix rising from fiery embers.",
+    tags: ["Canvas Painting", "Abstract", "Phoenix"],
   },
   {
     id: "art-2",
@@ -135,13 +135,13 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "art-6",
-    title: "The Golden Cross at Sunrise",
+    title: "The First Christmas Night",
     category: "cheerys-art",
     categoryLabel: "cheerys_art",
     imageSrc: "/cheerys-art/sample-08.png",
     aspectRatio: "square",
-    caption: "Expressive spiritual painting capturing the rugged cross enveloped in warm dawn rays.",
-    tags: ["Canvas Painting", "Faith", "Devotional Art"],
+    caption: "An abstract painting of the first Christmas night, depicting the manger and the babe.",
+    tags: ["Canvas Painting", "Nativity", "Abstract"],
   },
   {
     id: "art-7",

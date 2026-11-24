@@ -28,7 +28,9 @@ export default function CheerysArtPage() {
       icon: Clock,
       desc: "Turn an everyday clock into a beautiful work of art. Our hand-painted clock dials combine functionality with creativity, creating statement pieces that add an artistic touch to any interior.",
       highlights: ["Functional timepieces meet fine art", "Bespoke colorways for your room", "Statement centerpieces for home & office"],
-      sampleImg: "/cheerys-art/sample-03.png",
+      sampleImg: "/cheerys-art/butterfly-clock-dial.jpeg",
+      sampleAlt: "Hand-painted clock dial with green leaves, a butterfly emerging from its chrysalis, and Ecclesiastes 3:1",
+      imageClassName: "object-cover object-[center_40%]",
     },
   ];
 
@@ -111,7 +113,7 @@ export default function CheerysArtPage() {
                 <div className="relative aspect-[3/4] rounded-2xl bg-stone-950 p-2 overflow-hidden border border-stone-200">
                   <Image
                     src="/cheerys-art/sample-01.png"
-                    alt="Radiant Star Burst Canvas by Cheery"
+                    alt="Phoenix Rising — an abstract painting of a phoenix rising from fiery embers by Cheery"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 40vw"
@@ -158,10 +160,10 @@ export default function CheerysArtPage() {
                     <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-900 mb-6 border border-stone-200">
                       <Image
                         src={med.sampleImg}
-                        alt={med.title}
+                        alt={med.sampleAlt || med.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                        className={med.imageClassName || "object-contain p-2 group-hover:scale-105 transition-transform duration-500"}
                       />
                     </div>
 

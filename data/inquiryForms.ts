@@ -115,12 +115,6 @@ export const INQUIRY_FORMS: Record<FormType, VentureFormConfig> = {
             required: true,
             options: ["High-Res Digital File (Print-Ready 300 DPI)", "Digital File + Physical Framed Print (Delivery)", "Physical Canvas Delivery"],
           },
-          {
-            id: "budgetRange",
-            label: "Budget Range",
-            type: "select",
-            options: ["Standard (₹3,000 – ₹6,000)", "Premium / Multi-Subject (₹6,000 – ₹12,000)", "Elaborate Custom Storyboard (₹12,000+)", "Open to recommendation"],
-          },
           { id: "notes", label: "Additional Notes or Questions", type: "textarea", placeholder: "Anything else Cheery should know about the person or project?" },
           {
             id: "consent",
